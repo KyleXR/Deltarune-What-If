@@ -60,7 +60,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Tex:
-        m_Texture: {fileID: 8900000, guid: d0f7cbb1ede41d541af2646ded8386b1, type: 2}
+        m_Texture: {fileID: 8900000, guid: fa8f77ba717704041bc66d4cb97c9d6c, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -69,7 +69,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Exposure: 0.46
+    - _Exposure: 0.22
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
