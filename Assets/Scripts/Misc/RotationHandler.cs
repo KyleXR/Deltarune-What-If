@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class RotateObject : MonoBehaviour
+public class RotationHandler : MonoBehaviour
 {
     // Speed of rotation in degrees per second
     public float rotationSpeed = 45.0f;
@@ -10,6 +10,9 @@ public class RotateObject : MonoBehaviour
 
     // Toggle between continuous rotation and rotating to a target
     public bool rotateToTarget = false;
+
+    // Flag to indicate if rotation is in progress
+    public bool isRotating = false;
 
     // Update is called once per frame
     void Update()
@@ -23,6 +26,9 @@ public class RotateObject : MonoBehaviour
             // If the angle difference is small enough, stop rotating
             if (Mathf.Abs(angleDifference) > 0.01f)
             {
+                // Indicate that rotation is in progress
+                isRotating = true;
+
                 // Determine the direction to rotate
                 float rotationDirection = Mathf.Sign(angleDifference);
 
@@ -34,6 +40,11 @@ public class RotateObject : MonoBehaviour
 
                 // Apply rotation to the object
                 transform.Rotate(Vector3.up, rotationAmount * rotationDirection);
+            }
+            else
+            {
+                // Rotation is complete
+                isRotating = false;
             }
         }
         else
