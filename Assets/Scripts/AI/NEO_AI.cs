@@ -19,7 +19,7 @@ public class NEO_AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (urgency <= rotationDelay * 0.75f && generateUrgency) urgency += urgencyRate = .001f;
+        if (urgency <= rotationDelay * 0.75f && generateUrgency) urgency += urgencyRate * Time.deltaTime;
     }
 
     private void ChangeRotation()
@@ -52,7 +52,7 @@ public class NEO_AI : MonoBehaviour
         {
             health = 0; //initiate death
         }
-        urgency += urgencyRate * 5;
+        UrgencyCooldown();
     }
 
     public void EnableUrgencyGeneration()
