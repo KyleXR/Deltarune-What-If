@@ -2034,7 +2034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dafa197587951d48bb86e53f423c141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathGenerator: {fileID: 1377819043}
+  pathGenerator: {fileID: 0}
   playerTarget: {fileID: 1175916576}
   rangeMin: {x: -10, y: 2, z: -10}
   rangeMax: {x: 10, y: 10, z: 10}
@@ -2051,11 +2051,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closedLoop: 0
+  updateTimer: 0
+  sphere: {fileID: 0}
+  cart: {fileID: 0}
+  spherePosition: 0
   waypoints:
   - {fileID: 2057106055}
   - {fileID: 616448416}
   - {fileID: 461281039}
-  isManual: 1
 --- !u!4 &1377819044
 Transform:
   m_ObjectHideFlags: 0
@@ -2416,6 +2419,7 @@ MonoBehaviour:
   pathCreator: {fileID: 1377819041}
   endOfPathInstruction: 3
   speed: 5
+  distanceTravelled: 0
 --- !u!1 &1804720584
 GameObject:
   m_ObjectHideFlags: 0

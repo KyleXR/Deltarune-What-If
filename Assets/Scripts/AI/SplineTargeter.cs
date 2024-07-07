@@ -6,7 +6,7 @@ using UnityEngine;
 public class SplineTargeter : MonoBehaviour
 {
     private Transform[] points;
-    [SerializeField] ProceduralPathGenerator pathGenerator;
+    [SerializeField] SpamtonHeadPathGenerator pathGenerator;
     public Transform playerTarget;
 
     public Vector3 rangeMin = Vector3.one*-10;
