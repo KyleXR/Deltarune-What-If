@@ -23,6 +23,10 @@ namespace PathCreation.Examples
         {
             if (pathCreator != null)
             {
+                if (endOfPathInstruction == EndOfPathInstruction.Destroy && transform.position == pathCreator.path.localPoints[pathCreator.path.localPoints.Length - 1]) 
+                { 
+                    Destroy(gameObject);
+                }
                 distanceTravelled += speed * Time.deltaTime;
                 transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
                 transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);

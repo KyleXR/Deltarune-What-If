@@ -266,6 +266,9 @@ namespace PathCreation {
                 case EndOfPathInstruction.Stop:
                     t = Mathf.Clamp01 (t);
                     break;
+                case EndOfPathInstruction.Destroy:
+                    t = Mathf.Clamp01(t);
+                    break;
             }
 
             int prevIndex = 0;
