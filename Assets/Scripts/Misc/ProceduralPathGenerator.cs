@@ -8,11 +8,18 @@ namespace PathCreation.Examples {
 
         public bool closedLoop = true;
         public Transform[] waypoints;
+        public bool isManual = false;
 
         void Start () {
-            if (waypoints.Length > 0) {
+            if (!isManual) { GeneratePath(); }
+        }
+
+        public void GeneratePath()
+        {
+            if (waypoints.Length > 0)
+            {
                 // Create a new bezier path from the waypoints.
-                BezierPath bezierPath = new BezierPath (waypoints, closedLoop, PathSpace.xyz);
+                BezierPath bezierPath = new BezierPath(waypoints, closedLoop, PathSpace.xyz);
                 var oldBezier = GetComponent<PathCreator>().bezierPath;
                 float globalNormals = oldBezier.GlobalNormalsAngle;
                 GetComponent<PathCreator>().bezierPath = bezierPath;
