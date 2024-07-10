@@ -11,9 +11,10 @@ namespace PathCreation.Examples {
         public bool closedLoop = true;
         public Transform[] waypoints;
         public bool isManual = false;
-
+        public PathCreator creator;
         void Start () {
             if (!isManual) { GeneratePath(); }
+            creator = GetComponent<PathCreator>();
         }
 
         public void GeneratePath()

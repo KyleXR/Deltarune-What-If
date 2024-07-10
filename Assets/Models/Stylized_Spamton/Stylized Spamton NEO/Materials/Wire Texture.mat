@@ -30,6 +30,7 @@ Material:
   - _CLIPTRIPLANAR_ON
   - _EMISSION
   - _MULTIPLYBYLIGHTCOLOR_ON
+  - _USEEMISSION_ON
   - _USEOUTLINES_ON
   - _USESHADOWS_ON
   - _USESPECULAR_ON
@@ -171,10 +172,10 @@ Material:
     - _GlossyReflections: 1
     - _GradientOffset: 0
     - _GradientSensitivity: 1
-    - _GradientSource: 1
-    - _HalftoneMultiplier: 0.7961575
+    - _GradientSource: 0
+    - _HalftoneMultiplier: 0.97
     - _HalftoneOffset: 0
-    - _HalftoneScale: 1
+    - _HalftoneScale: 5
     - _HueShift: 0
     - _HueVariation: 0
     - _LightRamp: 1
@@ -246,7 +247,7 @@ Material:
     - _UseHSVVariation: 0
     - _UseHalftone: 0
     - _UseModifiedNormals: 0
-    - _UseOutlines: 1
+    - _UseOutlines: 0
     - _UseRimLighting: 0
     - _UseScreenNoise: 0
     - _UseShadows: 1
@@ -276,15 +277,15 @@ Material:
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionScrolling1: {r: 1, g: 1, b: 0, a: 0}
     - _EmissionScrolling2: {r: 0.1, g: -0.5, b: 0, a: 0}
-    - _FarColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FarColor: {r: 1, g: 0, b: 0, a: 1}
     - _FlutterDirection: {r: 0, g: 1, b: 0, a: 0}
     - _FlutterMask: {r: 1, g: 0, b: 0, a: 0}
     - _GlintColor: {r: 1, g: 1, b: 1, a: 1}
     - _GradientChannelMask: {r: 0, g: 1, b: 0, a: 0}
     - _GradientPositionalOffset: {r: 0, g: 0, b: 0, a: 0}
     - _LightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
-    - _NearColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MainColor: {r: 0.4372848, g: 0.69182384, b: 0.46840665, a: 1}
+    - _NearColor: {r: 1, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0.7411765, b: 0, a: 1}
     - _PuddleColor: {r: 0.19475657, g: 0.34486926, b: 0.43396226, a: 0}
     - _RimLightColor: {r: 0.3921569, g: 0.3921569, b: 0.3921569, a: 1}

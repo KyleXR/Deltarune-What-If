@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1381422625646382606}
   m_Layer: 0
   m_Name: Thigh.L
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 7560443128716977459}
   m_Layer: 0
   m_Name: Pinky.R
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 278731333813039351}
   m_Layer: 0
   m_Name: Wing.L
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 7883085223711577862}
   m_Layer: 0
   m_Name: Chest
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 7136145897822869181}
   m_Layer: 0
   m_Name: Hair3.L
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -371,7 +371,7 @@ GameObject:
   - component: {fileID: 8751030079807355199}
   m_Layer: 0
   m_Name: Hair2.R
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 7399676575372088601}
   m_Layer: 0
   m_Name: Hand.L
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 8713597214263924929}
   m_Layer: 0
   m_Name: Pinky1.L
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -470,7 +470,7 @@ GameObject:
   - component: {fileID: 3824755424102961506}
   m_Layer: 0
   m_Name: Pinky.L
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 9006034176627747665}
   m_Layer: 0
   m_Name: Upperarm.L
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -636,7 +636,7 @@ GameObject:
   - component: {fileID: 7668295109664247738}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -770,7 +770,7 @@ GameObject:
   - component: {fileID: 8196205315440961581}
   m_Layer: 0
   m_Name: SpamtonParent
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -805,6 +805,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotator: {fileID: 7987407422970217886}
+  attackHandler: {fileID: 0}
   health: 1997
   rotationDelay: 10
   urgency: 0
@@ -822,7 +823,7 @@ GameObject:
   - component: {fileID: 2160656618009295608}
   m_Layer: 0
   m_Name: NEO Glasses
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -956,7 +957,7 @@ GameObject:
   - component: {fileID: 8285664801523385094}
   m_Layer: 0
   m_Name: Hair1.L
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -987,7 +988,7 @@ GameObject:
   - component: {fileID: 2388074546393134624}
   m_Layer: 0
   m_Name: Middle.R
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1019,7 +1020,7 @@ GameObject:
   - component: {fileID: 1997405435318825681}
   m_Layer: 0
   m_Name: Foot.R
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1051,7 +1052,7 @@ GameObject:
   - component: {fileID: 8947698482464470209}
   m_Layer: 0
   m_Name: Nose
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1082,7 +1083,7 @@ GameObject:
   - component: {fileID: 2833151353397107446}
   m_Layer: 0
   m_Name: Stylized Spamton NEO Armature
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1115,7 +1116,7 @@ GameObject:
   - component: {fileID: 6959238020247556295}
   m_Layer: 0
   m_Name: Hair2.L
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1146,7 +1147,7 @@ GameObject:
   - component: {fileID: 4134370689804443118}
   m_Layer: 0
   m_Name: Pinky.R.001
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1179,7 +1180,7 @@ GameObject:
   - component: {fileID: 164241135302375085}
   m_Layer: 0
   m_Name: NEO Cannon
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1314,7 +1315,7 @@ GameObject:
   - component: {fileID: 2008968164525516709}
   m_Layer: 0
   m_Name: Wing1.L
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1345,7 +1346,7 @@ GameObject:
   - component: {fileID: 7392631904207859037}
   m_Layer: 0
   m_Name: Pinky1.R.001
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1376,7 +1377,7 @@ GameObject:
   - component: {fileID: 1416604881135733208}
   m_Layer: 0
   m_Name: Stylized Spamton NEO
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1414,7 +1415,7 @@ GameObject:
   - component: {fileID: 6647438150040361700}
   m_Layer: 0
   m_Name: Toe.R
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1448,7 +1449,7 @@ GameObject:
   - component: {fileID: 3301806302790057807}
   m_Layer: 0
   m_Name: Forearm.R
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1576,7 +1577,7 @@ GameObject:
   - component: {fileID: 6401454702017704571}
   m_Layer: 0
   m_Name: Neck
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1609,7 +1610,7 @@ GameObject:
   - component: {fileID: 4749818696648431721}
   m_Layer: 0
   m_Name: Spamton NEO
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1744,7 +1745,7 @@ GameObject:
   - component: {fileID: 3548907537734299120}
   m_Layer: 0
   m_Name: Wing1.R
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1775,7 +1776,7 @@ GameObject:
   - component: {fileID: 4259876837888712913}
   m_Layer: 0
   m_Name: Pointer.R
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1807,7 +1808,7 @@ GameObject:
   - component: {fileID: 2787174111092787905}
   m_Layer: 0
   m_Name: Pointer.L
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1839,7 +1840,7 @@ GameObject:
   - component: {fileID: 6523742025889910078}
   m_Layer: 0
   m_Name: ChestFlap
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1871,7 +1872,7 @@ GameObject:
   - component: {fileID: 7987407422970217886}
   m_Layer: 0
   m_Name: SpamtonRotator
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1919,7 +1920,7 @@ GameObject:
   - component: {fileID: 6569073348698934913}
   m_Layer: 0
   m_Name: Hair3.R
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1953,7 +1954,7 @@ GameObject:
   - component: {fileID: 2703984378915385541}
   m_Layer: 0
   m_Name: Calf.L
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2081,7 +2082,7 @@ GameObject:
   - component: {fileID: 4390967345161736979}
   m_Layer: 0
   m_Name: Jaw
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2113,7 +2114,7 @@ GameObject:
   - component: {fileID: 4608222264901407472}
   m_Layer: 0
   m_Name: NEO Sign
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2246,7 +2247,7 @@ GameObject:
   - component: {fileID: 2121903691805254858}
   m_Layer: 0
   m_Name: Pinky1.R
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2278,7 +2279,7 @@ GameObject:
   - component: {fileID: 5577522087609184883}
   m_Layer: 0
   m_Name: Middle1.R
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2312,7 +2313,7 @@ GameObject:
   - component: {fileID: 3397885004560177548}
   m_Layer: 0
   m_Name: Root
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2394,7 +2395,7 @@ GameObject:
   - component: {fileID: 3145075629344688794}
   m_Layer: 0
   m_Name: Toe.L
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2428,7 +2429,7 @@ GameObject:
   - component: {fileID: 1563028776573335060}
   m_Layer: 0
   m_Name: Wing.R
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2554,7 +2555,7 @@ GameObject:
   - component: {fileID: 4814264887964780783}
   m_Layer: 0
   m_Name: Strings
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2585,7 +2586,7 @@ GameObject:
   - component: {fileID: 7644274978939950609}
   m_Layer: 0
   m_Name: Middle.L
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2617,7 +2618,7 @@ GameObject:
   - component: {fileID: 3428769153881784746}
   m_Layer: 0
   m_Name: Pointer1.R
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2652,7 +2653,7 @@ GameObject:
   - component: {fileID: 7910869287431312197}
   m_Layer: 0
   m_Name: Upperarm.R
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2783,7 +2784,7 @@ GameObject:
   - component: {fileID: 5217234632319570759}
   m_Layer: 0
   m_Name: Forearm.L
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2912,7 +2913,7 @@ GameObject:
   - component: {fileID: 340512801514707862}
   m_Layer: 0
   m_Name: NEO Wires
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3049,7 +3050,7 @@ GameObject:
   - component: {fileID: 2296126223458142645}
   m_Layer: 0
   m_Name: Spine
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3175,7 +3176,7 @@ GameObject:
   - component: {fileID: 5835976145908369772}
   m_Layer: 0
   m_Name: Pinky.L.001
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3207,7 +3208,7 @@ GameObject:
   - component: {fileID: 7531194273469471023}
   m_Layer: 0
   m_Name: Hair1.R
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3238,7 +3239,7 @@ GameObject:
   - component: {fileID: 625793909150603875}
   m_Layer: 0
   m_Name: Hand.R
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3277,7 +3278,7 @@ GameObject:
   - component: {fileID: 5258846515208319772}
   m_Layer: 0
   m_Name: SpamtonAnchor
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3401,7 +3402,7 @@ GameObject:
   - component: {fileID: 5357522953506176219}
   m_Layer: 0
   m_Name: NEO Hand
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3534,7 +3535,7 @@ GameObject:
   - component: {fileID: 7403734087866084903}
   m_Layer: 0
   m_Name: Foot.L
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3569,7 +3570,7 @@ GameObject:
   - component: {fileID: 2156601391490359248}
   m_Layer: 0
   m_Name: Calf.R
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3700,7 +3701,7 @@ GameObject:
   - component: {fileID: 6092096120063078116}
   m_Layer: 0
   m_Name: Thigh.R
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3828,7 +3829,7 @@ GameObject:
   - component: {fileID: 4040841242414384510}
   m_Layer: 0
   m_Name: Middle1.L
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3860,7 +3861,7 @@ GameObject:
   - component: {fileID: 8674923993068783463}
   m_Layer: 0
   m_Name: Pointer1.L
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3892,7 +3893,7 @@ GameObject:
   - component: {fileID: 7349125262605909319}
   m_Layer: 0
   m_Name: Pinky1.L.001
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

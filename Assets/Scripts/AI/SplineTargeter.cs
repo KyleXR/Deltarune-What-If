@@ -23,6 +23,8 @@ public class SplineTargeter : MonoBehaviour
     {
         points[0].position = GenerateRandomPosition();
         //points[1].position = GenerateRandomPosition();
+        if (playerTarget == null) playerTarget = FindFirstObjectByType<FirstPersonController>().transform;
+        if (playerTarget == null) playerTarget.position = GenerateRandomPosition();
         points[1].position = playerTarget.position;
         points[2].position = GenerateRandomPosition();
     }
@@ -32,6 +34,23 @@ public class SplineTargeter : MonoBehaviour
         float randomX = Random.Range(rangeMin.x, rangeMax.x);
         float randomY = Random.Range(rangeMin.y, rangeMax.y);
         float randomZ = Random.Range(rangeMin.z, rangeMax.z);
+        int axis = Random.Range(0, 2);
+        int minOrMax = Random.Range(0, 2);
+        switch (axis)
+        {
+            case 0:
+                {
+                    if (minOrMax == 0) randomX = rangeMin.x;
+                    else randomX = rangeMax.x;
+                    break;
+                }
+            case 1:
+                {
+                    if (minOrMax == 0) randomZ = rangeMin.x;
+                    else randomZ = rangeMax.x;
+                    break;
+                }
+        }
 
         return new Vector3(randomX, randomY, randomZ);
     }

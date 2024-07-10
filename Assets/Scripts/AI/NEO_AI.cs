@@ -4,6 +4,7 @@ using System.Collections;
 public class NEO_AI : MonoBehaviour
 {
     [SerializeField] RotationHandler rotator;
+    [SerializeField] NEO_AttackHandler attackHandler;
 
     [SerializeField] float health = 1997;
     [SerializeField] float rotationDelay = 5;
@@ -14,6 +15,7 @@ public class NEO_AI : MonoBehaviour
     void Start()
     {
         StartCoroutine(RotateAtRandomIntervals());
+        StartCoroutine(AttackAtRandomIntervals());
     }
 
     // Update is called once per frame
@@ -42,6 +44,18 @@ public class NEO_AI : MonoBehaviour
 
             // Change rotation after the wait
             if (!rotator.isRotating) ChangeRotation();
+        }
+    }
+
+    private IEnumerator AttackAtRandomIntervals()
+    {
+        while (true)
+        {
+            float waitTime = rotationDelay - urgency;
+            waitTime = Mathf.Max(waitTime, 0.01f);
+            yield return new WaitForSeconds(waitTime);
+
+            attackHandler.SpawnRandomAttack(urgency);
         }
     }
 
