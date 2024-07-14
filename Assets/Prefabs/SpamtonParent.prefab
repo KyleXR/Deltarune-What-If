@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3218736944862417245}
   - component: {fileID: 2440103448079219411}
   - component: {fileID: 1381422625646382606}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Thigh.L
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7560443128716977459}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pinky.R
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 8409342130519378995}
   - component: {fileID: 2628334463652074167}
   - component: {fileID: 278731333813039351}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wing.L
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -253,12 +253,12 @@ CharacterJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155572538278608945}
-  m_ConnectedBody: {fileID: 8232439989835135155}
+  m_ConnectedBody: {fileID: 3397885004560177548}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0026277667, y: 0.008060796, z: -0.0033048103}
+  m_ConnectedAnchor: {x: -0.0026277667, y: 0.0115641365, z: -0.0033048103}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -301,7 +301,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7883085223711577862}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Chest
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7136145897822869181}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hair3.L
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8751030079807355199}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hair2.R
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -400,7 +400,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7399676575372088601}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hand.L
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -436,7 +436,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8713597214263924929}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pinky1.L
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -468,7 +468,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3824755424102961506}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pinky.L
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 5052778745795962639}
   - component: {fileID: 7724238558281710482}
   - component: {fileID: 9006034176627747665}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Upperarm.L
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -634,7 +634,7 @@ GameObject:
   - component: {fileID: 1883512968976693512}
   - component: {fileID: 7993134233619452511}
   - component: {fileID: 7668295109664247738}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -679,7 +679,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -768,6 +768,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4246098327826499603}
   - component: {fileID: 8196205315440961581}
+  - component: {fileID: 7553105442278211903}
+  - component: {fileID: 3816367329676004598}
+  - component: {fileID: 3548662429314488140}
   m_Layer: 0
   m_Name: SpamtonParent
   m_TagString: Spamton
@@ -805,12 +808,64 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotator: {fileID: 7987407422970217886}
-  attackHandler: {fileID: 0}
+  attackHandler: {fileID: 3548662429314488140}
   health: 1997
   rotationDelay: 10
   urgency: 0
   urgencyRate: 0.1
   generateUrgency: 1
+--- !u!95 &7553105442278211903
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497810202482571058}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a87b0a4fd17e3e342b2fab6cc26547b4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3816367329676004598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497810202482571058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bffd1f5830b024184153e295d02c96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTransform: {fileID: 1212436841202212777}
+  switchInterval: 0.1
+  isJittering: 0
+  toggle: 0
+  rb: {fileID: 7993134233619452511}
+--- !u!114 &3548662429314488140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1497810202482571058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84415cb090eac9b409e8b3aa8ac7152a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attacks:
+  - {fileID: 6878909885922395158, guid: 5973953ae82068144b820e842d085353, type: 3}
 --- !u!1 &1595282132448042317
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,7 +1010,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8285664801523385094}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hair1.L
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -986,7 +1041,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2388074546393134624}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Middle.R
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -1018,7 +1073,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1997405435318825681}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Foot.R
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -1050,7 +1105,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8947698482464470209}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Nose
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -1081,7 +1136,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2833151353397107446}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Stylized Spamton NEO Armature
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -1114,7 +1169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6959238020247556295}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hair2.L
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -1145,7 +1200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4134370689804443118}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pinky.R.001
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -1221,8 +1276,8 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: baf958d591e97dd4b9a08d3bba32479f, type: 2}
-  - {fileID: 2100000, guid: baf958d591e97dd4b9a08d3bba32479f, type: 2}
-  - {fileID: 2100000, guid: baf958d591e97dd4b9a08d3bba32479f, type: 2}
+  - {fileID: 2100000, guid: f80fbd8b5d0786849b28c23363a431bc, type: 2}
+  - {fileID: 2100000, guid: 850202b04955bbc4a9bd34f3f16789f1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1313,7 +1368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2008968164525516709}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wing1.L
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -1344,7 +1399,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7392631904207859037}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pinky1.R.001
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -1413,7 +1468,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6647438150040361700}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Toe.R
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -1447,7 +1502,7 @@ GameObject:
   - component: {fileID: 9097595559953191481}
   - component: {fileID: 5994917492174335095}
   - component: {fileID: 3301806302790057807}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Forearm.R
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -1575,7 +1630,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6401454702017704571}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Neck
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -1651,7 +1706,7 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: baf958d591e97dd4b9a08d3bba32479f, type: 2}
-  - {fileID: 2100000, guid: baf958d591e97dd4b9a08d3bba32479f, type: 2}
+  - {fileID: 2100000, guid: 850202b04955bbc4a9bd34f3f16789f1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1743,7 +1798,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3548907537734299120}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wing1.R
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -1774,7 +1829,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4259876837888712913}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pointer.R
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -1806,7 +1861,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2787174111092787905}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pointer.L
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -1838,7 +1893,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6523742025889910078}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ChestFlap
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -1918,7 +1973,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6569073348698934913}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hair3.R
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -1952,7 +2007,7 @@ GameObject:
   - component: {fileID: 2280124852351282949}
   - component: {fileID: 4984663143596930700}
   - component: {fileID: 2703984378915385541}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Calf.L
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -2080,7 +2135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4390967345161736979}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Jaw
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -2112,6 +2167,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2749739934761952156}
   - component: {fileID: 4608222264901407472}
+  - component: {fileID: 58338911175026493}
   m_Layer: 0
   m_Name: NEO Sign
   m_TagString: Spamton
@@ -2154,7 +2210,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1169dcc0078f54245b59bedc51f8e3d6, type: 2}
+  - {fileID: 2100000, guid: f80fbd8b5d0786849b28c23363a431bc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2236,6 +2292,25 @@ SkinnedMeshRenderer:
     m_Center: {x: 9.313226e-10, y: 0.0065271263, z: 0.0036596514}
     m_Extent: {x: 0.0024908094, y: 0.0002936609, z: 0.00027285866}
   m_DirtyAABB: 0
+--- !u!320 &58338911175026493
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6620325748102330157}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: d50bd947b7ede524098584f3acef77f7, type: 2}
+  m_InitialState: 1
+  m_WrapMode: 1
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 4350863483965741182, guid: d50bd947b7ede524098584f3acef77f7, type: 2}
+    value: {fileID: 2100000, guid: f80fbd8b5d0786849b28c23363a431bc, type: 2}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &6662220239748555719
 GameObject:
   m_ObjectHideFlags: 0
@@ -2245,7 +2320,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2121903691805254858}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pinky1.R
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -2277,7 +2352,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5577522087609184883}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Middle1.R
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -2311,7 +2386,7 @@ GameObject:
   - component: {fileID: 4354248498963868129}
   - component: {fileID: 7189126112024333931}
   - component: {fileID: 3397885004560177548}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Root
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -2393,7 +2468,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3145075629344688794}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Toe.L
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -2427,7 +2502,7 @@ GameObject:
   - component: {fileID: 7242564608106206141}
   - component: {fileID: 809373564176280439}
   - component: {fileID: 1563028776573335060}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wing.R
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -2481,7 +2556,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0.1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -2505,12 +2580,12 @@ CharacterJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7137852652264302369}
-  m_ConnectedBody: {fileID: 8232439989835135155}
+  m_ConnectedBody: {fileID: 3397885004560177548}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0026277653, y: 0.008060796, z: -0.0033048121}
+  m_ConnectedAnchor: {x: 0.0026277653, y: 0.0115641365, z: -0.0033048121}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -2553,7 +2628,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4814264887964780783}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Strings
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -2584,7 +2659,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7644274978939950609}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Middle.L
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -2616,7 +2691,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3428769153881784746}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pointer1.R
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -2651,7 +2726,7 @@ GameObject:
   - component: {fileID: 2363159374340947590}
   - component: {fileID: 2350123583293358981}
   - component: {fileID: 7910869287431312197}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Upperarm.R
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -2782,7 +2857,7 @@ GameObject:
   - component: {fileID: 4245567693170513319}
   - component: {fileID: 4731228808070707918}
   - component: {fileID: 5217234632319570759}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Forearm.L
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -3048,7 +3123,7 @@ GameObject:
   - component: {fileID: 6020194111488768244}
   - component: {fileID: 8232439989835135155}
   - component: {fileID: 2296126223458142645}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spine
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -3174,7 +3249,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5835976145908369772}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pinky.L.001
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -3206,7 +3281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7531194273469471023}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hair1.R
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -3237,7 +3312,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 625793909150603875}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hand.R
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -3533,7 +3608,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7403734087866084903}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Foot.L
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -3568,7 +3643,7 @@ GameObject:
   - component: {fileID: 864080319415784930}
   - component: {fileID: 7853054124560387308}
   - component: {fileID: 2156601391490359248}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Calf.R
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -3699,7 +3774,7 @@ GameObject:
   - component: {fileID: 2975380826260028019}
   - component: {fileID: 6583988669199491915}
   - component: {fileID: 6092096120063078116}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Thigh.R
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -3827,7 +3902,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4040841242414384510}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Middle1.L
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -3859,7 +3934,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8674923993068783463}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pointer1.L
   m_TagString: Spamton
   m_Icon: {fileID: 0}
@@ -3891,7 +3966,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7349125262605909319}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pinky1.L.001
   m_TagString: Spamton
   m_Icon: {fileID: 0}
