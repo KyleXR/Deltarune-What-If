@@ -6,7 +6,7 @@ public class LaserBeam : MonoBehaviour
 {
     [SerializeField] private GameObject laserCharge;
     [SerializeField] private GameObject laserBeam;
-    [SerializeField] private float laserLength = 5;
+    [SerializeField] private float laserLength = 10;
     [SerializeField] private float laserSpeed = 10;
     [SerializeField] private float laserDuration = 2;
     [SerializeField] private float laserDelay = 2;
@@ -39,7 +39,15 @@ public class LaserBeam : MonoBehaviour
         rootTransform = root;
         targetTransform.parent = null;
         targetTransform.position = target.position;
-        laserLength = Vector3.Distance(rootTransform.position, target.position);
+        //Physics.Raycast(rootTransform.position, targetTransform.position - rootTransform.position, out hit, laserLength);
+        RaycastHit hit;
+        int layerMask = 1 << 0;
+        if (Physics.Raycast(rootTransform.position, targetTransform.position - rootTransform.position, out hit, laserLength, layerMask))
+        {
+            Debug.Log("Hit");
+            laserLength = hit.distance;
+        }
+        //else laserLength = Vector3.Distance(rootTransform.position, target.position);
         transform.LookAt(target);
     }
 
@@ -164,33 +172,37 @@ public class LaserBeam : MonoBehaviour
         Vector3 localTargetPosition = rootTransform.InverseTransformPoint(targetPosition);
         Vector3 localMidpointPosition = rootTransform.InverseTransformPoint(midpointPosition);
 
+        Vector3 targetScale = (directionAxis * laserLength * 0.5f) + Vector3.Scale(laserBeam.transform.localScale, Vector3.one - directionAxis);
+
+        laserBeam.transform.localScale = Vector3.zero;
         // Pulse the laser charge
         yield return StartCoroutine(GrowLaserCharge());
         StartCoroutine(PulseLaserCharge());
 
-        // Part 1: Grow the laser to the midpoint
+
+        // Part 1: Grow the laser to the target scale
         float elapsedTime = 0f;
         while (elapsedTime < 1f)
         {
             float progress = elapsedTime * laserSpeed;
-            laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserBeam.transform.localScale.y, progress * laserLength / 2f);
+            laserBeam.transform.localScale = Vector3.Lerp(laserBeam.transform.localScale, targetScale, progress);
             laserBeam.transform.localPosition = Vector3.Lerp(rootTransform.localPosition, localMidpointPosition, progress);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         // Part 2: Grow the laser from the midpoint to the target
-        elapsedTime = 0f;
-        while (elapsedTime < 1f)
-        {
-            float progress = elapsedTime * laserSpeed;
-            laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserBeam.transform.localScale.y, laserLength / 2f + progress * laserLength / 2f);
-            laserBeam.transform.localPosition = Vector3.Lerp(localMidpointPosition, localTargetPosition, progress);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+        //elapsedTime = 0f;
+        //while (elapsedTime < 1f)
+        //{
+        //    float progress = elapsedTime * laserSpeed;
+        //    laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserBeam.transform.localScale.y, laserLength / 2f + progress * laserLength / 2f);
+        //    laserBeam.transform.localPosition = Vector3.Lerp(localMidpointPosition, localTargetPosition, progress);
+        //    elapsedTime += Time.deltaTime;
+        //    yield return null;
+        //}
 
-        laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserBeam.transform.localScale.y, laserLength);
+        laserBeam.transform.localScale = targetScale;
         laserBeam.transform.localPosition = localTargetPosition;
 
         // Maintain laser for the specified duration
@@ -199,13 +211,13 @@ public class LaserBeam : MonoBehaviour
         StopCoroutine(PulseLaserBeam());
         isShooting = false;
 
-        // Scale down and translate back
+        // Scale down and translate to end
         elapsedTime = 0f;
         while (elapsedTime < 1f)
         {
             float progress = elapsedTime * laserSpeed;
-            laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserBeam.transform.localScale.y, laserLength - progress * laserLength);
-            laserBeam.transform.localPosition = Vector3.Lerp(localTargetPosition, localMidpointPosition, progress);
+            laserBeam.transform.localScale = Vector3.Lerp(laserBeam.transform.localScale, Vector3.zero, progress);
+            laserBeam.transform.localPosition = Vector3.Lerp(localMidpointPosition, localTargetPosition, progress);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -234,6 +246,7 @@ public class LaserBeam : MonoBehaviour
             Debug.Log("Finished");
             FindFirstObjectByType<ArmCannonAim>().EnableAiming(false);
             StopAllCoroutines();
+            Destroy(targetTransform.gameObject);
             Destroy(gameObject);
         }
     }

@@ -156,13 +156,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserCharge: {fileID: 4083361941711088992}
   laserBeam: {fileID: 6242993437101301674}
-  laserLength: 5
+  laserLength: 20
   laserSpeed: 10
   laserDuration: 1
   laserDelay: 0
   directionAxis: {x: 0, y: 0, z: 1}
-  pulseDuration: 0.25
-  pulseCount: 8
+  pulseDuration: 0.1
+  pulseCount: 10
   isShooting: 0
   targetTransform: {fileID: 1389354716827643154}
 --- !u!1 &4083361941711088992
