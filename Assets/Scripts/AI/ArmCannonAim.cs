@@ -1,78 +1,88 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ArmCannonAim : MonoBehaviour
 {
-    public GameObject player;
-    public GameObject armCannon;  // The transform of the arm cannon
-    public ConfigurableJoint armJoint;
+    public GameObject playerTransform;
+    public GameObject targetTransform;
 
-    public Vector3 armUp = Vector3.up;
+    public ArmatureHandler ragdollBones;
+    public ArmatureHandler ikBones;
+    public ConfigurableJoint[] joints;
+    private Rigidbody[] rb;
+    public JointDrive aimDrive;
+    public JointDrive idleDrive;
+    private Quaternion[] startingRotations;
 
-    private Quaternion startLocalRotation;
+    public bool isAiming = false;
 
-    void Start()
+    private void Start()
     {
-        // Cache the start local rotation of the arm joint
-        startLocalRotation = armJoint.transform.localRotation;
-
-        // Set up the joint to behave like a CharacterJoint
-        armJoint.SetupAsCharacterJoint();
-
-        // Configure the joint drives
-        JointDrive drive = new JointDrive
+        startingRotations = new Quaternion[joints.Length];
+        rb = new Rigidbody[joints.Length];
+        for (int i = 0; i < joints.Length; i++)
         {
-            positionSpring = 15000f,
-            positionDamper = 50f,
-            maximumForce = Mathf.Infinity
+            if (joints[i] != null)
+            {
+                startingRotations[i] = joints[i].transform.localRotation;
+                rb[i] = joints[i].GetComponent<Rigidbody>();
+            }
+        }
+        idleDrive = new JointDrive
+        {
+            positionSpring = 0,
+            positionDamper = 0,
+            maximumForce = 0
         };
-
-        armJoint.angularXDrive = drive;
-        armJoint.angularYZDrive = drive;
-        armJoint.slerpDrive = drive;
+        aimDrive = new JointDrive
+        {
+            positionSpring = 1000,
+            positionDamper = 250,
+            maximumForce = 1500
+        };
     }
 
-    void Update()
+    private void Update()
     {
-        AimAtPlayer();
-    }
+        if (isAiming)
+        {
+            targetTransform.transform.position = playerTransform.transform.position + Vector3.up;
+            targetTransform.transform.rotation = Quaternion.LookRotation(transform.position - playerTransform.transform.position);
 
-    void AimAtPlayer()
+            ikBones.CopyArmatureTransform(ragdollBones);
+            //ikBones[0].transform.rotation = ragdollBones[0].transform.rotation;//Shoulder
+            for (int i = 0; i < joints.Length; i++)
+            {
+                joints[i].SetTargetRotationLocal(ikBones.armBones[i].transform.localRotation, startingRotations[i]);
+            }
+        }
+    }
+    public void EnableAiming(bool enable = true)
     {
-        if (player == null || armCannon == null || armJoint == null)
-            return;
+        isAiming = enable;
+        Debug.Log(isAiming);
+        if (isAiming)
+        {
+            for (int i = 0; i < joints.Length; i++)
+            {
+                joints[i].angularXDrive = aimDrive;
+                joints[i].angularYZDrive = aimDrive;
+                joints[i].slerpDrive = aimDrive;
 
-        // Calculate the direction to the player
-        Vector3 directionToPlayer = player.transform.position - armCannon.transform.position;
-        Vector3 localDirectionToPlayer = transform.InverseTransformDirection(directionToPlayer);
+                rb[i].useGravity = false;
+            }
+        }
+        else
+        {
+            for (int i = 0; i < joints.Length; i++)
+            {
+                joints[i].angularXDrive = idleDrive;
+                joints[i].angularYZDrive = idleDrive;
+                joints[i].slerpDrive = idleDrive;
 
-        // Calculate the rotation needed to aim at the player
-        Quaternion targetRotation = Quaternion.LookRotation(localDirectionToPlayer, armUp);
-
-        // Convert the target rotation from world space to local space
-        //Quaternion targetLocalRotation = Quaternion.Inverse(armJoint.transform.rotation) * targetRotation;
-
-        // Apply the target local rotation to the joint
-        //armJoint.SetTargetRotationLocal(Quaternion.Inverse(targetRotation), startLocalRotation);
-        armJoint.targetRotation = targetRotation;
-        // Debug drawing
-        DebugDraw(localDirectionToPlayer, targetRotation);
+                rb[i].useGravity = true;
+            }
+        }
     }
-
-    void DebugDraw(Vector3 directionToPlayer, Quaternion targetRotation)
-    {
-        // Draw the direction to the player
-        Debug.DrawLine(armCannon.transform.position, player.transform.position, Color.red);
-
-        // Draw the current direction of the arm cannon
-        Debug.DrawRay(armCannon.transform.position, armCannon.transform.up * 2, Color.green);
-
-        // Draw the target direction of the arm cannon
-        Vector3 targetDirection = targetRotation * Vector3.forward;
-        Debug.DrawRay(armCannon.transform.position, targetDirection * 2, Color.blue);
-
-        // Draw the target rotation as set in the joint
-        Quaternion currentJointRotation = armJoint.transform.rotation;
-        Vector3 jointTargetDirection = currentJointRotation * Vector3.up;
-        Debug.DrawRay(armCannon.transform.position, jointTargetDirection * 2, Color.yellow);
-    }
+    
 }

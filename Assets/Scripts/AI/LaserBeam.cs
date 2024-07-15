@@ -1,0 +1,240 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class LaserBeam : MonoBehaviour
+{
+    [SerializeField] private GameObject laserCharge;
+    [SerializeField] private GameObject laserBeam;
+    [SerializeField] private float laserLength = 5;
+    [SerializeField] private float laserSpeed = 10;
+    [SerializeField] private float laserDuration = 2;
+    [SerializeField] private float laserDelay = 2;
+    [SerializeField] private Vector3 directionAxis = Vector3.forward;
+    [SerializeField] private float pulseDuration = 1f; // Duration of each pulse
+    [SerializeField] private int pulseCount = 3; // Number of pulses
+    [SerializeField] private bool isShooting = false;
+    [SerializeField] private Transform targetTransform;
+
+    private Transform rootTransform;
+    private int laserComponents = 2;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        StartCoroutine(ShootLaser());
+    }
+
+    private void Update()
+    {
+        if (rootTransform != null && targetTransform != null)
+        {
+            transform.position = rootTransform.position;
+            transform.LookAt(targetTransform);
+        }
+    }
+
+    public void InitializeLaser(Transform root, Transform target)
+    {
+        rootTransform = root;
+        targetTransform.parent = null;
+        targetTransform.position = target.position;
+        laserLength = Vector3.Distance(rootTransform.position, target.position);
+        transform.LookAt(target);
+    }
+
+    // Coroutine to pulse the laser charge
+    IEnumerator GrowLaserCharge()
+    {
+        Vector3 originalScale = laserCharge.transform.localScale;
+        Vector3 prevScale = Vector3.zero;
+        Vector3 maxScale = originalScale * 1.5f; // Maximum scale during the pulse
+
+        laserCharge.transform.localScale = Vector3.zero;
+        float growDuration = pulseDuration * pulseCount; // Total time to grow to the original size
+
+        // Calculate the scale increments
+        Vector3[] pulseScales = new Vector3[pulseCount];
+        for (int i = 0; i < pulseCount; i++)
+        {
+            pulseScales[i] = originalScale * ((i + 1) / (float)pulseCount); // Incremental scale up to maxScale
+        }
+
+        // Pulse effect
+        for (int i = 0; i < pulseCount; i++)
+        {
+            float elapsedTime = 0f;
+            // Scale up
+            while (elapsedTime < pulseDuration / 2)
+            {
+                float progress = elapsedTime / (pulseDuration / 2);
+                laserCharge.transform.localScale = Vector3.Lerp(prevScale, pulseScales[i], progress);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            // Scale down
+            elapsedTime = 0f;
+            while (elapsedTime < pulseDuration / 2)
+            {
+                float progress = elapsedTime / (pulseDuration / 2);
+                laserCharge.transform.localScale = Vector3.Lerp(pulseScales[i], i > 0 ? pulseScales[i - 1] : Vector3.zero, progress);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            prevScale = laserCharge.transform.localScale;
+        }
+
+        // Ensure the laser charge returns to its original scale
+        laserCharge.transform.localScale = originalScale;
+
+        // Start pulsing the laser charge
+        StartCoroutine(PulseLaserCharge());
+    }
+
+    IEnumerator PulseLaserCharge()
+    {
+        Vector3 originalScale = laserCharge.transform.localScale;
+        Vector3 pulseScale = originalScale * 1.5f;
+
+        // Pulse effect
+        while (isShooting)
+        {
+            float elapsedTime = 0f;
+            // Scale up
+            while (elapsedTime < pulseDuration / 2)
+            {
+                float progress = elapsedTime / (pulseDuration / 2);
+                laserCharge.transform.localScale = Vector3.Lerp(originalScale, pulseScale, progress);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            // Scale down
+            elapsedTime = 0f;
+            while (elapsedTime < pulseDuration / 2)
+            {
+                float progress = elapsedTime / (pulseDuration / 2);
+                laserCharge.transform.localScale = Vector3.Lerp(pulseScale, originalScale, progress);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+        }
+        DestroyComponent(0);
+    }
+
+    IEnumerator PulseLaserBeam()
+    {
+        Vector3 originalScale = laserBeam.transform.localScale;
+        Vector3 pulseAxis = (Vector3.one - directionAxis) * 1.25f;
+        Vector3 pulseScale = Vector3.Scale(originalScale, pulseAxis + directionAxis);
+
+        // Pulse effect
+        while (isShooting)
+        {
+            float elapsedTime = 0f;
+            // Scale up
+            while (elapsedTime < pulseDuration / 2 && isShooting)
+            {
+                float progress = elapsedTime / (pulseDuration / 2);
+                laserBeam.transform.localScale = Vector3.Lerp(originalScale, pulseScale, progress);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            // Scale down
+            elapsedTime = 0f;
+            while (elapsedTime < pulseDuration / 2)
+            {
+                float progress = elapsedTime / (pulseDuration / 2);
+                laserBeam.transform.localScale = Vector3.Lerp(pulseScale, isShooting ? originalScale : Vector3.zero, progress);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+        }
+    }
+
+    // Coroutine to scale the laser
+    IEnumerator ShootLaser()
+    {
+        isShooting = true;
+
+        // Calculate the target and midpoint positions
+        Vector3 targetPosition = targetTransform.position;
+        Vector3 midpointPosition = (rootTransform.position + targetPosition) / 2f;
+
+        // Convert the positions to local space
+        Vector3 localTargetPosition = rootTransform.InverseTransformPoint(targetPosition);
+        Vector3 localMidpointPosition = rootTransform.InverseTransformPoint(midpointPosition);
+
+        // Pulse the laser charge
+        yield return StartCoroutine(GrowLaserCharge());
+        StartCoroutine(PulseLaserCharge());
+
+        // Part 1: Grow the laser to the midpoint
+        float elapsedTime = 0f;
+        while (elapsedTime < 1f)
+        {
+            float progress = elapsedTime * laserSpeed;
+            laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserBeam.transform.localScale.y, progress * laserLength / 2f);
+            laserBeam.transform.localPosition = Vector3.Lerp(rootTransform.localPosition, localMidpointPosition, progress);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Part 2: Grow the laser from the midpoint to the target
+        elapsedTime = 0f;
+        while (elapsedTime < 1f)
+        {
+            float progress = elapsedTime * laserSpeed;
+            laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserBeam.transform.localScale.y, laserLength / 2f + progress * laserLength / 2f);
+            laserBeam.transform.localPosition = Vector3.Lerp(localMidpointPosition, localTargetPosition, progress);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserBeam.transform.localScale.y, laserLength);
+        laserBeam.transform.localPosition = localTargetPosition;
+
+        // Maintain laser for the specified duration
+        StartCoroutine(PulseLaserBeam());
+        yield return new WaitForSeconds(laserDuration);
+        StopCoroutine(PulseLaserBeam());
+        isShooting = false;
+
+        // Scale down and translate back
+        elapsedTime = 0f;
+        while (elapsedTime < 1f)
+        {
+            float progress = elapsedTime * laserSpeed;
+            laserBeam.transform.localScale = new Vector3(laserBeam.transform.localScale.x, laserBeam.transform.localScale.y, laserLength - progress * laserLength);
+            laserBeam.transform.localPosition = Vector3.Lerp(localTargetPosition, localMidpointPosition, progress);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        laserBeam.transform.localScale = Vector3.zero;
+        laserBeam.transform.localPosition = rootTransform.localPosition;
+        DestroyComponent(1);
+    }
+
+    public void DestroyComponent(int id)
+    {
+        laserComponents--;
+        switch (id)
+        {
+            case 0:
+                StopCoroutine(PulseLaserCharge());
+                laserCharge.SetActive(false);
+                break;
+            case 1:
+                StopCoroutine(PulseLaserBeam());
+                laserBeam.SetActive(false);
+                break;
+        }
+        if (laserComponents <= 0)
+        {
+            Debug.Log("Finished");
+            FindFirstObjectByType<ArmCannonAim>().EnableAiming(false);
+            StopAllCoroutines();
+            Destroy(gameObject);
+        }
+    }
+}
