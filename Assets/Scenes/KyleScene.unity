@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 69601585}
   - component: {fileID: 69601584}
   - component: {fileID: 69601583}
-  - component: {fileID: 69601587}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -230,22 +229,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &69601587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69601582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33aabe1a2dec93349b06e6e5dc51bc06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pathCreator: {fileID: 689536336}
-  endOfPathInstruction: 0
-  speed: 20
-  distanceTravelled: 0
 --- !u!1 &76120315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1399,8 +1382,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closedLoop: 0
+  hasTurned: 0
   updateTimer: 0
-  sphere: {fileID: 1284304205642556215, guid: cb2e1e8aa0d44489c8d332b91c9a4202, type: 3}
+  sphere: {fileID: 4111926638172171570, guid: fb00359b1d358af45a30dad50976f35f, type: 3}
   cart: {fileID: 912961672}
   spherePosition: 0
   waypoints:
@@ -1587,7 +1571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 689536336}
   endOfPathInstruction: 0
-  speed: 20
+  speed: 40
   distanceTravelled: 0
 --- !u!4 &1004875386 stripped
 Transform:
