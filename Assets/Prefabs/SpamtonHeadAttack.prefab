@@ -230,6 +230,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d04c89a2e41c1439f3838165618cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 0
+  baseSpawnAmount: 1
+  urgency: 0
+  damage: 10
+  ignoresInvulability: 0
+  isUnique: 0
+  attackType: 1
   pathGenerator: {fileID: 2752196767357698538}
   spamtonHeadPrefab: {fileID: 2918012192381457449, guid: ad5e4af080c586a448961b712e305100,
     type: 3}

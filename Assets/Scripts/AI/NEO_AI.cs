@@ -32,6 +32,11 @@ public class NEO_AI : MonoBehaviour
         rotator.rotateToTarget = true; // Make sure to rotate to the new target
     }
 
+    public void PauseRotation(float duration)
+    {
+        rotator.PauseRotation(duration);
+    }
+
     private IEnumerator RotateAtRandomIntervals()
     {
         while (true)

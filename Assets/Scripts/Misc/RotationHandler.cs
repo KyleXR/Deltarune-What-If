@@ -14,6 +14,8 @@ public class RotationHandler : MonoBehaviour
     // Flag to indicate if rotation is in progress
     public bool isRotating = false;
 
+    private float originalSpeed = 0;
+
     // Update is called once per frame
     void Update()
     {
@@ -53,5 +55,15 @@ public class RotationHandler : MonoBehaviour
             float rotationAmount = rotationSpeed * Time.deltaTime;
             transform.Rotate(Vector3.up, rotationAmount);
         }
+    }
+    public void PauseRotation(float duration)
+    {
+        originalSpeed = rotationSpeed;
+        rotationSpeed = 0;
+        Invoke("StartRotation", duration);
+    }
+    private void StartRotation()
+    {
+        rotationSpeed = originalSpeed;
     }
 }

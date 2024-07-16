@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LaserBeam : MonoBehaviour
+public class LaserBeam : NEO_Attack
 {
     [SerializeField] private GameObject laserCharge;
     [SerializeField] private GameObject laserBeam;
@@ -14,9 +14,9 @@ public class LaserBeam : MonoBehaviour
     [SerializeField] private float pulseDuration = 1f; // Duration of each pulse
     [SerializeField] private int pulseCount = 3; // Number of pulses
     [SerializeField] private bool isShooting = false;
-    [SerializeField] private Transform targetTransform;
+    [SerializeField] private Transform aimTransform;
 
-    private Transform rootTransform;
+    //private Transform spawnTransform;
     private int laserComponents = 2;
 
     // Start is called before the first frame update
@@ -27,28 +27,29 @@ public class LaserBeam : MonoBehaviour
 
     private void Update()
     {
-        if (rootTransform != null && targetTransform != null)
+        if (spawnTransform != null && targetTransform != null)
         {
-            transform.position = rootTransform.position;
-            transform.LookAt(targetTransform);
+            transform.position = spawnTransform.position;
+            transform.LookAt(aimTransform);
         }
     }
 
-    public void InitializeLaser(Transform root, Transform target)
+    public override void InitializeAttack(NEO_AttackHandler handler, Transform spawnTransform, Transform targetTransform, float currentUrgency = 0)
     {
-        rootTransform = root;
-        targetTransform.parent = null;
-        targetTransform.position = target.position;
-        //Physics.Raycast(rootTransform.position, targetTransform.position - rootTransform.position, out hit, laserLength);
+        base.InitializeAttack(handler, spawnTransform, targetTransform, currentUrgency);
+        this.aimTransform.parent = null;
+        this.aimTransform.position = targetTransform.position;
+        //Physics.Raycast(spawnTransform.position, targetTransform.position - spawnTransform.position, out hit, laserLength);
         RaycastHit hit;
         int layerMask = 1 << 0;
-        if (Physics.Raycast(rootTransform.position, targetTransform.position - rootTransform.position, out hit, laserLength, layerMask))
+        if (Physics.Raycast(spawnTransform.position, targetTransform.position - spawnTransform.position, out hit, laserLength, layerMask))
         {
             Debug.Log("Hit");
             laserLength = hit.distance;
+            aimTransform.position = hit.transform.position;
         }
-        //else laserLength = Vector3.Distance(rootTransform.position, target.position);
-        transform.LookAt(target);
+        //else laserLength = Vector3.Distance(spawnTransform.position, target.position);
+        transform.LookAt(aimTransform.position);
     }
 
     // Coroutine to pulse the laser charge
@@ -165,12 +166,13 @@ public class LaserBeam : MonoBehaviour
         isShooting = true;
 
         // Calculate the target and midpoint positions
-        Vector3 targetPosition = targetTransform.position;
-        Vector3 midpointPosition = (rootTransform.position + targetPosition) / 2f;
+        Vector3 targetPosition = aimTransform.position;
+        //Debug.Log(targetPosition);
+        Vector3 midpointPosition = (spawnTransform.position + targetPosition) / 2f;
 
         // Convert the positions to local space
-        Vector3 localTargetPosition = rootTransform.InverseTransformPoint(targetPosition);
-        Vector3 localMidpointPosition = rootTransform.InverseTransformPoint(midpointPosition);
+        Vector3 localTargetPosition = spawnTransform.InverseTransformPoint(targetPosition);
+        Vector3 localMidpointPosition = spawnTransform.InverseTransformPoint(midpointPosition);
 
         Vector3 targetScale = (directionAxis * laserLength * 0.5f) + Vector3.Scale(laserBeam.transform.localScale, Vector3.one - directionAxis);
 
@@ -186,7 +188,7 @@ public class LaserBeam : MonoBehaviour
         {
             float progress = elapsedTime * laserSpeed;
             laserBeam.transform.localScale = Vector3.Lerp(laserBeam.transform.localScale, targetScale, progress);
-            laserBeam.transform.localPosition = Vector3.Lerp(rootTransform.localPosition, localMidpointPosition, progress);
+            laserBeam.transform.localPosition = Vector3.Lerp(laserBeam.transform.localPosition, localMidpointPosition, progress);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
@@ -203,7 +205,7 @@ public class LaserBeam : MonoBehaviour
         //}
 
         laserBeam.transform.localScale = targetScale;
-        laserBeam.transform.localPosition = localTargetPosition;
+        laserBeam.transform.localPosition = localMidpointPosition;
 
         // Maintain laser for the specified duration
         StartCoroutine(PulseLaserBeam());
@@ -217,13 +219,13 @@ public class LaserBeam : MonoBehaviour
         {
             float progress = elapsedTime * laserSpeed;
             laserBeam.transform.localScale = Vector3.Lerp(laserBeam.transform.localScale, Vector3.zero, progress);
-            laserBeam.transform.localPosition = Vector3.Lerp(localMidpointPosition, localTargetPosition, progress);
+            laserBeam.transform.localPosition = Vector3.Lerp(laserBeam.transform.localPosition, localTargetPosition, progress);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         laserBeam.transform.localScale = Vector3.zero;
-        laserBeam.transform.localPosition = rootTransform.localPosition;
+        laserBeam.transform.localPosition = spawnTransform.localPosition;
         DestroyComponent(1);
     }
 
@@ -246,7 +248,7 @@ public class LaserBeam : MonoBehaviour
             Debug.Log("Finished");
             FindFirstObjectByType<ArmCannonAim>().EnableAiming(false);
             StopAllCoroutines();
-            Destroy(targetTransform.gameObject);
+            Destroy(aimTransform.gameObject);
             Destroy(gameObject);
         }
     }

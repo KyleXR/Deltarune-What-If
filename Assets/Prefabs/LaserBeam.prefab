@@ -154,6 +154,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 099a58d3bec12134bb4c8b4f2a826acf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 1
+  baseSpawnAmount: 1
+  urgency: 0
+  damage: 10
+  ignoresInvulability: 0
+  isUnique: 0
+  attackType: 0
   laserCharge: {fileID: 4083361941711088992}
   laserBeam: {fileID: 6242993437101301674}
   laserLength: 20
@@ -161,10 +168,10 @@ MonoBehaviour:
   laserDuration: 1
   laserDelay: 0
   directionAxis: {x: 0, y: 0, z: 1}
-  pulseDuration: 0.1
+  pulseDuration: 0.2
   pulseCount: 10
   isShooting: 0
-  targetTransform: {fileID: 1389354716827643154}
+  aimTransform: {fileID: 1389354716827643154}
 --- !u!1 &4083361941711088992
 GameObject:
   m_ObjectHideFlags: 0

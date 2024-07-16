@@ -60,27 +60,30 @@ public class ArmCannonAim : MonoBehaviour
     public void EnableAiming(bool enable = true)
     {
         isAiming = enable;
-        Debug.Log(isAiming);
         if (isAiming)
         {
             for (int i = 0; i < joints.Length; i++)
             {
-                joints[i].angularXDrive = aimDrive;
-                joints[i].angularYZDrive = aimDrive;
-                joints[i].slerpDrive = aimDrive;
-
-                rb[i].useGravity = false;
+                if (joints[i] != null)
+                {
+                    joints[i].angularXDrive = aimDrive;
+                    joints[i].angularYZDrive = aimDrive;
+                    joints[i].slerpDrive = aimDrive;
+                }
+                if (rb[i] != null) rb[i].useGravity = false;
             }
         }
         else
         {
             for (int i = 0; i < joints.Length; i++)
             {
-                joints[i].angularXDrive = idleDrive;
-                joints[i].angularYZDrive = idleDrive;
-                joints[i].slerpDrive = idleDrive;
-
-                rb[i].useGravity = true;
+                if (joints[i] != null)
+                {
+                    joints[i].angularXDrive = idleDrive;
+                    joints[i].angularYZDrive = idleDrive;
+                    joints[i].slerpDrive = idleDrive;
+                }
+                if (rb[i] != null) rb[i].useGravity = true;
             }
         }
     }

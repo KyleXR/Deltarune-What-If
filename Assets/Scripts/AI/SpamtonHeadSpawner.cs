@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpamtonHeadSpawner : MonoBehaviour
+public class SpamtonHeadSpawner : NEO_Attack
 {
     [SerializeField] private SpamtonHeadPathGenerator pathGenerator;
     [SerializeField] private GameObject spamtonHeadPrefab;
@@ -12,7 +12,6 @@ public class SpamtonHeadSpawner : MonoBehaviour
 
     public List<GameObject> spawnedHeads;
 
-    private float urgency = 0;
     private int totalSpawns = 0;
 
     private void Start()
@@ -20,9 +19,9 @@ public class SpamtonHeadSpawner : MonoBehaviour
         StartCoroutine(SpawnHeadsWithDelay());
     }
 
-    public void Initialize(float urgency)
+    public override void InitializeAttack(NEO_AttackHandler handler, Transform spawnTransform, Transform targetTransform, float currentUrgency = 0)
     {
-        this.urgency = urgency;
+        base.InitializeAttack(handler, spawnTransform, targetTransform, currentUrgency);
         spawnDelay -= urgency * 0.01f;
     }
 

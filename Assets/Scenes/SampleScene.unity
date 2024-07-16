@@ -4580,7 +4580,7 @@ ConfigurableJoint:
     bounciness: 0
     contactDistance: 0
   m_HighAngularXLimit:
-    limit: 50
+    limit: 90
     bounciness: 0
     contactDistance: 0
   m_AngularYZLimitSpring:
@@ -4689,7 +4689,7 @@ PrefabInstance:
     - target: {fileID: 787664114580339397, guid: 20ee98ff9b493bd4a88745b81d69ef14,
         type: 3}
       propertyPath: m_HighTwistLimit.limit
-      value: 50
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 813557990901121466, guid: 20ee98ff9b493bd4a88745b81d69ef14,
         type: 3}
@@ -4708,9 +4708,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 813557990901121466, guid: 20ee98ff9b493bd4a88745b81d69ef14,
         type: 3}
+      propertyPath: attacks.Array.data[0]
+      value: 
+      objectReference: {fileID: 2276522669272383966, guid: 5973953ae82068144b820e842d085353,
+        type: 3}
+    - target: {fileID: 813557990901121466, guid: 20ee98ff9b493bd4a88745b81d69ef14,
+        type: 3}
       propertyPath: attacks.Array.data[1]
       value: 
-      objectReference: {fileID: 4065013647197400620, guid: a53f83c3c7d50fd4fbc1aca100f467ca,
+      objectReference: {fileID: 3758124237994402611, guid: a53f83c3c7d50fd4fbc1aca100f467ca,
         type: 3}
     - target: {fileID: 1036750346608452337, guid: 20ee98ff9b493bd4a88745b81d69ef14,
         type: 3}
@@ -4772,6 +4778,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2440061022268419981, guid: 20ee98ff9b493bd4a88745b81d69ef14,
+        type: 3}
+      propertyPath: m_HighTwistLimit.limit
+      value: 40.239964
+      objectReference: {fileID: 0}
     - target: {fileID: 3145158605541419212, guid: 20ee98ff9b493bd4a88745b81d69ef14,
         type: 3}
       propertyPath: arm
@@ -4812,6 +4823,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpamtonNEO
       objectReference: {fileID: 0}
+    - target: {fileID: 4547234222223666111, guid: 20ee98ff9b493bd4a88745b81d69ef14,
+        type: 3}
+      propertyPath: m_Drag
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4547234222223666111, guid: 20ee98ff9b493bd4a88745b81d69ef14,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5316961106321824662, guid: 20ee98ff9b493bd4a88745b81d69ef14,
         type: 3}
       propertyPath: m_Enabled
@@ -4821,6 +4842,11 @@ PrefabInstance:
         type: 3}
       propertyPath: urgency
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058099548266074190, guid: 20ee98ff9b493bd4a88745b81d69ef14,
+        type: 3}
+      propertyPath: m_Drag
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 9058099548266074190, guid: 20ee98ff9b493bd4a88745b81d69ef14,
         type: 3}
