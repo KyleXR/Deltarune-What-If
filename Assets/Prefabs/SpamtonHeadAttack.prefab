@@ -243,6 +243,8 @@ MonoBehaviour:
   spawnDelay: 1
   spawnAmount: 3
   spawnedHeads: []
+  overflowHeadAmount: -1
+  clone: {fileID: 2276522669272383966}
 --- !u!1 &8507915144592744476
 GameObject:
   m_ObjectHideFlags: 0

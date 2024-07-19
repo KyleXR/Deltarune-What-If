@@ -7,7 +7,8 @@ public class NEO_AI : MonoBehaviour
     [SerializeField] NEO_AttackHandler attackHandler;
 
     [SerializeField] float health = 1997;
-    [SerializeField] float rotationDelay = 5;
+    [SerializeField] float rotationDelay = 10;
+    [SerializeField] float attackDelay = 5;
     [SerializeField] float urgency = 0;
     [SerializeField] float urgencyRate = .1f;
     [SerializeField] bool generateUrgency = true;
@@ -21,7 +22,8 @@ public class NEO_AI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (urgency <= rotationDelay * 0.75f && generateUrgency) urgency += urgencyRate * Time.deltaTime;
+        //if (urgency <= rotationDelay * 0.75f && generateUrgency) urgency += urgencyRate * Time.deltaTime;
+        if (generateUrgency) urgency += urgencyRate * Time.deltaTime;
     }
 
     private void ChangeRotation()
@@ -41,8 +43,10 @@ public class NEO_AI : MonoBehaviour
     {
         while (true)
         {
+            float tempUrgency = urgency;
+            if (urgency >= rotationDelay * 0.75f) tempUrgency = rotationDelay * 0.75f;
             // Wait for a random time based on rotationDelay and urgency
-            float waitTime = rotationDelay - urgency;
+            float waitTime = rotationDelay - tempUrgency;
             waitTime = Mathf.Max(waitTime, 0.1f); // Ensure we don't get a negative or zero wait time
 
             yield return new WaitForSeconds(waitTime);
@@ -56,8 +60,8 @@ public class NEO_AI : MonoBehaviour
     {
         while (true)
         {
-            float waitTime = rotationDelay - urgency;
-            waitTime = Mathf.Max(waitTime, 0.01f);
+            float waitTime = attackDelay - urgency;
+            waitTime = Mathf.Max(waitTime, 1f);
             yield return new WaitForSeconds(waitTime);
 
             attackHandler.SpawnRandomAttack(urgency);

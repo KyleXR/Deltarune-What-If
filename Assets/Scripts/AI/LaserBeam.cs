@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class LaserBeam : NEO_Attack
@@ -47,9 +48,11 @@ public class LaserBeam : NEO_Attack
             Debug.Log("Hit");
             laserLength = hit.distance;
             aimTransform.position = hit.transform.position;
+            //handler.UpdateCannonAim(hit.transform.position, false);
         }
         //else laserLength = Vector3.Distance(spawnTransform.position, target.position);
         transform.LookAt(aimTransform.position);
+        handler.UpdateCannonAim(aimTransform.position, true);
     }
 
     // Coroutine to pulse the laser charge
@@ -180,7 +183,7 @@ public class LaserBeam : NEO_Attack
         // Pulse the laser charge
         yield return StartCoroutine(GrowLaserCharge());
         StartCoroutine(PulseLaserCharge());
-
+        handler.UpdateCannonAim(aimTransform.position, false);
 
         // Part 1: Grow the laser to the target scale
         float elapsedTime = 0f;

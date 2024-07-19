@@ -40,6 +40,7 @@ public class NEO_AttackHandler : MonoBehaviour
                 {
                     controller.PauseRotation(5);
                     cannonAim.EnableAiming(true);
+                    //cannonAim.playerAim = true;
                     var attack = Instantiate(attacks[ranId], cannonTransform.position, cannonTransform.rotation);
                     attack.InitializeAttack(this, cannonTransform, player.transform, urgency);
                     spawnedAttacks.Add(attack);
@@ -87,5 +88,16 @@ public class NEO_AttackHandler : MonoBehaviour
     {
         if (attack.attackType == NEO_Attack.AttackType.Cannon) cannonAim.EnableAiming(false);
         spawnedAttacks.Remove(attack);
+    }
+    public NEO_Attack SpawnDuplicateAttack(int id)
+    {
+        var attack = Instantiate(attacks[id], Vector3.zero, Quaternion.identity);
+        spawnedAttacks.Add(attack);
+        return attack;
+    }
+    public void UpdateCannonAim(Vector3 target, bool playerAim = true)
+    {
+        cannonAim.SetTargetTransform(target);
+        cannonAim.playerAim = playerAim;
     }
 }

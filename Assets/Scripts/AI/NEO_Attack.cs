@@ -13,7 +13,7 @@ public abstract class NEO_Attack : MonoBehaviour
     public AttackType attackType = AttackType.Cannon;
     protected Transform spawnTransform;
     protected Transform targetTransform;
-    private NEO_AttackHandler handler;
+    protected NEO_AttackHandler handler;
     
     public virtual void InitializeAttack(NEO_AttackHandler handler, Transform spawnTransform, Transform targetTransform, float currentUrgency = 0)
     {
@@ -29,6 +29,6 @@ public abstract class NEO_Attack : MonoBehaviour
     }
     public void OnDestroy()
     {
-        handler.RemoveAttack(this);
+        if(handler != null) handler.RemoveAttack(this);
     }
 }

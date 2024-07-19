@@ -15,6 +15,7 @@ public class ArmCannonAim : MonoBehaviour
     private Quaternion[] startingRotations;
 
     public bool isAiming = false;
+    public bool playerAim = true;
 
     private void Start()
     {
@@ -46,8 +47,11 @@ public class ArmCannonAim : MonoBehaviour
     {
         if (isAiming)
         {
-            targetTransform.transform.position = playerTransform.transform.position + Vector3.up;
-            targetTransform.transform.rotation = Quaternion.LookRotation(transform.position - playerTransform.transform.position);
+            if (playerAim)
+            {
+                targetTransform.transform.position = playerTransform.transform.position + Vector3.up;
+            }
+            targetTransform.transform.rotation = Quaternion.LookRotation(transform.position - targetTransform.transform.position);  targetTransform.transform.rotation = Quaternion.LookRotation(transform.position - targetTransform.transform.position);
 
             ikBones.CopyArmatureTransform(ragdollBones);
             //ikBones[0].transform.rotation = ragdollBones[0].transform.rotation;//Shoulder
@@ -87,5 +91,12 @@ public class ArmCannonAim : MonoBehaviour
             }
         }
     }
-    
+    public void SetTargetTransform(Transform target)
+    {
+        targetTransform.transform.position = target.position;
+    }
+    public void SetTargetTransform(Vector3 target)
+    {
+        targetTransform.transform.position = target;
+    }
 }
