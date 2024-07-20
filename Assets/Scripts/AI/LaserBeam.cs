@@ -10,7 +10,6 @@ public class LaserBeam : NEO_Attack
     [SerializeField] private float laserLength = 10;
     [SerializeField] private float laserSpeed = 10;
     [SerializeField] private float laserDuration = 2;
-    [SerializeField] private float laserDelay = 2;
     [SerializeField] private Vector3 directionAxis = Vector3.forward;
     [SerializeField] private float pulseDuration = 1f; // Duration of each pulse
     [SerializeField] private int pulseCount = 3; // Number of pulses
@@ -249,7 +248,7 @@ public class LaserBeam : NEO_Attack
         if (laserComponents <= 0)
         {
             Debug.Log("Finished");
-            FindFirstObjectByType<ArmCannonAim>().EnableAiming(false);
+            handler.StopAiming();
             StopAllCoroutines();
             Destroy(aimTransform.gameObject);
             Destroy(gameObject);

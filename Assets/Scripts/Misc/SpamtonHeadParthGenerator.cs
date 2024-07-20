@@ -12,6 +12,7 @@ namespace PathCreation.Examples {
         public Transform[] waypoints;
         public bool isManual = false;
         public PathCreator creator;
+        
         void Start () {
             if (!isManual) { GeneratePath(); }
             creator = GetComponent<PathCreator>();
@@ -29,5 +30,6 @@ namespace PathCreation.Examples {
                 bezierPath.GlobalNormalsAngle = globalNormals;
             }
         }
+        
     }
 }   

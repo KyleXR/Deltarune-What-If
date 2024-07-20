@@ -72,8 +72,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5581318006884532070}
   - component: {fileID: 4671580354985903489}
-  - component: {fileID: 407257566122294660}
   - component: {fileID: 2752196767357698538}
+  - component: {fileID: 6406648338025205687}
   m_Layer: 8
   m_Name: PathGenerator
   m_TagString: Untagged
@@ -149,24 +149,6 @@ MonoBehaviour:
     showNormalsHelpInfo: 0
     tabIndex: 0
   initialized: 1
---- !u!114 &407257566122294660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6682445437622306369}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9dafa197587951d48bb86e53f423c141, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pathGenerator: {fileID: 2752196767357698538}
-  playerTarget: {fileID: 0}
-  rangeMin: {x: -10, y: 2, z: -10}
-  rangeMax: {x: 10, y: 4, z: 10}
-  isArc: 0
-  arcMidModifier: 0.5
 --- !u!114 &2752196767357698538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +168,24 @@ MonoBehaviour:
   - {fileID: 7247752350180751039}
   isManual: 1
   creator: {fileID: 4671580354985903489}
+--- !u!114 &6406648338025205687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6682445437622306369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dafa197587951d48bb86e53f423c141, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathGenerator: {fileID: 2752196767357698538}
+  playerTarget: {fileID: 0}
+  rangeMin: {x: -10, y: 2, z: -10}
+  rangeMax: {x: 10, y: 10, z: 10}
+  isArc: 1
+  arcMidModifier: 0.5
 --- !u!1 &6878909885922395158
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 8496355449265246599}
   - component: {fileID: 2276522669272383966}
   m_Layer: 8
-  m_Name: SpamtonHeadAttack
+  m_Name: BlueSpamtonHeadAttack
   m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -232,17 +232,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2d04c89a2e41c1439f3838165618cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ID: 0
+  ID: 3
   baseSpawnAmount: 1
   urgency: 0
   damage: 10
   ignoresInvulability: 0
-  isUnique: 0
+  isUnique: 1
   attackType: 1
   pathGenerator: {fileID: 2752196767357698538}
-  spamtonHeadPrefab: {fileID: 2918012192381457449, guid: ad5e4af080c586a448961b712e305100,
+  spamtonHeadPrefab: {fileID: 2918012192381457449, guid: c3c1030051e1d0a4799dc0632ea30127,
     type: 3}
-  spawnDelay: 1
+  spawnDelay: 0.5
   spawnAmount: 3
   spawnedHeads: []
   overflowHeadAmount: -1

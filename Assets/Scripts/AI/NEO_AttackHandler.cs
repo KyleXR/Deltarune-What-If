@@ -12,6 +12,10 @@ public class NEO_AttackHandler : MonoBehaviour
     private FirstPersonController player;
     private NEO_AI controller;
 
+    [SerializeField] private GameObject cannonModel;
+    [SerializeField] private GameObject handModel;
+    private bool isUsingCannon = false;
+
     private void Start()
     {
         for (int i = 0; i < attacks.Count; i++)
@@ -20,6 +24,7 @@ public class NEO_AttackHandler : MonoBehaviour
         }
         player = FindFirstObjectByType<FirstPersonController>();
         controller = GetComponent<NEO_AI>();
+        ToggleCannon(true, false);
     }
     public void SpawnRandomAttack(float urgency)
     {
@@ -45,6 +50,7 @@ public class NEO_AttackHandler : MonoBehaviour
                     attack.InitializeAttack(this, cannonTransform, player.transform, urgency);
                     spawnedAttacks.Add(attack);
                     spawnedAttack = true;
+                    ToggleCannon(true, true);
                 }
             }
             if (attacks[ranId].attackType == NEO_Attack.AttackType.BulletPattern)
@@ -86,7 +92,11 @@ public class NEO_AttackHandler : MonoBehaviour
     }
     public void RemoveAttack(NEO_Attack attack)
     {
-        if (attack.attackType == NEO_Attack.AttackType.Cannon) cannonAim.EnableAiming(false);
+        if (attack.attackType == NEO_Attack.AttackType.Cannon)
+        {
+            cannonAim.EnableAiming(false);
+            ToggleCannon(true, false);
+        }
         spawnedAttacks.Remove(attack);
     }
     public NEO_Attack SpawnDuplicateAttack(int id)
@@ -99,5 +109,16 @@ public class NEO_AttackHandler : MonoBehaviour
     {
         cannonAim.SetTargetTransform(target);
         cannonAim.playerAim = playerAim;
+    }
+    public void StopAiming()
+    {
+        cannonAim.EnableAiming(false);
+    }
+    public void ToggleCannon(bool set = false, bool setTo = false)
+    {
+        if (set) isUsingCannon = setTo;
+        else isUsingCannon = !isUsingCannon;
+        if (handModel != null) handModel.SetActive(!isUsingCannon);
+        if (handModel != null) cannonModel.SetActive(isUsingCannon);
     }
 }

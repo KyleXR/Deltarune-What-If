@@ -713,9 +713,10 @@ GameObject:
   - component: {fileID: 3407638081585759131}
   - component: {fileID: 4082949760284359926}
   - component: {fileID: -1243396216353047003}
-  - component: {fileID: 150730956894111653}
+  - component: {fileID: -4419384679291287435}
+  - component: {fileID: -8061563834462568616}
   m_Layer: 8
-  m_Name: Spamton Head
+  m_Name: Blue Spamton Head
   m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -791,11 +792,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4065f91d0ffd9340a2faa5f3605cbac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 0}
-  fireProjectile: 0
+  projectilePrefab: {fileID: 8258741824055044429, guid: 3508c4e027bcdb347ba223ea6b881f57,
+    type: 3}
+  fireProjectile: 1
   fireRate: 1
   visuals: {fileID: 7938145809585939924}
---- !u!114 &150730956894111653
+--- !u!114 &-4419384679291287435
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -811,7 +813,20 @@ MonoBehaviour:
   endOfPathInstruction: 3
   speed: 5
   distanceTravelled: 0
-  rotateWithPath: 1
+  rotateWithPath: 0
+--- !u!114 &-8061563834462568616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2918012192381457449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ff967073162449b68744189f616bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!1 &2941429585777885218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1316,8 +1331,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f2a6e80c8eb652944a26a42badaed19e, type: 2}
-  - {fileID: 2100000, guid: 447dd1472e8776046913bae879a42043, type: 2}
+  - {fileID: 2100000, guid: 3929556f6222847449111556427dea81, type: 2}
+  - {fileID: 2100000, guid: c5743ee401e134a49a18b331c1ce703e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

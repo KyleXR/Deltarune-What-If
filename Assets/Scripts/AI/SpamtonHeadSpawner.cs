@@ -23,7 +23,7 @@ public class SpamtonHeadSpawner : NEO_Attack
     public override void InitializeAttack(NEO_AttackHandler handler, Transform spawnTransform, Transform targetTransform, float currentUrgency = 0)
     {
         base.InitializeAttack(handler, spawnTransform, targetTransform, currentUrgency);
-        spawnDelay -= urgency * 0.05f;
+        spawnDelay -= urgency * 0.01f;
     }
 
     private IEnumerator SpawnHeadsWithDelay()
@@ -58,7 +58,12 @@ public class SpamtonHeadSpawner : NEO_Attack
     {
         var head = Instantiate(spamtonHeadPrefab, pathGenerator.waypoints[0].transform.position, Quaternion.identity);
         head.GetComponent<SpamtonHead>().Initialize(this, pathGenerator.creator, urgency);
-        head.GetComponent<PathFollower>().speed += urgency * 0.05f;
+        head.GetComponent<SpamtonHeadPathFollower>().speed += urgency * 0.05f;
+        if (head.TryGetComponent(out LookAtTarget look))
+        {
+            //Debug.Log(targetTransform.name);
+            look.target = targetTransform;
+        }
         return head;
     }
 

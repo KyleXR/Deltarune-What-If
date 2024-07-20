@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4306599395006639048
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 7
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -20,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Spamton Texture
+  m_Name: Blue Spamton Glasses Texture
   m_Shader: {fileID: 4800000, guid: 2d376cec358c60a45ba07b1e5b19d880, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -29,6 +16,7 @@ Material:
   - _CLAMPADJUSTMENTS_ON
   - _CLIPTRIPLANAR_ON
   - _MULTIPLYBYLIGHTCOLOR_ON
+  - _USEEMISSION_ON
   - _USESHADOWS_ON
   - _USESPECULAR_ON
   m_LightmapFlags: 4
@@ -42,7 +30,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: f36f050766ff1cd44b323461bf6e02a3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 861172f3bd20fdc47b1d32f164e6f841, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -66,7 +54,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionTexture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 861172f3bd20fdc47b1d32f164e6f841, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _GlintTexture:
@@ -74,7 +62,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f36f050766ff1cd44b323461bf6e02a3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 861172f3bd20fdc47b1d32f164e6f841, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -106,7 +94,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Texture:
-        m_Texture: {fileID: 2800000, guid: f36f050766ff1cd44b323461bf6e02a3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 861172f3bd20fdc47b1d32f164e6f841, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _TriplanarTexture:
@@ -210,7 +198,7 @@ Material:
     - _Space: 1
     - _SpecularHighlights: 1
     - _SpecularRamp: 0
-    - _SpecularRampOffset: 0.999
+    - _SpecularRampOffset: 0.93
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
@@ -266,7 +254,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _CustomNormalDirection: {r: 0, g: 1, b: 0, a: 0}
     - _CustomNormalEllipseSize: {r: 1, g: 1, b: 1, a: 0}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0.004024717, g: 0.4125427, b: 0.72305536, a: 1}
     - _EmissionScrolling1: {r: 1, g: 1, b: 0, a: 0}
     - _EmissionScrolling2: {r: 0.1, g: -0.5, b: 0, a: 0}
     - _FarColor: {r: 0, g: 0, b: 0, a: 1}
@@ -276,7 +264,7 @@ Material:
     - _GradientChannelMask: {r: 0, g: 1, b: 0, a: 0}
     - _GradientPositionalOffset: {r: 0, g: 0, b: 0, a: 0}
     - _LightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MainColor: {r: 0.0627451, g: 0.6862745, b: 0.8862745, a: 1}
     - _NearColor: {r: 1, g: 1, b: 1, a: 1}
     - _PuddleColor: {r: 0.19475657, g: 0.34486926, b: 0.43396226, a: 0}
     - _RimLightColor: {r: 0.3921569, g: 0.3921569, b: 0.3921569, a: 1}
@@ -295,3 +283,16 @@ Material:
     - _WaveInfluenceDirection: {r: 0, g: 1, b: 0, a: 0}
     - _WaveMask: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
+--- !u!114 &4092729686561510114
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 7

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2285399865406181890}
   - component: {fileID: 304641712233426354}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpamtonHeadCircle
   m_TagString: Spamton
   m_Icon: {fileID: 0}

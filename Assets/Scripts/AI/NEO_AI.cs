@@ -23,7 +23,7 @@ public class NEO_AI : MonoBehaviour
     void Update()
     {
         //if (urgency <= rotationDelay * 0.75f && generateUrgency) urgency += urgencyRate * Time.deltaTime;
-        if (generateUrgency) urgency += urgencyRate * Time.deltaTime;
+        if (generateUrgency && urgency <= 10) urgency += urgencyRate * Time.deltaTime;
     }
 
     private void ChangeRotation()

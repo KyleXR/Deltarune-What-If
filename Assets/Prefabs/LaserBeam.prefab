@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8471923300734812337}
   - component: {fileID: 5843909804751016614}
   - component: {fileID: 3198903769150830066}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,9 +117,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4636313836605568293}
   - component: {fileID: 3758124237994402611}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: LaserBeam
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,7 +166,6 @@ MonoBehaviour:
   laserLength: 20
   laserSpeed: 10
   laserDuration: 1
-  laserDelay: 0
   directionAxis: {x: 0, y: 0, z: 1}
   pulseDuration: 0.2
   pulseCount: 10
@@ -184,7 +183,7 @@ GameObject:
   - component: {fileID: 810525663482809889}
   - component: {fileID: 8733187750913172705}
   - component: {fileID: 5059393810728605500}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Charge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +283,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5283456554194453264}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BeamAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +315,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1389354716827643154}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Target
   m_TagString: Untagged
   m_Icon: {fileID: 0}
