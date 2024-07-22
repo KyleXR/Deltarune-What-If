@@ -16,8 +16,9 @@ public class SoundBall : NEO_Attack
     //public Vector3 spawnBounds;  // Add this to define the spawn bounds
     public float maxSpeed = 2f;  // Maximum speed of movement
     //public float decelerationTime = 1f;  // Time taken to decelerate to zero
-
+    private bool isFiring = false;
     private bool isAttacking = false;
+    public bool cannonFire = true;
     private Vector3 originalScale = Vector3.zero;
     private Vector3 targetPosition = Vector3.zero;
 
@@ -28,17 +29,41 @@ public class SoundBall : NEO_Attack
         targetPosition = new Vector3(Random.Range(-spawnBounds.x, spawnBounds.x), Random.Range(-spawnBounds.y, spawnBounds.y) + 1, Random.Range(-spawnBounds.z, spawnBounds.z));
 
         // Start coroutines to pulse scale and lerp position
-        StartCoroutine(PulseScale());
-        StartCoroutine(SmoothMoveToTarget(targetPosition));
+
+        StartCoroutine(ChargeUp());
+    }
+    private void Update()
+    {
+        if (!isFiring) transform.position = spawnTransform.position;
+    }
+    public override void InitializeAttack(NEO_AttackHandler handler, Transform spawnTransform, Transform targetTransform, float currentUrgency = 0)
+    {
+        base.InitializeAttack(handler, spawnTransform, targetTransform, currentUrgency);
     }
 
+    IEnumerator ChargeUp()
+    {
+        if (cannonFire)
+        {
+            handler.UpdateCannonAim(targetPosition, false);
+            yield return StartCoroutine(LerpScale(0, minScale, pulseDuration * 2));
+        }
+        else
+        {
+            StartCoroutine(LerpScale(0, minScale, pulseDuration * 2));
+        }
+        StartCoroutine(PulseScale());
+        yield return new WaitForSeconds(1);
+        if (cannonFire) handler.StopAiming();
+        isFiring = true;
+        transform.rotation = Quaternion.identity;
+        StartCoroutine(SmoothMoveToTarget(targetPosition));
+    }
     // Coroutine to pulse the scale of the GameObject
     IEnumerator PulseScale()
     {
         int currentPulses = 0;
         int attackCount = 0;
-
-        yield return StartCoroutine(LerpScale(minScale, maxScale, pulseDuration * 2));
 
         while (attackCount < attackAmount)
         {
