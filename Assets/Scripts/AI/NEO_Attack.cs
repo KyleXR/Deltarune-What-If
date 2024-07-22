@@ -14,13 +14,22 @@ public abstract class NEO_Attack : MonoBehaviour
     protected Transform spawnTransform;
     protected Transform targetTransform;
     protected NEO_AttackHandler handler;
-    
+
+    public Vector3 spawnBounds = Vector3.zero;
+    public bool randomSpawn = false;
+
     public virtual void InitializeAttack(NEO_AttackHandler handler, Transform spawnTransform, Transform targetTransform, float currentUrgency = 0)
     {
         urgency = currentUrgency;
         this.spawnTransform = spawnTransform;
         this.targetTransform = targetTransform;
         this.handler = handler;
+
+        if (randomSpawn)
+        {
+            Vector3 tempPos = new Vector3(Random.Range(-spawnBounds.x, spawnBounds.x), Random.Range(-spawnBounds.y, spawnBounds.y), Random.Range(-spawnBounds.z, spawnBounds.z));
+            transform.position = tempPos;
+        }
     }
     public enum AttackType
     {

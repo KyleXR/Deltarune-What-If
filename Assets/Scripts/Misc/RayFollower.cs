@@ -3,14 +3,20 @@ using UnityEngine;
 public class RayFollower : MonoBehaviour
 {
     public float speed = 5f; // Speed at which the object follows the ray
+    public float minSpeed = 1f;
+    public float acceleration = 0f;
+    public bool randomizeSpeed = false;
     private Ray ray; // The ray to follow
     private Vector3 targetPosition; // The target position at the end of the ray
     private bool isFollowingRay = false;
+
 
     void Update()
     {
         if (isFollowingRay)
         {
+            speed += acceleration * Time.deltaTime;
+            if (speed < minSpeed) speed = minSpeed;
             // Move the object towards the target position
             float step = speed * Time.deltaTime;
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
@@ -30,6 +36,6 @@ public class RayFollower : MonoBehaviour
         this.ray = ray;
         targetPosition = ray.origin + ray.direction * length;
         isFollowingRay = true;
-        speed = Random.Range(speed - 2, speed + 2);
+        if (randomizeSpeed) speed = Random.Range(speed - 2, speed + 2);
     }
 }

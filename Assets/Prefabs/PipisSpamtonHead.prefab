@@ -2008,6 +2008,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  minSpeed: 1
+  acceleration: 0
+  randomizeSpeed: 1
 --- !u!1 &8236431286557081779
 GameObject:
   m_ObjectHideFlags: 0
