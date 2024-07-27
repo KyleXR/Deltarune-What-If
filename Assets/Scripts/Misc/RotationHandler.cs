@@ -16,6 +16,10 @@ public class RotationHandler : MonoBehaviour
 
     private float originalSpeed = 0;
 
+    private void Start()
+    {
+        originalSpeed = rotationSpeed;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -58,7 +62,6 @@ public class RotationHandler : MonoBehaviour
     }
     public void PauseRotation(float duration)
     {
-        originalSpeed = rotationSpeed;
         rotationSpeed = 0;
         Invoke("StartRotation", duration);
     }

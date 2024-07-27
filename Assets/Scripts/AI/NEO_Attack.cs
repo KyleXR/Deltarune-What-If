@@ -10,6 +10,7 @@ public abstract class NEO_Attack : MonoBehaviour
     public float damage = 10;
     public bool ignoresInvulability = false;
     public bool isUnique = false; //if unique, then cannot spawn multiple copies at same time
+    public float duration = 10; //probably will only use for special attacks
     public AttackType attackType = AttackType.Cannon;
     protected Transform spawnTransform;
     protected Transform targetTransform;
@@ -31,10 +32,15 @@ public abstract class NEO_Attack : MonoBehaviour
             transform.position = tempPos;
         }
     }
+    public void SetTarget(Transform target)
+    {
+        targetTransform = target;
+    }
     public enum AttackType
     {
         Cannon,
-        BulletPattern
+        BulletPattern,
+        Special
     }
     public void OnDestroy()
     {

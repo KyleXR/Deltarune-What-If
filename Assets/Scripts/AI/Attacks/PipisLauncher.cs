@@ -17,13 +17,24 @@ public class PipisLauncher : NEO_Attack
     public bool applyRandomPositionOffset = false;
     public bool applyRandomAngleOffset = false;
 
+    public float pulseDuration = 0.5f; // Duration for pulsing effect
+    public float pulseScaleAmount = 1.5f; // Scale factor for pulsing effect
+    public float scaleLerpDuration = 1.0f; // Duration to lerp scale to zero
+
+    private Vector3 originalScale;
     private Vector3 currentTargetPosition;
     private Vector3 currentVelocity;
 
+    private bool isFiring = false;
+    private bool isScaling = false;
+
     private void Start()
     {
+        originalScale = transform.localScale; // Store the original scale
+        StartCoroutine(ManageScaleCoroutine(originalScale, originalScale * pulseScaleAmount));
         StartCoroutine(LaunchProjectilePeriodically());
     }
+
     private void Update()
     {
         if (spawnTransform != null)
@@ -31,10 +42,12 @@ public class PipisLauncher : NEO_Attack
             transform.position = spawnTransform.position;
         }
     }
+
     public override void InitializeAttack(NEO_AttackHandler handler, Transform spawnTransform, Transform targetTransform, float currentUrgency = 0)
     {
         base.InitializeAttack(handler, spawnTransform, targetTransform, currentUrgency);
     }
+
     void PrepareAim()
     {
         Vector3 targetPosition = targetTransform.position;
@@ -104,6 +117,7 @@ public class PipisLauncher : NEO_Attack
 
     IEnumerator LaunchProjectilePeriodically()
     {
+        isFiring = true;
         while (baseSpawnAmount > 0)
         {
             PrepareAim();
@@ -112,10 +126,45 @@ public class PipisLauncher : NEO_Attack
             baseSpawnAmount--;
             yield return new WaitForSeconds(launchInterval);
         }
+        isFiring = false;
+        while(isScaling) yield return null;
+
         if (baseSpawnAmount <= 0)
         {
             handler.StopAiming();
             Destroy(gameObject);
         }
+    }
+
+    IEnumerator ManageScaleCoroutine(Vector3 startScale, Vector3 pulseScale)
+    {
+        isScaling = true;
+        // Initial scale up from zero
+        yield return LerpScaleCoroutine(Vector3.zero, startScale, scaleLerpDuration);
+
+        while (isFiring)
+        {
+            yield return StartCoroutine(LerpScaleCoroutine(startScale, pulseScale, pulseDuration));
+            yield return StartCoroutine(LerpScaleCoroutine(pulseScale, startScale, pulseDuration));
+        }
+
+        // Final scale down to zero
+        yield return LerpScaleCoroutine(transform.localScale, Vector3.zero, scaleLerpDuration);
+        isScaling = false;
+    }
+
+    IEnumerator LerpScaleCoroutine(Vector3 fromScale, Vector3 toScale, float duration)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            transform.localScale = Vector3.Lerp(fromScale, toScale, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure the final scale is set
+        transform.localScale = toScale;
     }
 }

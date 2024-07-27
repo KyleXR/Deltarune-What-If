@@ -110,7 +110,7 @@ Material:
     - _Texture:
         m_Texture: {fileID: 2800000, guid: 31a20c24018e73c4fb88277fbc8d29e8, type: 3}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0.4978053, y: 0}
+        m_Offset: {x: 0.07428187, y: 0}
     - _TriplanarTexture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -280,7 +280,7 @@ Material:
     - _GradientChannelMask: {r: 0, g: 1, b: 0, a: 0}
     - _GradientPositionalOffset: {r: 0, g: 0, b: 0, a: 0}
     - _LightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MainColor: {r: 0, g: 0, b: 0, a: 1}
     - _NearColor: {r: 1, g: 1, b: 1, a: 1}
     - _PuddleColor: {r: 0.19475657, g: 0.34486926, b: 0.43396226, a: 0}
     - _RimLightColor: {r: 0.3921569, g: 0.3921569, b: 0.3921569, a: 1}

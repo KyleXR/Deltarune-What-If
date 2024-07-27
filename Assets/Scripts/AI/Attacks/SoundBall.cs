@@ -13,6 +13,7 @@ public class SoundBall : NEO_Attack
     public int initialPulses = 4;
     public int spawnPulses = 2;
     public int attackAmount = 2;
+    public int attackRange = 5;
     //public Vector3 spawnBounds;  // Add this to define the spawn bounds
     public float maxSpeed = 2f;  // Maximum speed of movement
     //public float decelerationTime = 1f;  // Time taken to decelerate to zero
@@ -30,11 +31,16 @@ public class SoundBall : NEO_Attack
 
         // Start coroutines to pulse scale and lerp position
 
-        StartCoroutine(ChargeUp());
+        if (cannonFire) StartCoroutine(ChargeUp());
+        else
+        {
+            StartCoroutine(PulseScale());
+            StartCoroutine(SmoothMoveToTarget(targetPosition));
+        }
     }
     private void Update()
     {
-        if (!isFiring) transform.position = spawnTransform.position;
+        if (!isFiring && cannonFire) transform.position = spawnTransform.position;
     }
     public override void InitializeAttack(NEO_AttackHandler handler, Transform spawnTransform, Transform targetTransform, float currentUrgency = 0)
     {
@@ -58,6 +64,7 @@ public class SoundBall : NEO_Attack
         isFiring = true;
         transform.rotation = Quaternion.identity;
         StartCoroutine(SmoothMoveToTarget(targetPosition));
+        if (cannonFire) Invoke("FinishFiring", 2);
     }
     // Coroutine to pulse the scale of the GameObject
     IEnumerator PulseScale()
@@ -170,11 +177,20 @@ public class SoundBall : NEO_Attack
             GameObject attack = Instantiate(attackPrefab, transform.position, Quaternion.LookRotation(attackDirection));
 
             // Make the attack follow the ray path if applicable
-            attack.GetComponent<RayFollower>().FollowRayPath(ray, 5);
+            attack.GetComponent<RayFollower>().FollowRayPath(ray, attackRange);
 
             // Increment the angle for the next attack
             angle += angleStep;
         }
         transform.Rotate(Vector3.up, angleStep * 0.5f);
+    }
+
+    void FinishFiring()
+    {
+        if (cannonFire)
+        {
+            handler.StopAiming();
+            handler.ToggleCannon(true, false);
+        }
     }
 }

@@ -30,8 +30,8 @@ Material:
   - _CLIPTRIPLANAR_ON
   - _EMISSION
   - _MULTIPLYBYLIGHTCOLOR_ON
+  - _NORMALSURFACEOUTLINE_ON
   - _USEEMISSION_ON
-  - _USEOUTLINES_ON
   - _USESHADOWS_ON
   - _USESPECULAR_ON
   m_LightmapFlags: 2
@@ -193,9 +193,9 @@ Material:
     - _NoiseScale: 2
     - _NoiseUVSource: 0
     - _NormalMode: 0
-    - _NormalSurfaceOutline: 0
+    - _NormalSurfaceOutline: 1
     - _OcclusionStrength: 1
-    - _OutlineWidth: 0.15
+    - _OutlineWidth: 0.191
     - _Parallax: 0.02
     - _PosterizeColors: 0
     - _PosterizeLight: 0

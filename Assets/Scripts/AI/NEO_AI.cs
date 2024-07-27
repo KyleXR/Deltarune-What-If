@@ -38,6 +38,10 @@ public class NEO_AI : MonoBehaviour
     {
         rotator.PauseRotation(duration);
     }
+    public void PauseAttacks(float duration)
+    {
+
+    }
 
     private IEnumerator RotateAtRandomIntervals()
     {
