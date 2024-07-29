@@ -94,9 +94,9 @@ GameObject:
   - component: {fileID: 973589963510115152}
   - component: {fileID: 7421815432586016857}
   - component: {fileID: 7238750237959680083}
-  - component: {fileID: 5443050427157350004}
   - component: {fileID: 375575797432855951}
   - component: {fileID: 1732473946189492649}
+  - component: {fileID: -5545453320387453735}
   m_Layer: 0
   m_Name: DollarAttack
   m_TagString: Untagged
@@ -152,21 +152,6 @@ MonoBehaviour:
   scaleDistance: 10
   destroyScale: 0.25
   destroyIfLesser: 1
---- !u!114 &5443050427157350004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3881009767177758116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76b11410e1a2c7e4d874a2a0d08fb8a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTransform: {fileID: 0}
-  forceMultiplier: 100
-  scaleForce: 1
 --- !u!114 &375575797432855951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0de79f0e68b541d4cab3b15ae2e58ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToDestroy: 5
+  timeToDestroy: 10
 --- !u!54 &1732473946189492649
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -207,3 +192,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &-5545453320387453735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3881009767177758116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f5a60910c21b8e4e835678e264964d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTransform: {fileID: 0}
+  duration: 2

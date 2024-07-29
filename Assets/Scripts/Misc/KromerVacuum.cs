@@ -36,7 +36,7 @@ public class KromerVacuum : NEO_Attack
 
             // Spawn the object
             var kromer = Instantiate(objectToSpawn, spawnPosition, Quaternion.identity);
-            if (kromer.TryGetComponent<ConstantTargetForce>(out var targetForce))
+            if (kromer.TryGetComponent<LerpToTarget>(out var targetForce))
             {
                 targetForce.targetTransform = targetTransform;
             }
