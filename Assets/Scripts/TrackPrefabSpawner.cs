@@ -1,8 +1,5 @@
 using Dreamteck.Splines;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using TreeEditor;
 using UnityEngine;
 
 public class TrackPrefabSpawner : MonoBehaviour
@@ -10,38 +7,38 @@ public class TrackPrefabSpawner : MonoBehaviour
     [SerializeField] TrackPrefab[] tracks;
     List<TrackPrefab> trackList = new List<TrackPrefab>();
     Transform lastNodeTransform;
-    List<Vector3> cartPostions = new List<Vector3>();
+    Vector3[] cartPositions = new Vector3[3];
     [SerializeField] SplineComputer[] trackSplines;
-    [SerializeField] List<Dreamteck.Splines.SplineFollower> carts;
-    
+    [SerializeField] SplineFollower[] carts;
+
     public bool canSpawn3rdTrack = true;
     public float currentDirection = 0;
     private float currentPadding = 0;
     public float time;
 
-    
     void Start()
     {
         lastNodeTransform = transform;
         SpawnTrackPrefab();
-        
+
+        foreach (var cart in carts) cart.RebuildImmediate();
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         time += Time.deltaTime;
         if (time >= 8)
         {
             time = 0;
             SpawnTrackPrefab();
-
         }
     }
 
     public void SpawnTrackPrefab()
     {
+        // Save the world positions of the carts before updating the spline
+        SaveCartPositions();
+
         // Step 1: Randomly select a track prefab from the array
         int rand = Random.Range(0, tracks.Length);
 
@@ -64,16 +61,12 @@ public class TrackPrefabSpawner : MonoBehaviour
         currentDirection += newTrack.endDirection;
         currentPadding = newTrack.spawnPadding;
 
-        
-
         // Step 7: Spawn track splines if necessary
         for (int i = 0; i < trackSplines.Length; i++)
         {
-            
             if (i == trackSplines.Length - 1 && !canSpawn3rdTrack) continue;
-            
-            SpawnTrackSpline(trackSplines[i], newTrack.GetTrackNodes(i + 1));
 
+            SpawnTrackSpline(trackSplines[i], newTrack.GetTrackNodes(i + 1));
         }
 
         if (newTrack.name == "FRTR_Track(Clone)")
@@ -86,57 +79,54 @@ public class TrackPrefabSpawner : MonoBehaviour
             canSpawn3rdTrack = true;
         }
 
-        
-        
+        // Update the positions of the carts on the spline
+        UpdateCartPositions();
     }
-
-
 
     public void SpawnTrackSpline(SplineComputer spline, Transform[] nodeTransforms)
     {
-        //SetCartPostions();
-
-        //Create a new array of spline points
+        // Create a new array of spline points
         SplinePoint[] points = new SplinePoint[nodeTransforms.Length];
 
-        //Set each point's properties
+        // Set each point's properties
         for (int i = 0; i < points.Length; i++)
         {
- 
-            points[i] = new SplinePoint();
-            points[i].position = nodeTransforms[i].position;
-            points[i].normal = (Vector3.up * i) * 10;
-            points[i].size = 1.0f;
-            points[i].color = Color.white;
+            points[i] = new SplinePoint
+            {
+                position = nodeTransforms[i].position,
+                normal = Vector3.up, // Assuming up direction for normal, adjust if needed
+                size = 1.0f,
+                color = Color.white
+            };
         }
 
+        // Append the new points to the spline
         int startIndex = spline.pointCount;
         spline.AppendPoints(points.Length);
-        int j = 0;
-
-        for (int i = startIndex; i < spline.pointCount; i++)
+        for (int i = 0; i < points.Length; i++)
         {
-            spline.SetPoint(i, points[j]);
-            j++;
+            spline.SetPoint(startIndex + i, points[i]);
         }
-        spline.Rebuild();
-
+        spline.RebuildImmediate();
     }
 
-    //public void SetCartPostions()
-    //{
-    //    for(int i = 0; i < cartPostions.Count; i++) 
-    //    {
-    //        cartPostions[i] = carts[i].transform.position;
-    //    }
-    //}
+    public void SaveCartPositions()
+    {
+        // Save the current world positions of each cart
+        for (int i = 0; i < cartPositions.Length; i++)
+        {
+            cartPositions[i] = carts[i].transform.position;
+        }
+    }
 
-    //public void UpdateCartPositions()
-    //{
-    //    for( int i = 0; i < carts.Count; i++) 
-    //    {
-    //        var newDistance = trackSplines[i].Project(cartPostions[i]);
-    //        carts[i].SetPercent()
-    //    }
-    //}
+    public void UpdateCartPositions()
+    {
+        // Update the position of each cart on the spline based on the saved world positions
+        for (int i = 0; i < carts.Length; i++)
+        {
+            var sample = trackSplines[i].Project(cartPositions[i]);
+            carts[i].SetPercent(sample.percent);
+            carts[i].RebuildImmediate();
+        }
+    }
 }
