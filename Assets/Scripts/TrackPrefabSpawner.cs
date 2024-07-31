@@ -15,7 +15,7 @@ public class TrackPrefabSpawner : MonoBehaviour
     public float currentDirection = 0;
     private float currentPadding = 0;
     public float time;
-
+    public int maxPrefabs = 5;
     void Start()
     {
         lastNodeTransform = transform;
@@ -66,7 +66,17 @@ public class TrackPrefabSpawner : MonoBehaviour
         {
             if (i == trackSplines.Length - 1 && !canSpawn3rdTrack) continue;
 
-            SpawnTrackSpline(trackSplines[i], newTrack.GetTrackNodes(i + 1));
+            SpawnTrackSpline(trackSplines[i], newTrack.GetTrackNodes(i + 1), i);
+
+            if (trackList.Count > maxPrefabs)
+            {
+                RemoveTrackSpline(trackSplines[i], i);
+            }
+        }
+        if (trackList.Count > maxPrefabs)
+        {
+            Destroy(trackList[0].gameObject);
+            trackList.RemoveAt(0);
         }
 
         if (newTrack.name == "FRTR_Track(Clone)")
@@ -81,9 +91,11 @@ public class TrackPrefabSpawner : MonoBehaviour
 
         // Update the positions of the carts on the spline
         UpdateCartPositions();
+
+        
     }
 
-    public void SpawnTrackSpline(SplineComputer spline, Transform[] nodeTransforms)
+    public void SpawnTrackSpline(SplineComputer spline, Transform[] nodeTransforms, int id)
     {
         // Create a new array of spline points
         SplinePoint[] points = new SplinePoint[nodeTransforms.Length];
@@ -107,7 +119,25 @@ public class TrackPrefabSpawner : MonoBehaviour
         {
             spline.SetPoint(startIndex + i, points[i]);
         }
+
+        Debug.Log(trackList.Count);
         spline.RebuildImmediate();
+    }
+
+    public void RemoveTrackSpline(SplineComputer spline, int id)
+    {
+        if (trackList != null)
+        {
+            var nodes = trackList[0].GetTrackNodes(id + 1).Length;
+            SplinePoint[] points = spline.GetPoints();
+            SplinePoint[] newPoints = new SplinePoint[points.Length - nodes];
+            for (int i = nodes; i < points.Length; i++)
+            {
+                newPoints[i - nodes] = points[i];
+            }
+            spline.SetPoints(newPoints);
+            spline.RebuildImmediate();
+        }
     }
 
     public void SaveCartPositions()
