@@ -19,19 +19,17 @@ public class TrackPrefabSpawner : MonoBehaviour
     void Start()
     {
         lastNodeTransform = transform;
-        SpawnTrackPrefab();
+        for(int i = 0; i < maxPrefabs; i++)
+        {
+            SpawnTrackPrefab();
+        }
 
         foreach (var cart in carts) cart.RebuildImmediate();
     }
 
     void Update()
     {
-        time += Time.deltaTime;
-        if (time >= 8)
-        {
-            time = 0;
-            SpawnTrackPrefab();
-        }
+        
     }
 
     public void SpawnTrackPrefab()
@@ -88,6 +86,10 @@ public class TrackPrefabSpawner : MonoBehaviour
         {
             canSpawn3rdTrack = true;
         }
+        var middleNodes = newTrack.GetTrackNodes(2);
+        if (trackList.Count > 2) middleNodes = trackList[2].GetTrackNodes(2);
+        var triggerNode = trackSplines[1].Project(middleNodes[middleNodes.Length / 2].position).percent;
+        trackSplines[1].triggerGroups[0].triggers[0].position = triggerNode;
 
         // Update the positions of the carts on the spline
         UpdateCartPositions();
