@@ -5,8 +5,8 @@ public class NEO_AI : MonoBehaviour
 {
     [SerializeField] RotationHandler rotator;
     [SerializeField] NEO_AttackHandler attackHandler;
+    [SerializeField] Health health;
 
-    [SerializeField] float health = 1997;
     [SerializeField] float rotationDelay = 10;
     [SerializeField] float attackDelay = 5;
     [SerializeField] float urgency = 0;
@@ -74,12 +74,12 @@ public class NEO_AI : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        health -= damage;
-        if (health <= 0)
-        {
-            health = 0; //initiate death
-        }
-        UrgencyCooldown();
+        //health -= damage;
+        //if (health <= 0)
+        //{
+        //    health = 0; //initiate death
+        //}
+        //UrgencyCooldown();
     }
 
     public void EnableUrgencyGeneration()

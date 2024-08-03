@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 375575797432855951}
   - component: {fileID: 1732473946189492649}
   - component: {fileID: -5545453320387453735}
+  - component: {fileID: -7952651562210654428}
   m_Layer: 0
   m_Name: DollarAttack
   m_TagString: Untagged
@@ -206,3 +207,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTransform: {fileID: 0}
   duration: 2
+  threshold: 0.1
+--- !u!114 &-7952651562210654428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3881009767177758116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66103d9adc3409f44855f44cb332b7ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkTagOnCollide: 1

@@ -5,12 +5,28 @@ using UnityEngine;
 public class TargetingLogic : MonoBehaviour
 {
     public string targetTag = "Target"; // The tag to identify target objects
+    public LayerMask targetLayers; // The tag to identify target objects
     public float maxDistance = 20f; // Maximum distance to target
     public float maxAngle = 30f; // Maximum angle to target
+
+    public GameObject snowgraveAim;
+    public Vector3 aimerPos = Vector3.zero;
+
+    public float groundCheckDistance = 20f; // Maximum distance to check for ground
 
     private Camera playerCamera;
     private Transform currentTarget;
     private GameObject tempTarget;
+
+    
+    [SerializeField] LayerMask groundLayer;
+
+    public Spell selectedSpell = 0;
+    public enum Spell
+    {
+        Iceshock,
+        Snowgrave
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +39,8 @@ public class TargetingLogic : MonoBehaviour
     {
         if (Input.GetMouseButton(1)) // Check if the right mouse button is held down
         {
-            currentTarget = FindClosestTarget();
+            currentTarget = GetCurrentTarget();
+
             if (currentTarget != null)
             {
                 Debug.Log("Targeting: " + currentTarget.name);
@@ -39,27 +56,83 @@ public class TargetingLogic : MonoBehaviour
         {
             Debug.DrawLine(playerCamera.transform.position, currentTarget.position, Color.red);
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            selectedSpell = Spell.Iceshock;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            selectedSpell = Spell.Snowgrave;
+        }
+
+        if (selectedSpell == Spell.Snowgrave && Input.GetMouseButton(1))
+        {
+            HandleSnowgraveAiming();
+        }
+        else
+        {
+            snowgraveAim.SetActive(false);
+        }
+    }
+
+    void HandleSnowgraveAiming()
+    {
+        if (currentTarget != null)
+        {
+            Vector3 targetPosition = aimerPos;
+            RaycastHit hit;
+
+            // Cast a ray downwards from the target position
+            if (Physics.Raycast(aimerPos + (Vector3.up * 0.1f), Vector3.down, out hit, groundCheckDistance, groundLayer))
+            {
+                // If ground is detected, set the Y position to the hit point
+                targetPosition.y = hit.point.y;
+                snowgraveAim.SetActive(true);
+                snowgraveAim.transform.position = targetPosition;
+            }
+            else
+            {
+                // If no ground is detected, disable the aim indicator
+                snowgraveAim.SetActive(false);
+            }
+        }
+        else
+        {
+            snowgraveAim.SetActive(false);
+        }
     }
 
     public Transform GetCurrentTarget()
     {
-        currentTarget = FindClosestTarget();
-        //if (currentTarget == null)
-        //{
-        //    // Create or reuse the temporary target GameObject
-        //    if (tempTarget == null)
-        //    {
-        //        tempTarget = new GameObject("TempTarget");
-        //        // Add a collider and set it as a trigger
-        //        Collider collider = tempTarget.AddComponent<SphereCollider>();
-        //        collider.isTrigger = true;
-        //        tempTarget.tag = targetTag;
-        //    }
-        //    tempTarget.transform.position = playerCamera.transform.position + playerCamera.transform.forward * maxDistance;
-        //    tempTarget.transform.rotation = playerCamera.transform.rotation;
-        //    currentTarget = tempTarget.transform;
-        //}
+        switch (selectedSpell)
+        {
+            case Spell.Iceshock:
+                currentTarget = FindClosestTarget();
+                break;
+            case Spell.Snowgrave:
+                currentTarget = FindCameraAim();
+                break;
+        }
+
         return currentTarget;
+    }
+
+    Transform FindCameraAim()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, maxDistance, targetLayers))
+        {
+
+            aimerPos = hit.point;
+            // Check if the hit object has the target tag
+            // if (hit.collider.CompareTag(targetTag))
+            {
+                return hit.transform;
+            }
+        }
+        return null;
     }
 
     Transform FindClosestTarget()
@@ -82,7 +155,7 @@ public class TargetingLogic : MonoBehaviour
                 }
             }
         }
-
+        //if (closestTarget == null) return FindCameraAim();
         return closestTarget;
     }
 }

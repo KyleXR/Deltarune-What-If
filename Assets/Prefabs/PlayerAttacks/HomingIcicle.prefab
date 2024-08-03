@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1296981053530271758}
   - component: {fileID: 6452500384949130785}
   - component: {fileID: 2489855209513365312}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2017675893382173845}
   - component: {fileID: 9179682093019454946}
   - component: {fileID: 6638833879976430160}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4937,7 +4937,9 @@ GameObject:
   - component: {fileID: -7847379250662431113}
   - component: {fileID: -2779818489825734053}
   - component: {fileID: 4226324266493553987}
-  m_Layer: 0
+  - component: {fileID: -1306477121193622820}
+  - component: {fileID: -294100242806204605}
+  m_Layer: 3
   m_Name: HomingIcicle
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -5040,6 +5042,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-1306477121193622820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006724803596405941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aadef20d0ecc0f4428b464dbde61b9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackType: 0
+  damage: 10
+--- !u!114 &-294100242806204605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006724803596405941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596a9c31469a8c14c9e0158e2677e910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabToSpawn: {fileID: 4547578978517154043, guid: 7c793762f3eb9234b829d7fa9dbef51c,
+    type: 3}
+  spawnOffset: {x: 0, y: 0, z: 0}
+  spawnOnCollision: 1
+  spawnOnTrigger: 1
 --- !u!1 &4300650847579287282
 GameObject:
   m_ObjectHideFlags: 0
@@ -5051,7 +5084,7 @@ GameObject:
   - component: {fileID: 3098786442155251363}
   - component: {fileID: 1391051392103360763}
   - component: {fileID: 6435126717630594275}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9890,7 +9923,7 @@ GameObject:
   - component: {fileID: 646691023945252823}
   - component: {fileID: 8540283063929035597}
   - component: {fileID: 498581110422837741}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}

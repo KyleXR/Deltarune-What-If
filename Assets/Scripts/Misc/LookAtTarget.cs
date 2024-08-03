@@ -4,6 +4,12 @@ public class LookAtTarget : MonoBehaviour
 {
     // The target transform that this object will look at
     public Transform target;
+    public bool lookAtPlayer = false;
+
+    private void Start()
+    {
+        if (lookAtPlayer) target = FindFirstObjectByType<FirstPersonController>().transform;
+    }
 
     void Update()
     {
