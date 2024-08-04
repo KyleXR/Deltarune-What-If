@@ -8,8 +8,12 @@ public class TrackPrefabSpawner : MonoBehaviour
     List<TrackPrefab> trackList = new List<TrackPrefab>();
     Transform lastNodeTransform;
     Vector3[] cartPositions = new Vector3[3];
+    Vector3[,] followCartPositions = new Vector3[3,2];
     [SerializeField] SplineComputer[] trackSplines;
     [SerializeField] SplineFollower[] carts;
+    [SerializeField] CartFollowerManager[] followManager;
+    TrackPrefab newTrack;
+    bool isFirstTrack = true;
 
     public bool canSpawn3rdTrack = true;
     public float currentDirection = 0;
@@ -25,6 +29,12 @@ public class TrackPrefabSpawner : MonoBehaviour
         }
 
         foreach (var cart in carts) cart.RebuildImmediate();
+
+        foreach (var cart in followManager) cart.InitializeCarts();
+
+        var followerAmount = followManager[0].additionalCartFollowers.Length;
+
+        followCartPositions = new Vector3[followManager.Length, followerAmount];
     }
 
     void Update()
@@ -34,14 +44,28 @@ public class TrackPrefabSpawner : MonoBehaviour
 
     public void SpawnTrackPrefab()
     {
+
+        
         // Save the world positions of the carts before updating the spline
         SaveCartPositions();
 
-        // Step 1: Randomly select a track prefab from the array
-        int rand = Random.Range(0, tracks.Length);
+        if (isFirstTrack)
+        {
+            newTrack = Instantiate(tracks[0], lastNodeTransform.position, lastNodeTransform.rotation);
+            isFirstTrack = false;
+        }
 
-        // Step 2: Instantiate the selected track prefab at the last node's position and rotation
-        var newTrack = Instantiate(tracks[rand], lastNodeTransform.position, lastNodeTransform.rotation);
+
+        else
+        {
+            // Step 1: Randomly select a track prefab from the array
+            int rand = Random.Range(0, tracks.Length);
+
+            // Step 2: Instantiate the selected track prefab at the last node's position and rotation
+            newTrack = Instantiate(tracks[rand], lastNodeTransform.position, lastNodeTransform.rotation);
+        }
+
+       
 
         // Step 3: Rotate the new track based on the current direction
         newTrack.transform.rotation = Quaternion.Euler(0, currentDirection, 0);
@@ -122,7 +146,6 @@ public class TrackPrefabSpawner : MonoBehaviour
             spline.SetPoint(startIndex + i, points[i]);
         }
 
-        Debug.Log(trackList.Count);
         spline.RebuildImmediate();
     }
 
@@ -149,6 +172,14 @@ public class TrackPrefabSpawner : MonoBehaviour
         {
             cartPositions[i] = carts[i].transform.position;
         }
+
+        for (int i = 0; i < followCartPositions.GetLength(0); i++)
+        {
+            for(int j = 0; j < followCartPositions.GetLength(1); j++) 
+            {
+                followCartPositions[i,j] = followManager[i].additionalCartFollowers[j].transform.position;
+            }
+        }
     }
 
     public void UpdateCartPositions()
@@ -159,6 +190,17 @@ public class TrackPrefabSpawner : MonoBehaviour
             var sample = trackSplines[i].Project(cartPositions[i]);
             carts[i].SetPercent(sample.percent);
             carts[i].RebuildImmediate();
+        }
+
+        for (int i = 0; i < followManager.Length; i++)
+        {
+            for(int j = 0; j < followManager[i].additionalCartFollowers.Length; j++)
+            {
+                var sample = trackSplines[i].Project(followCartPositions[i,j]);
+                followManager[i].additionalCartFollowers[j].SetPercent(sample.percent);
+                followManager[i].additionalCartFollowers[j].RebuildImmediate();
+            }
+            
         }
     }
 }
