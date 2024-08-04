@@ -122,7 +122,7 @@ public class TrackPrefabSpawner : MonoBehaviour
             spline.SetPoint(startIndex + i, points[i]);
         }
 
-        Debug.Log(trackList.Count);
+        //Debug.Log(trackList.Count);
         spline.RebuildImmediate();
     }
 
