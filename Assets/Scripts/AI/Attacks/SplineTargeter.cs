@@ -33,7 +33,7 @@ public class SplineTargeter : MonoBehaviour
     }
     public void ArcPath()
     {
-        Debug.Log("Blue");
+        //Debug.Log("Blue");
         var ran = Random.Range(0, 4);
         if (points.Length >= 3)
         {

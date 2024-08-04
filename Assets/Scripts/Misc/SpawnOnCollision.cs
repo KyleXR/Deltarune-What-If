@@ -14,6 +14,8 @@ public class SpawnOnCollision : MonoBehaviour
     public bool spawnOnCollision = true;
     public bool spawnOnTrigger = false;
 
+    public bool checkTag = false;
+
     // Update is called once per frame
     void Update()
     {

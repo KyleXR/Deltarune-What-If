@@ -43,7 +43,7 @@ public class TargetingLogic : MonoBehaviour
 
             if (currentTarget != null)
             {
-                Debug.Log("Targeting: " + currentTarget.name);
+                //Debug.Log("Targeting: " + currentTarget.name);
                 // Additional logic when a target is found
             }
         }
@@ -139,7 +139,6 @@ public class TargetingLogic : MonoBehaviour
     {
         Transform closestTarget = null;
         float closestAngle = maxAngle;
-
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag(targetTag))
         {
             float distance = Vector3.Distance(transform.position, obj.transform.position);

@@ -48,10 +48,10 @@ public class HomingProjectile : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        // Logic for when the projectile hits something
-        // Example: Destroy the projectile on impact
-        Destroy(gameObject);
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    // Logic for when the projectile hits something
+    //    // Example: Destroy the projectile on impact
+    //    Destroy(gameObject);
+    //}
 }

@@ -70,7 +70,7 @@ public class Attack : MonoBehaviour
 
     void ApplyDamage(Collider collider)
     {
-        Debug.Log(collider.name);
+        //Debug.Log(collider.name);
         Health health = collider.GetComponent<Health>();
         if (health == null) { health = collider.GetComponentInParent<Health>(); }
         if (health != null)
