@@ -2004,6 +2004,7 @@ GameObject:
   - component: {fileID: 7922253671815951312}
   - component: {fileID: 9178364143453811613}
   - component: {fileID: 6040925791136519833}
+  - component: {fileID: 6314426174793200933}
   m_Layer: 3
   m_Name: SpellCasterTransform
   m_TagString: Player
@@ -2098,6 +2099,27 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &6314426174793200933
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5209018521874762648}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4fa828e61b3002540a07510f4cf0ac3b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5252285207499517131
 GameObject:
   m_ObjectHideFlags: 0
@@ -3266,6 +3288,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 680405800128f3c439584c29c2861e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 6314426174793200933}
+  rb: {fileID: 922955714487828112}
+  controller: {fileID: 3810057691667069406}
+  speedMultiplier: 1.5
 --- !u!114 &-965583597084364172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3320,10 +3346,10 @@ MonoBehaviour:
   enableSprint: 1
   unlimitedSprint: 1
   sprintKey: 304
-  sprintSpeed: 7
+  sprintSpeed: 7.5
   sprintDuration: 5
   sprintCooldown: 0.5
-  sprintFOV: 80
+  sprintFOV: 60
   sprintFOVStepTime: 10
   useSprintBar: 1
   hideBarWhenFull: 1
@@ -3334,7 +3360,7 @@ MonoBehaviour:
   enableJump: 1
   jumpKey: 32
   jumpPower: 5
-  enableCrouch: 1
+  enableCrouch: 0
   holdToCrouch: 1
   crouchKey: 306
   crouchHeight: 0.75

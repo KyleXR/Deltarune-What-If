@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] Animator animator;
+	[SerializeField] Rigidbody rb;
+    [SerializeField] FirstPersonController controller;
+    public float speedMultiplier = 0.1f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public void Update()
+	{
+		float currentSpeed = rb.velocity.magnitude;
+
+		if (currentSpeed > 3)
+		{
+			animator.speed = currentSpeed * speedMultiplier;
+			Debug.Log("Curr Speed: " + currentSpeed);
+		}
+		else
+		{
+			animator.speed = 1f;
+		}
+	}
 }
