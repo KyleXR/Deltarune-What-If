@@ -8,6 +8,8 @@ public class HomingProjectile : MonoBehaviour
     public float speed = 10f; // Speed of the projectile
     public float rotationSpeed = 5f; // Rotation speed of the projectile
     public float lifeTime = 5f; // Lifetime of the projectile before it gets destroyed
+    public string targetTag = "Enemy"; // Tag of the targets to check for
+    public float checkInterval = 0.5f; // Interval between checks for the closest target
 
     private Rigidbody rb;
 
@@ -21,6 +23,8 @@ public class HomingProjectile : MonoBehaviour
         }
         rb.useGravity = false; // Disable gravity for the projectile
         Destroy(gameObject, lifeTime); // Destroy the projectile after its lifetime has elapsed
+
+        StartCoroutine(UpdateTarget());
     }
 
     // FixedUpdate is called once per physics update
@@ -48,10 +52,36 @@ public class HomingProjectile : MonoBehaviour
         }
     }
 
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    // Logic for when the projectile hits something
-    //    // Example: Destroy the projectile on impact
-    //    Destroy(gameObject);
-    //}
+    private IEnumerator UpdateTarget()
+    {
+        while (true)
+        {
+            FindClosestTarget();
+            yield return new WaitForSeconds(checkInterval);
+        }
+    }
+
+    private void FindClosestTarget()
+    {
+        GameObject[] potentialTargets = GameObject.FindGameObjectsWithTag(targetTag);
+        float closestDistance = Mathf.Infinity;
+        Transform closestTarget = null;
+
+        foreach (GameObject potentialTarget in potentialTargets)
+        {
+            Vector3 directionToTarget = potentialTarget.transform.position - transform.position;
+            float distanceToTarget = directionToTarget.magnitude;
+
+            if (distanceToTarget < closestDistance && Vector3.Dot(transform.forward, directionToTarget.normalized) > 0)
+            {
+                closestDistance = distanceToTarget;
+                closestTarget = potentialTarget.transform;
+            }
+        }
+
+        if (closestTarget != null)
+        {
+            target = closestTarget;
+        }
+    }
 }

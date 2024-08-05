@@ -89,7 +89,7 @@ public class NEO_AttackHandler : MonoBehaviour
                                 spawnedAttacks.Add(attack);
                                 spawnedAttack = true;
 
-                                attack.transform.parent = cannonTransform;
+                                attack.transform.parent = battleTransformOrigin;
 
                                 ToggleCannon(true, true);
 
@@ -140,7 +140,6 @@ public class NEO_AttackHandler : MonoBehaviour
                                 attack.InitializeAttack(this, attack.transform, player.transform, urgency);
                                 if (attack.TryGetComponent<KromerVacuum>(out var kromerVacuum))
                                 {
-                                    Debug.Log("Kromer");
                                     kromerVacuum.SetTarget(mouthTransform);
                                     animator.SetBool("IsVacuuming", true);
                                     Invoke("StopVacuuming", kromerVacuum.duration + 2);
@@ -198,7 +197,7 @@ public class NEO_AttackHandler : MonoBehaviour
         if (set) isUsingCannon = setTo;
         else isUsingCannon = !isUsingCannon;
         if (handModel != null) handModel.SetActive(!isUsingCannon);
-        if (handModel != null) cannonModel.SetActive(isUsingCannon);
+        if (cannonModel != null) cannonModel.SetActive(isUsingCannon);
     }
 
     public void PauseAttack(float duration)

@@ -44,6 +44,7 @@ public class KromerVacuum : NEO_Attack
             {
                 scaleToTarget.targetTransform = targetTransform;
             }
+            //kromer.transform.parent = targetTransform.parent;
             // Wait for the next spawn
             yield return new WaitForSeconds(spawnInterval);
 

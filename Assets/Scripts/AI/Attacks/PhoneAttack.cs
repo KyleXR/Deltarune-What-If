@@ -16,7 +16,7 @@ public class PhoneAttack : NEO_Attack
     // Start is called before the first frame update
     void Start()
     {
-        if (Random.Range(0, 1) <= altAttackChance)
+        if (Random.Range(0f, 1f) <= altAttackChance)
         {
             useAlt = true;            
         }
@@ -45,6 +45,7 @@ public class PhoneAttack : NEO_Attack
 
                 // Instantiate the attack prefab at the attacker's position
                 GameObject attack = Instantiate(attackPrefab, fireTransform.position, Quaternion.LookRotation(directionToPlayer));
+                attack.transform.parent = transform.parent;
                 float distance = 30;
                 RaycastHit hit;
                 int layerMask = 1 << 0;
@@ -60,6 +61,7 @@ public class PhoneAttack : NEO_Attack
             else
             {
                 GameObject attack = Instantiate(altAttackPrefab, fireTransform.position, Quaternion.identity);
+                attack.transform.parent = transform.parent;
                 var soundBall = attack.GetComponent<SoundBall>();
                 soundBall.cannonFire = false;
                 soundBall.InitializeAttack(handler, fireTransform, targetTransform, urgency);

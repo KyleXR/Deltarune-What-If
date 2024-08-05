@@ -4976,9 +4976,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 20
-  rotationSpeed: 100
+  speed: 25
+  rotationSpeed: 150
   lifeTime: 2
+  targetTag: Spamton
+  checkInterval: 0.25
 --- !u!114 &-7847379250662431113
 MonoBehaviour:
   m_ObjectHideFlags: 0

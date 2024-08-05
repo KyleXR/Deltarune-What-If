@@ -95,6 +95,7 @@ public class PipisLauncher : NEO_Attack
         // Instantiate the projectile and apply velocity
         GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
         projectile.GetComponent<Rigidbody>().velocity = currentVelocity;
+        projectile.transform.parent = transform.parent;
     }
 
     float CalculateInitialVelocity(float distance, float yOffset, float angleRad)

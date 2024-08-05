@@ -83,6 +83,7 @@ public class SpamtonHead : MonoBehaviour
             {
                 rb.velocity = transform.forward * 10f; // Adjust the speed as needed
             }
+            projectile.transform.parent = transform.parent;
         }
     }
 }
