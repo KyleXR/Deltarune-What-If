@@ -28,7 +28,7 @@ public class SplineTargeter : MonoBehaviour
         //points[1].position = GenerateRandomPosition();
         if (playerTarget == null) playerTarget = FindFirstObjectByType<FirstPersonController>().transform;
         if (playerTarget == null) playerTarget.position = GenerateRandomPosition();
-        points[1].position = playerTarget.position;
+        points[1].position = playerTarget.localPosition;
         points[2].position = GenerateRandomPosition();
     }
     public void ArcPath()

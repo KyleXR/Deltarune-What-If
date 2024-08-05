@@ -28,11 +28,14 @@ public class SpawnOnCollision : MonoBehaviour
     {
         if (spawnOnCollision && prefabToSpawn != null)
         {
-            // Calculate the spawn position
-            Vector3 spawnPosition = transform.position + spawnOffset;
-
-            // Instantiate the prefab at the calculated position
-            Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+            if (checkTag && !collision.gameObject.CompareTag(tag))
+            {
+                SpawnPrefab(collision.transform);
+            }
+            else if(!checkTag)
+            {
+                SpawnPrefab(collision.transform);
+            }
         }
     }
 
@@ -42,11 +45,23 @@ public class SpawnOnCollision : MonoBehaviour
     {
         if (spawnOnTrigger && prefabToSpawn != null)
         {
-            // Calculate the spawn position
-            Vector3 spawnPosition = transform.position + spawnOffset;
-
-            // Instantiate the prefab at the calculated position
-            Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+            if (checkTag && !other.CompareTag(tag))
+            {
+                SpawnPrefab(other.transform);
+            }
+            else if (!checkTag)
+            {
+                SpawnPrefab(other.transform);
+            }
         }
+    }
+    private void SpawnPrefab(Transform parent)
+    {
+        // Calculate the spawn position
+        Vector3 spawnPosition = transform.position + spawnOffset;
+
+        // Instantiate the prefab at the calculated position
+        var prefab = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
+        prefab.transform.parent = parent;
     }
 }

@@ -29,6 +29,7 @@ namespace PathCreation.Examples
                 {
                     Destroy(gameObject);
                 }
+                else if (distanceTravelled >= pathCreator.path.length) Destroy(gameObject);
                 distanceTravelled += speed * Time.deltaTime;
                 transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
                 if (rotateWithPath) transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);

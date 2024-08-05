@@ -53,6 +53,7 @@ public class SpellProjectileSpawner : MonoBehaviour
                     homingProjectile.target = target;
                 }
             }
+            projectile.transform.parent = transform.parent;
         }
     }
 }

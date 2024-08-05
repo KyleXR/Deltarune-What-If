@@ -43,6 +43,7 @@ public class SpamtonHeadSpawner : NEO_Attack
             if (!useHeadPool) newSpawner.overflowHeadAmount = totalSpawns - maxHeadCount;
             else newSpawner.overflowHeadAmount = overflowHeadAmount;
             newSpawner.InitializeAttack(handler, spawnTransform, targetTransform, urgency);
+            newSpawner.transform.parent = transform.parent;
             totalSpawns = maxHeadCount;
         }
         spawnsLeft = totalSpawns;
@@ -64,6 +65,7 @@ public class SpamtonHeadSpawner : NEO_Attack
             //Debug.Log(targetTransform.name);
             look.target = targetTransform;
         }
+        head.transform.parent = transform.parent;
         return head;
     }
 

@@ -41,6 +41,8 @@ public class ArmCannonAim : MonoBehaviour
             positionDamper = 250,
             maximumForce = 1500
         };
+
+        playerTransform = FindFirstObjectByType<FirstPersonController>().gameObject;
     }
 
     private void Update()

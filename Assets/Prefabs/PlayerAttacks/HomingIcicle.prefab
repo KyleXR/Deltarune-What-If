@@ -5073,6 +5073,7 @@ MonoBehaviour:
   spawnOffset: {x: 0, y: 0, z: 0}
   spawnOnCollision: 1
   spawnOnTrigger: 1
+  checkTag: 1
 --- !u!1 &4300650847579287282
 GameObject:
   m_ObjectHideFlags: 0

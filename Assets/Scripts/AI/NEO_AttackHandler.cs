@@ -12,9 +12,11 @@ public class NEO_AttackHandler : MonoBehaviour
     [SerializeField] private ArmCannonAim cannonAim;
     [SerializeField] private Transform cannonTransform;
     [SerializeField] private Transform mouthTransform;
+    [SerializeField] private Transform battleTransformOrigin;
     private FirstPersonController player;
     private NEO_AI controller;
     private bool isAttacking = true;
+
 
     [SerializeField] private GameObject cannonModel;
     [SerializeField] private GameObject handModel;
@@ -83,8 +85,12 @@ public class NEO_AttackHandler : MonoBehaviour
                                 //cannonAim.playerAim = true;
                                 var attack = Instantiate(attacks[ranId], cannonTransform.position, cannonTransform.rotation);
                                 attack.InitializeAttack(this, cannonTransform, player.transform, urgency);
+                                
                                 spawnedAttacks.Add(attack);
                                 spawnedAttack = true;
+
+                                attack.transform.parent = cannonTransform;
+
                                 ToggleCannon(true, true);
 
                                 attackCooldowns[ranId] = attack.duration * 5;
@@ -108,8 +114,9 @@ public class NEO_AttackHandler : MonoBehaviour
                             }
                             if (canSpawn)
                             {
-                                var attack = Instantiate(attacks[ranId], Vector3.zero, Quaternion.identity);
+                                var attack = Instantiate(attacks[ranId], battleTransformOrigin.position, Quaternion.identity);
                                 attack.InitializeAttack(this, attack.transform, player.transform, urgency);
+                                attack.transform.parent = battleTransformOrigin;
                                 spawnedAttacks.Add(attack);
                                 spawnedAttack = true;
                                 attackCooldowns[ranId] = attack.duration * 0.5f;
@@ -129,7 +136,7 @@ public class NEO_AttackHandler : MonoBehaviour
                             // specil
                             if (canSpawn)
                             {
-                                var attack = Instantiate(attacks[ranId], Vector3.zero, Quaternion.identity);
+                                var attack = Instantiate(attacks[ranId], battleTransformOrigin.position, Quaternion.identity);
                                 attack.InitializeAttack(this, attack.transform, player.transform, urgency);
                                 if (attack.TryGetComponent<KromerVacuum>(out var kromerVacuum))
                                 {
@@ -138,6 +145,7 @@ public class NEO_AttackHandler : MonoBehaviour
                                     animator.SetBool("IsVacuuming", true);
                                     Invoke("StopVacuuming", kromerVacuum.duration + 2);
                                 }
+                                attack.transform.parent = battleTransformOrigin;
                                 attackCooldowns[ranId] = attack.duration * 5;
                                 spawnedAttack = true;
                                 PauseAttack(attack.duration + 2);
