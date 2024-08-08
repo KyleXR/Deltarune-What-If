@@ -123,6 +123,7 @@ public class PipisLauncher : NEO_Attack
         {
             PrepareAim();
             yield return new WaitForSeconds(aimPreparationTime); // Wait for the preparation time
+            PrepareAim();
             LaunchProjectile();
             baseSpawnAmount--;
             yield return new WaitForSeconds(launchInterval);

@@ -94,8 +94,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1343646184030734501}
   - component: {fileID: 81662265111861946}
-  - component: {fileID: 119608594033634513}
   - component: {fileID: -8379380504549263221}
+  - component: {fileID: -4546617511160396040}
+  - component: {fileID: -8204698571942486379}
+  - component: {fileID: 5444328574595474567}
   m_Layer: 8
   m_Name: Sound Attack Mini
   m_TagString: Spamton
@@ -140,22 +142,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 0.25, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &119608594033634513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7347428836344236729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 658408db41c885c42b8212aa4f6253f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  minSpeed: 4
-  acceleration: -20
-  randomizeSpeed: 0
 --- !u!114 &-8379380504549263221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +155,65 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkTagOnCollide: 1
+  ignoreTags:
+  - CartTrigger
+  - Ground
+--- !u!54 &-4546617511160396040
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7347428836344236729}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 2
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &-8204698571942486379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7347428836344236729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0de79f0e68b541d4cab3b15ae2e58ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDestroy: 1
+--- !u!114 &5444328574595474567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7347428836344236729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aadef20d0ecc0f4428b464dbde61b9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
+  attackType: 0
+  damage: 5
+  ignoresDamageCooldown: 0
 --- !u!1 &8297489536596339791
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class ConstantTargetForce : MonoBehaviour
     public Transform targetTransform; // The target towards which the force is applied
     public float forceMultiplier = 10f; // Multiplier for the force applied
     public bool scaleForce = false; // Toggle for scaling force based on distance
-
+    public ForceMode forceMode;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -37,7 +37,7 @@ public class ConstantTargetForce : MonoBehaviour
             }
 
             // Apply force in the calculated direction
-            rb.AddForce(direction * force);
+            rb.AddForce(direction * force, forceMode);
         }
     }
 }

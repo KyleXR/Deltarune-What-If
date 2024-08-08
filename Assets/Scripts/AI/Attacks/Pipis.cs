@@ -9,10 +9,14 @@ public class Pipis : MonoBehaviour
     public float raycastLength = 10f; // Length of the raycasts
     public int minRays = 5; // Minimum number of raycasts
     public int maxRays = 10; // Maximum number of raycasts
-    public RayFollower miniHeads;
+    public float forceMagnitude = 10f; // Magnitude of the force to be applied
     private Transform player; // Reference to the player object
 
+    public GameObject miniHead;
+
     private Vector3 randomDirection;
+
+    public List<string> ignoreTags;
 
     void Start()
     {
@@ -29,6 +33,7 @@ public class Pipis : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (ignoreTags.Contains(other.tag)) return;
         // Destroy the game object when it is triggered
         ShootRays();
         Destroy(gameObject);
@@ -47,20 +52,24 @@ public class Pipis : MonoBehaviour
             Vector3 randomDir = Random.insideUnitSphere;
             float randomAngle = Random.Range(0, coneAngle);
             randomDir = Vector3.RotateTowards(directionToPlayer, randomDir, randomAngle * Mathf.Deg2Rad, 0.0f);
-            var miniHead = Instantiate(miniHeads, transform.position, Quaternion.LookRotation(randomDir));
-            Ray ray = new Ray(transform.position, randomDir);
-            miniHead.FollowRayPath(ray, raycastLength);
+
+            // Instantiate the miniHead, set its rotation, and apply force to the Rigidbody
+            GameObject miniHeadInstance = Instantiate(miniHead, transform.position, Quaternion.LookRotation(randomDir));
+            Rigidbody rb = miniHeadInstance.GetComponent<Rigidbody>();
+            rb.AddForce(randomDir * (forceMagnitude + Random.Range(-1f, 1f)), ForceMode.Impulse);
+            rb.transform.parent = transform.parent;
             // Shoot a raycast
-            if (Physics.Raycast(ray, out RaycastHit hit, raycastLength, LayerMask.NameToLayer("Player")))
-            {
-                Debug.DrawRay(transform.position, randomDir * raycastLength, Color.red, 2.0f);
-                // Handle hit detection (e.g., damage to player or other objects)
-                Debug.Log("Hit: " + hit.collider.name);
-            }
-            else
-            {
-                Debug.DrawRay(transform.position, randomDir * raycastLength, Color.green, 2.0f);
-            }
+            //Ray ray = new Ray(transform.position, randomDir);
+            //if (Physics.Raycast(ray, out RaycastHit hit, raycastLength, LayerMask.GetMask("Player")))
+            //{
+            //    Debug.DrawRay(transform.position, randomDir * raycastLength, Color.red, 2.0f);
+            //    // Handle hit detection (e.g., damage to player or other objects)
+            //    Debug.Log("Hit: " + hit.collider.name);
+            //}
+            //else
+            //{
+            //    Debug.DrawRay(transform.position, randomDir * raycastLength, Color.green, 2.0f);
+            //}
         }
     }
 }

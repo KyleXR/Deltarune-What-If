@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Attack))]
 public abstract class NEO_Attack : MonoBehaviour
 {
     public int ID = 0;
@@ -19,6 +20,17 @@ public abstract class NEO_Attack : MonoBehaviour
     public Vector3 spawnBounds = Vector3.zero;
     public bool randomSpawn = false;
 
+    // string targetTag = "Player";
+    private Attack attack;
+
+    private void Start()
+    {
+        attack = GetComponent<Attack>();
+        attack.damage = damage;
+        attack.targetTag = "Player";
+        attack.ignoresDamageCooldown = ignoresInvulability;
+    }
+
     public virtual void InitializeAttack(NEO_AttackHandler handler, Transform spawnTransform, Transform targetTransform, float currentUrgency = 0)
     {
         urgency = currentUrgency;
@@ -29,7 +41,7 @@ public abstract class NEO_Attack : MonoBehaviour
         if (randomSpawn)
         {
             Vector3 tempPos = new Vector3(Random.Range(-spawnBounds.x, spawnBounds.x), Random.Range(-spawnBounds.y, spawnBounds.y), Random.Range(-spawnBounds.z, spawnBounds.z));
-            transform.position = tempPos;
+            transform.localPosition = tempPos;
         }
     }
     public void SetTarget(Transform target)

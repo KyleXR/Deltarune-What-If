@@ -56,11 +56,12 @@ public class PhoneAttack : NEO_Attack
                 }
                 //Debug.Log(distance);
                 //Debug.DrawRay(fireTransform.position, directionToPlayer * distance, Color.yellow, 1);
-                attack.GetComponent<RayFollower>().FollowRayPath(ray, distance);
+                attack.GetComponent<Rigidbody>().AddForce(directionToPlayer * 10f, ForceMode.Impulse);
             }
             else
             {
                 GameObject attack = Instantiate(altAttackPrefab, fireTransform.position, Quaternion.identity);
+                //attack.GetComponent<NEO_Attack>().InitializeAttack(handler, fireTransform, targetTransform, urgency);
                 attack.transform.parent = transform.parent;
                 var soundBall = attack.GetComponent<SoundBall>();
                 soundBall.cannonFire = false;

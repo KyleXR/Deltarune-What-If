@@ -36,14 +36,19 @@ public class KromerVacuum : NEO_Attack
 
             // Spawn the object
             var kromer = Instantiate(objectToSpawn, spawnPosition, Quaternion.identity);
-            if (kromer.TryGetComponent<LerpToTarget>(out var targetForce))
-            {
-                targetForce.targetTransform = targetTransform;
-            }
+            //if (kromer.TryGetComponent<LerpToTarget>(out var targetForce))
+            //{
+            //    targetForce.targetTransform = targetTransform;
+            //}
             if (kromer.TryGetComponent<ScaleToTarget>(out var scaleToTarget))
             {
                 scaleToTarget.targetTransform = targetTransform;
             }
+            if (kromer.TryGetComponent<ConstantTargetForce>(out var targetForce))
+            {
+                targetForce.targetTransform = targetTransform;
+            }
+            kromer.transform.parent = transform.parent;
             //kromer.transform.parent = targetTransform.parent;
             // Wait for the next spawn
             yield return new WaitForSeconds(spawnInterval);

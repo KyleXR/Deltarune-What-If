@@ -98,6 +98,9 @@ GameObject:
   - component: {fileID: 1732473946189492649}
   - component: {fileID: -5545453320387453735}
   - component: {fileID: -7952651562210654428}
+  - component: {fileID: 588001910712976417}
+  - component: {fileID: -6761111167038250710}
+  - component: {fileID: 5306420454265191818}
   m_Layer: 0
   m_Name: DollarAttack
   m_TagString: Untagged
@@ -133,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d937d09049d2cfd4394b5fde4f9544b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 10
+  rotationSpeed: 45
   rotationAxis: {x: 0, y: 1, z: 0}
 --- !u!114 &7238750237959680083
 MonoBehaviour:
@@ -165,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0de79f0e68b541d4cab3b15ae2e58ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToDestroy: 10
+  timeToDestroy: 2
 --- !u!54 &1732473946189492649
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -200,7 +203,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3881009767177758116}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f5a60910c21b8e4e835678e264964d7, type: 3}
   m_Name: 
@@ -221,3 +224,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkTagOnCollide: 1
+  ignoreTags:
+  - CartTrigger
+--- !u!114 &588001910712976417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3881009767177758116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76b11410e1a2c7e4d874a2a0d08fb8a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTransform: {fileID: 0}
+  forceMultiplier: 10
+  scaleForce: 1
+  forceMode: 2
+--- !u!114 &-6761111167038250710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3881009767177758116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aadef20d0ecc0f4428b464dbde61b9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
+  attackType: 0
+  damage: 10
+  ignoresDamageCooldown: 0
+--- !u!135 &5306420454265191818
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3881009767177758116}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.5, z: 0}

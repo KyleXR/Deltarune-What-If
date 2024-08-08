@@ -14,59 +14,72 @@ public class RotationHandler : MonoBehaviour
     // Flag to indicate if rotation is in progress
     public bool isRotating = false;
 
-    private float originalSpeed = 0;
+    // Counter to track how many times rotation has been paused
+    private int pauseCounter = 0;
+
+    // The current rotation speed used during rotation (allows pausing without losing the original speed)
+    private float currentRotationSpeed;
 
     private void Start()
     {
-        originalSpeed = rotationSpeed;
+        currentRotationSpeed = rotationSpeed;
     }
-    // Update is called once per frame
+
     void Update()
     {
+        if (pauseCounter > 0)
+        {
+            isRotating = false;
+            return; // Skip rotation if paused
+        }
+
         if (rotateToTarget)
         {
-            // Calculate the shortest angle difference between current and target rotations
             float currentRotation = transform.eulerAngles.y;
             float angleDifference = Mathf.DeltaAngle(currentRotation, targetRotation);
 
-            // If the angle difference is small enough, stop rotating
             if (Mathf.Abs(angleDifference) > 0.01f)
             {
-                // Indicate that rotation is in progress
                 isRotating = true;
-
-                // Determine the direction to rotate
                 float rotationDirection = Mathf.Sign(angleDifference);
-
-                // Calculate rotation for this frame
-                float rotationAmount = rotationSpeed * Time.deltaTime;
-
-                // Ensure we don't overshoot the target
+                float rotationAmount = currentRotationSpeed * Time.deltaTime;
                 rotationAmount = Mathf.Min(rotationAmount, Mathf.Abs(angleDifference));
-
-                // Apply rotation to the object
                 transform.Rotate(Vector3.up, rotationAmount * rotationDirection);
             }
             else
             {
-                // Rotation is complete
                 isRotating = false;
             }
         }
         else
         {
-            // Continuous rotation
-            float rotationAmount = rotationSpeed * Time.deltaTime;
+            isRotating = true;
+            float rotationAmount = currentRotationSpeed * Time.deltaTime;
             transform.Rotate(Vector3.up, rotationAmount);
         }
     }
+
     public void PauseRotation(float duration)
     {
-        rotationSpeed = 0;
-        Invoke("StartRotation", duration);
+        if (pauseCounter == 0)
+        {
+            currentRotationSpeed = rotationSpeed;
+            rotationSpeed = 0; // Stop rotation
+        }
+
+        pauseCounter++;
+        Invoke("ResumeRotation", duration);
     }
-    private void StartRotation()
+
+    private void ResumeRotation()
     {
-        rotationSpeed = originalSpeed;
+        pauseCounter--;
+
+        if (pauseCounter <= 0)
+        {
+            pauseCounter = 0; // Ensure counter doesn't go negative
+            rotationSpeed = currentRotationSpeed;
+            isRotating = true; // Resume rotation
+        }
     }
 }

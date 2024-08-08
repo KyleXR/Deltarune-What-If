@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 6813757456681192034}
   - component: {fileID: 5675934963771920495}
   - component: {fileID: -1231459869134826529}
+  - component: {fileID: 8069289466950161645}
   m_Layer: 8
   m_Name: PhoneAttack
   m_TagString: Spamton
@@ -193,7 +194,7 @@ MonoBehaviour:
   duration: 10
   attackType: 1
   spawnBounds: {x: 5, y: 0, z: 5}
-  randomSpawn: 1
+  randomSpawn: 0
   fireTransform: {fileID: 3388545614732547218}
   attackPrefab: {fileID: 7347428836344236729, guid: 016ff0da5cad0044da06a1f54b726b3b,
     type: 3}
@@ -214,6 +215,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDestroy: 10
+--- !u!114 &8069289466950161645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2821465050108299377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aadef20d0ecc0f4428b464dbde61b9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
+  attackType: 0
+  damage: 10
+  ignoresDamageCooldown: 0
 --- !u!1 &6327917560990134844
 GameObject:
   m_ObjectHideFlags: 0

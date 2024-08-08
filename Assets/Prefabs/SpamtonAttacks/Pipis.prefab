@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 6670721121423358509}
   - component: {fileID: 7454406104134171987}
   - component: {fileID: -8336800348139728794}
+  - component: {fileID: -7164541198569158432}
+  - component: {fileID: 8016283164454452065}
   m_Layer: 8
   m_Name: Pipis
   m_TagString: Spamton
@@ -152,8 +154,11 @@ MonoBehaviour:
   raycastLength: 10
   minRays: 10
   maxRays: 20
-  miniHeads: {fileID: 1075923091636960698, guid: 0267374bfb608434b81920e140792874,
+  forceMagnitude: 40
+  miniHead: {fileID: 8196268856116742741, guid: 0267374bfb608434b81920e140792874,
     type: 3}
+  ignoreTags:
+  - CartTrigger
 --- !u!114 &-8336800348139728794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,3 +172,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDestroy: 10
+--- !u!114 &-7164541198569158432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901435311970959810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596a9c31469a8c14c9e0158e2677e910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabToSpawn: {fileID: 3780210769600109426, guid: faf56b2d656f367488e867014793fc2e,
+    type: 3}
+  spawnOffset: {x: 0, y: 0, z: 0}
+  spawnOnCollision: 1
+  spawnOnTrigger: 1
+  checkTag: 1
+  ignoreTags:
+  - CartTrigger
+--- !u!114 &8016283164454452065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901435311970959810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aadef20d0ecc0f4428b464dbde61b9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
+  attackType: 0
+  damage: 20
+  ignoresDamageCooldown: 0

@@ -1971,7 +1971,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2587006252179386548}
-  - component: {fileID: 1075923091636960698}
+  - component: {fileID: 8279857974272354003}
+  - component: {fileID: 1623915252779224093}
+  - component: {fileID: -2693430962280964366}
+  - component: {fileID: -6218926522466141542}
+  - component: {fileID: -5532176888750793101}
   m_Layer: 8
   m_Name: PipisSpamtonHead
   m_TagString: Spamton
@@ -1995,7 +1999,55 @@ Transform:
   - {fileID: 7987538809966982405}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1075923091636960698
+--- !u!135 &8279857974272354003
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8196268856116742741}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.06
+  m_Center: {x: 0, y: 0.06, z: 0}
+--- !u!54 &1623915252779224093
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8196268856116742741}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &-2693430962280964366
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2004,13 +2056,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 8196268856116742741}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 658408db41c885c42b8212aa4f6253f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 0de79f0e68b541d4cab3b15ae2e58ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
-  minSpeed: 1
-  acceleration: 0
-  randomizeSpeed: 1
+  timeToDestroy: 1.5
+--- !u!114 &-6218926522466141542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8196268856116742741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66103d9adc3409f44855f44cb332b7ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkTagOnCollide: 1
+  ignoreTags:
+  - CartTrigger
+--- !u!114 &-5532176888750793101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8196268856116742741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aadef20d0ecc0f4428b464dbde61b9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
+  attackType: 0
+  damage: 5
+  ignoresDamageCooldown: 1
 --- !u!1 &8236431286557081779
 GameObject:
   m_ObjectHideFlags: 0

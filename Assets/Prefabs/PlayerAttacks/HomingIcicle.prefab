@@ -4994,6 +4994,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkTagOnCollide: 1
+  ignoreTags:
+  - CartTrigger
 --- !u!136 &-2779818489825734053
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -5076,6 +5078,8 @@ MonoBehaviour:
   spawnOnCollision: 1
   spawnOnTrigger: 1
   checkTag: 1
+  ignoreTags:
+  - CartTrigger
 --- !u!1 &4300650847579287282
 GameObject:
   m_ObjectHideFlags: 0

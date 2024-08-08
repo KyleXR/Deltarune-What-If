@@ -56,7 +56,7 @@ MonoBehaviour:
   randomSpawn: 0
   objectToSpawn: {fileID: 3881009767177758116, guid: 39354d98837f02f4cbcc00b8ed89e69f,
     type: 3}
-  minSpawnRadius: 20
-  spawnRadius: 25
+  minSpawnRadius: 30
+  spawnRadius: 35
   spawnAngle: 25
   spawnInterval: 0.25

@@ -15,6 +15,7 @@ public class SpawnOnCollision : MonoBehaviour
     public bool spawnOnTrigger = false;
 
     public bool checkTag = false;
+    public List<string> ignoreTags;
 
     // Update is called once per frame
     void Update()
@@ -26,6 +27,8 @@ public class SpawnOnCollision : MonoBehaviour
     // collides with another collider
     private void OnCollisionEnter(Collision collision)
     {
+        if (ignoreTags.Contains(collision.gameObject.tag)) return;
+
         if (spawnOnCollision && prefabToSpawn != null)
         {
             if (checkTag && !collision.gameObject.CompareTag(tag))
@@ -43,6 +46,7 @@ public class SpawnOnCollision : MonoBehaviour
     // enters a trigger collider
     private void OnTriggerEnter(Collider other)
     {
+        if (ignoreTags.Contains(other.tag)) return;
         if (spawnOnTrigger && prefabToSpawn != null)
         {
             if (checkTag && !other.CompareTag(tag))

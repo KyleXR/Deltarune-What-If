@@ -117,6 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4636313836605568293}
   - component: {fileID: 3758124237994402611}
+  - component: {fileID: 8984761939017380003}
   m_Layer: 8
   m_Name: LaserBeam
   m_TagString: Spamton
@@ -158,7 +159,7 @@ MonoBehaviour:
   baseSpawnAmount: 1
   urgency: 0
   damage: 10
-  ignoresInvulability: 0
+  ignoresInvulability: 1
   isUnique: 0
   duration: 5
   attackType: 0
@@ -166,7 +167,7 @@ MonoBehaviour:
   randomSpawn: 0
   laserCharge: {fileID: 4083361941711088992}
   laserBeam: {fileID: 6242993437101301674}
-  laserLength: 20
+  laserLength: 30
   laserSpeed: 10
   laserDuration: 1
   directionAxis: {x: 0, y: 0, z: 1}
@@ -174,6 +175,22 @@ MonoBehaviour:
   pulseCount: 10
   isShooting: 0
   aimTransform: {fileID: 1389354716827643154}
+--- !u!114 &8984761939017380003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4065013647197400620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aadef20d0ecc0f4428b464dbde61b9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: 
+  attackType: 0
+  damage: 10
+  ignoresDamageCooldown: 0
 --- !u!1 &4083361941711088992
 GameObject:
   m_ObjectHideFlags: 0

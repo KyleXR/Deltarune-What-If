@@ -2625,7 +2625,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -3219,6 +3219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3103804255004467133}
+  - component: {fileID: 3336881898736468778}
   - component: {fileID: -4885758842101876952}
   - component: {fileID: 868198910482166499}
   - component: {fileID: -965583597084364172}
@@ -3251,6 +3252,23 @@ Transform:
   - {fileID: 948513577452483813}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3336881898736468778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8621306923391871138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8712ac606fa5f23418db1e462a86b625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 90
+  damageCooldown: 0.5
+  currentHealth: 90
+  damageNumberPrefab: {fileID: 0}
+  spawnDamageNumber: 0
 --- !u!114 &-4885758842101876952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3267,7 +3285,7 @@ MonoBehaviour:
   targetLayers:
     serializedVersion: 2
     m_Bits: 960
-  maxDistance: 20
+  maxDistance: 30
   maxAngle: 30
   snowgraveAim: {fileID: 9104073714986601884}
   aimerPos: {x: 0, y: 0, z: 0}

@@ -15,14 +15,14 @@ public class Health : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
-    public void TakeDamage (float damage)
+    public void TakeDamage (float damage, float cooldownOverride = -1)
     {
-        TakeDamage(damage, Vector3.zero); //If the position doesn't matter.
+        TakeDamage(damage, Vector3.zero, cooldownOverride); //If the position doesn't matter.
     }
-    public void TakeDamage(float damage, Vector3 damagePosition)
+    public void TakeDamage(float damage, Vector3 damagePosition, float cooldownOverride = -1)
     {
         // Check if enough time has passed since the last damage was taken
-        if (Time.time - lastDamageTime >= damageCooldown)
+        if (Time.time - lastDamageTime >= ((cooldownOverride < 0) ? damageCooldown : cooldownOverride))
         {
             if (spawnDamageNumber && damageNumberPrefab != null)
             {

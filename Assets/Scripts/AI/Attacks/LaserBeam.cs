@@ -37,7 +37,7 @@ public class LaserBeam : NEO_Attack
     public override void InitializeAttack(NEO_AttackHandler handler, Transform spawnTransform, Transform targetTransform, float currentUrgency = 0)
     {
         base.InitializeAttack(handler, spawnTransform, targetTransform, currentUrgency);
-        this.aimTransform.parent = null;
+        this.aimTransform.parent = targetTransform.parent;
         this.aimTransform.position = targetTransform.position;
         //Physics.Raycast(spawnTransform.position, targetTransform.position - spawnTransform.position, out hit, laserLength);
         RaycastHit hit;

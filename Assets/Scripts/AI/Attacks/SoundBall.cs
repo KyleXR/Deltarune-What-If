@@ -5,7 +5,6 @@ using UnityEngine;
 public class SoundBall : NEO_Attack
 {
     [SerializeField] private GameObject attackPrefab;
-
     public float pulseDuration = 1f;   // Duration of one pulse cycle
     public float maxScale = 2f;        // Maximum scale factor
     public float minScale = 1f;        // Minimum scale factor
@@ -14,34 +13,47 @@ public class SoundBall : NEO_Attack
     public int spawnPulses = 2;
     public int attackAmount = 2;
     public int attackRange = 5;
-    //public Vector3 spawnBounds;  // Add this to define the spawn bounds
-    public float maxSpeed = 2f;  // Maximum speed of movement
-    //public float decelerationTime = 1f;  // Time taken to decelerate to zero
+    public float maxSpeed = 2f;        // Maximum speed of movement
+    public float forceMagnitude = 10f; // Magnitude of the force to be applied to the projectiles
     private bool isFiring = false;
     private bool isAttacking = false;
     public bool cannonFire = true;
     private Vector3 originalScale = Vector3.zero;
     private Vector3 targetPosition = Vector3.zero;
+    private Vector3 originalLocalPosition = Vector3.zero;
+    private float originalDistance = 0;
+    private Rigidbody rb; // Reference to the Rigidbody component
 
-    // Start is called before the first frame update
     void Start()
     {
         originalScale = transform.localScale;
-        targetPosition = new Vector3(Random.Range(-spawnBounds.x, spawnBounds.x), Random.Range(-spawnBounds.y, spawnBounds.y) + 1, Random.Range(-spawnBounds.z, spawnBounds.z));
+        
+        rb = GetComponent<Rigidbody>(); // Get the Rigidbody component
+        originalLocalPosition = transform.localPosition;
+        originalDistance = Vector3.Distance(transform.position, targetPosition);
+        transform.rotation = Quaternion.identity;
 
-        // Start coroutines to pulse scale and lerp position
+        UpdateTargetPosition();
 
         if (cannonFire) StartCoroutine(ChargeUp());
         else
         {
             StartCoroutine(PulseScale());
-            StartCoroutine(SmoothMoveToTarget(targetPosition));
+            ApplyImpulseToTarget(targetPosition);
         }
     }
+
     private void Update()
     {
         if (!isFiring && cannonFire) transform.position = spawnTransform.position;
+
+        if (Vector3.Distance(transform.localPosition, originalLocalPosition) >= originalDistance)
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
     }
+
     public override void InitializeAttack(NEO_AttackHandler handler, Transform spawnTransform, Transform targetTransform, float currentUrgency = 0)
     {
         base.InitializeAttack(handler, spawnTransform, targetTransform, currentUrgency);
@@ -63,10 +75,13 @@ public class SoundBall : NEO_Attack
         if (cannonFire) handler.StopAiming();
         isFiring = true;
         transform.rotation = Quaternion.identity;
-        StartCoroutine(SmoothMoveToTarget(targetPosition));
+
+        UpdateTargetPosition();
+
+        ApplyImpulseToTarget(targetPosition);
         if (cannonFire) Invoke("FinishFiring", 2);
     }
-    // Coroutine to pulse the scale of the GameObject
+
     IEnumerator PulseScale()
     {
         int currentPulses = 0;
@@ -119,38 +134,11 @@ public class SoundBall : NEO_Attack
         transform.localScale = originalScale * endScale; // Ensure the scale is set to the final value
     }
 
-    // Coroutine to move the GameObject smoothly to the target position
-    IEnumerator SmoothMoveToTarget(Vector3 targetPosition)
+    void ApplyImpulseToTarget(Vector3 targetPosition)
     {
-        float distance = Vector3.Distance(transform.position, targetPosition);
-        float totalTime = distance / maxSpeed * 2;  // Time to travel the full distance at max speed
-
-        float elapsedTime = 0f;
-
-        while (elapsedTime < totalTime)
-        {
-            // Calculate the fraction of time passed
-            float t = elapsedTime / totalTime;
-
-            // Calculate the current speed based on the remaining distance
-            float currentSpeed = Mathf.Lerp(maxSpeed, 0, t);
-
-            // Move the object towards the target position
-            float step = currentSpeed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
-
-            // Update elapsed time
-            elapsedTime += Time.deltaTime;
-
-            yield return null;
-        }
-
-        // Ensure the final position is set to the target position
-        transform.position = targetPosition;
+        Vector3 direction = (targetPosition - transform.position).normalized;
+        rb.AddForce(direction * forceMagnitude, ForceMode.Impulse);
     }
-
-
-
 
     // Method to spawn multiple attacks with evenly spread starting rotations
     void SpawnAttacks(int amount)
@@ -170,14 +158,13 @@ public class SoundBall : NEO_Attack
             // Transform the local direction to world space
             Vector3 attackDirection = transform.TransformDirection(attackDirectionLocal);
 
-            // Create a ray from the position in the calculated direction
-            Ray ray = new Ray(transform.position, attackDirection);
-
             // Instantiate the attack prefab with the calculated rotation
             GameObject attack = Instantiate(attackPrefab, transform.position, Quaternion.LookRotation(attackDirection));
+            attack.transform.parent = transform.parent;
 
-            // Make the attack follow the ray path if applicable
-            attack.GetComponent<RayFollower>().FollowRayPath(ray, attackRange);
+            // Apply force to the Rigidbody of the attack prefab with deceleration
+            Rigidbody attackRb = attack.GetComponent<Rigidbody>();
+            attackRb.AddForce(attackDirection * forceMagnitude, ForceMode.Impulse);
 
             // Increment the angle for the next attack
             angle += angleStep;
@@ -192,5 +179,26 @@ public class SoundBall : NEO_Attack
             handler.StopAiming();
             handler.ToggleCannon(true, false);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Ground")) rb.velocity = Vector3.zero;
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground")) rb.velocity = Vector3.zero;
+    }
+
+    public void UpdateTargetPosition()
+    {
+        targetPosition = new Vector3(Random.Range(-spawnBounds.x, spawnBounds.x), Random.Range(-spawnBounds.y, spawnBounds.y) + 1, Random.Range(-spawnBounds.z, spawnBounds.z));
+        targetPosition += targetTransform.position;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(targetPosition, 0.5f);
     }
 }

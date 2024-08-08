@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
+    public string targetTag;
     public enum AttackType
     {
         Once,
@@ -12,6 +13,7 @@ public class Attack : MonoBehaviour
 
     public AttackType attackType;
     public float damage = 10f;
+    public bool ignoresDamageCooldown = false;
     //public float burstInterval = 0.2f; // Interval between burst attacks
     //public float continuousDuration = 2f; // Duration of continuous attack
     //public float attackRange = 10f; // Range of the attack (used for initialization)
@@ -20,15 +22,21 @@ public class Attack : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (attackType == AttackType.Continuous)
+        if (other.tag == targetTag || targetTag == string.Empty)
         {
-            ApplyDamage(other);
+            if (attackType == AttackType.Continuous)
+            {
+                ApplyDamage(other);
+            }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        ApplyDamage(other);
+        if (other.tag == targetTag || targetTag == string.Empty)
+        {
+            ApplyDamage(other);
+        }
     }
 
     //void Update()
@@ -75,7 +83,7 @@ public class Attack : MonoBehaviour
         if (health == null) { health = collider.GetComponentInParent<Health>(); }
         if (health != null)
         {
-            health.TakeDamage(damage, collider.ClosestPoint(transform.position));
+            health.TakeDamage(damage, collider.ClosestPoint(transform.position), (ignoresDamageCooldown ? 0.25f : -1));
         }
     }
 
