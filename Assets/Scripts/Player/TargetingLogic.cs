@@ -24,8 +24,8 @@ public class TargetingLogic : MonoBehaviour
     public Spell selectedSpell = 0;
     public enum Spell
     {
-        Iceshock,
-        Snowgrave
+        IceShock,
+        SnowGrave
     }
 
     // Start is called before the first frame update
@@ -59,17 +59,17 @@ public class TargetingLogic : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            selectedSpell = Spell.Iceshock;
+            selectedSpell = Spell.IceShock;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            selectedSpell = Spell.Snowgrave;
+            selectedSpell = Spell.SnowGrave;
         }
 
-        if (selectedSpell == Spell.Snowgrave && Input.GetMouseButton(1))
+        if (selectedSpell == Spell.SnowGrave && Input.GetMouseButton(1))
         {
-            HandleSnowgraveAiming();
+            HandleSnowGraveAiming();
         }
         else
         {
@@ -77,7 +77,7 @@ public class TargetingLogic : MonoBehaviour
         }
     }
 
-    void HandleSnowgraveAiming()
+    void HandleSnowGraveAiming()
     {
         if (currentTarget != null)
         {
@@ -108,10 +108,10 @@ public class TargetingLogic : MonoBehaviour
     {
         switch (selectedSpell)
         {
-            case Spell.Iceshock:
+            case Spell.IceShock:
                 currentTarget = FindClosestTarget();
                 break;
-            case Spell.Snowgrave:
+            case Spell.SnowGrave:
                 currentTarget = FindCameraAim();
                 break;
         }

@@ -5,7 +5,7 @@ public class Health : MonoBehaviour
 {
     public float maxHealth = 100f;
     public float damageCooldown = 1f; // Cooldown time in seconds
-    [SerializeField] private float currentHealth;
+    [SerializeField] public float currentHealth;
     private float lastDamageTime = -Mathf.Infinity; // Initialize to a time in the past
 
     [SerializeField] private GameObject damageNumberPrefab;

@@ -16,7 +16,6 @@ public class PlayerAnimation : MonoBehaviour
 		if (currentSpeed > 3)
 		{
 			animator.speed = currentSpeed * speedMultiplier;
-			Debug.Log("Curr Speed: " + currentSpeed);
 		}
 		else
 		{

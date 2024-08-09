@@ -24,7 +24,7 @@ public class SpellProjectileSpawner : MonoBehaviour
         {
             GameObject projectile;
 
-            if (targetingLogic.selectedSpell == TargetingLogic.Spell.Snowgrave)
+            if (targetingLogic.selectedSpell == TargetingLogic.Spell.SnowGrave)
             {
                 Vector3 spawnPosition = targetingLogic.aimerPos;
                 RaycastHit hit;
