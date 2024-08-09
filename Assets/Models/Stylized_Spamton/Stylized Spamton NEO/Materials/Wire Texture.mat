@@ -31,6 +31,7 @@ Material:
   - _EMISSION
   - _MULTIPLYBYLIGHTCOLOR_ON
   - _NORMALSURFACEOUTLINE_ON
+  - _POSTERIZELIGHT_ON
   - _USEEMISSION_ON
   - _USESHADOWS_ON
   - _USESPECULAR_ON
@@ -180,7 +181,7 @@ Material:
     - _HueVariation: 0
     - _LightRamp: 1
     - _LightRampOffset: 0.5
-    - _LightSteps: 5
+    - _LightSteps: 2
     - _LightingMode: 1
     - _Metallic: 0
     - _Mode: 0
@@ -198,7 +199,7 @@ Material:
     - _OutlineWidth: 0.191
     - _Parallax: 0.02
     - _PosterizeColors: 0
-    - _PosterizeLight: 0
+    - _PosterizeLight: 1
     - _PuddleScale: 0.4
     - _QueueControl: -1
     - _QueueOffset: 0

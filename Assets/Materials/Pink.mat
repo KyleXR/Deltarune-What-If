@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blue
+  m_Name: Pink
   m_Shader: {fileID: 4800000, guid: 7498cc6ef4a7aa34880ce87140cff123, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -17,6 +17,7 @@ Material:
   - _CLIPTRIPLANAR_ON
   - _MULTIPLYBYLIGHTCOLOR_ON
   - _NORMALSURFACEOUTLINE_ON
+  - _POSTERIZELIGHT_ON
   - _USEOUTLINES_ON
   - _USESHADOWS_ON
   - _USESPECULAR_ON
@@ -140,7 +141,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
-    - _EmissionEffectScale: 1
+    - _EmissionEffectScale: 0
     - _EmissionLightRatio: 1
     - _EmissionShadowRatio: 1
     - _EmissionUVSource: 0
@@ -153,9 +154,9 @@ Material:
     - _FlutterSource: 3
     - _FlutterSpeed: 1
     - _GlintScale: 0.4
-    - _GlossMapScale: 0
-    - _Glossiness: 0
-    - _GlossyReflections: 0
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
     - _GradientOffset: 0
     - _GradientSensitivity: 1
     - _GradientSource: 1
@@ -166,9 +167,10 @@ Material:
     - _HueVariation: 0
     - _LightRamp: 1
     - _LightRampOffset: 0.5
-    - _LightSteps: 5
+    - _LightSteps: 2
     - _LightingMode: 1
     - _Metallic: 0
+    - _Mode: 0
     - _MultiplyByLightColor: 1
     - _MultiplyByLightRatio: 0
     - _NoiseAmountLight: 0
@@ -180,10 +182,10 @@ Material:
     - _NormalMode: 0
     - _NormalSurfaceOutline: 1
     - _OcclusionStrength: 1
-    - _OutlineWidth: 0.284
-    - _Parallax: 0.005
+    - _OutlineWidth: 0.15
+    - _Parallax: 0.02
     - _PosterizeColors: 0
-    - _PosterizeLight: 0
+    - _PosterizeLight: 1
     - _PuddleScale: 0.4
     - _QueueControl: -1
     - _QueueOffset: 0
@@ -222,6 +224,7 @@ Material:
     - _TriplanarMultiplier: 2
     - _TriplanarOffset: 0
     - _TriplanarSpace: 1
+    - _UVSec: 0
     - _UseCOZYPrecipitation: 0
     - _UseColorAdjustments: 0
     - _UseEmission: 0
@@ -254,11 +257,11 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.36078426, g: 0.21176472, b: 0.34117645, a: 1}
+    - _Color: {r: 0.36078423, g: 0.2117647, b: 0.34117642, a: 1}
     - _CustomNormalDirection: {r: 0, g: 1, b: 0, a: 0}
     - _CustomNormalEllipseSize: {r: 1, g: 1, b: 1, a: 0}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColor: {r: 0.0873575, g: 0.05127505, b: 0.08260982, a: 1}
     - _EmissionScrolling1: {r: 1, g: 1, b: 0, a: 0}
     - _EmissionScrolling2: {r: 0.1, g: -0.5, b: 0, a: 0}
     - _FarColor: {r: 0, g: 0, b: 0, a: 1}
@@ -268,7 +271,7 @@ Material:
     - _GradientChannelMask: {r: 0, g: 1, b: 0, a: 0}
     - _GradientPositionalOffset: {r: 0, g: 0, b: 0, a: 0}
     - _LightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _MainColor: {r: 0.043137256, g: 0.043137256, b: 0.23137255, a: 1}
+    - _MainColor: {r: 0.36078432, g: 0.21176471, b: 0.34117648, a: 1}
     - _NearColor: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _PuddleColor: {r: 0.19475657, g: 0.34486926, b: 0.43396226, a: 0}
@@ -276,7 +279,7 @@ Material:
     - _ShadowColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
     - _SnowColor: {r: 1, g: 1, b: 1, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _SpecularColor: {r: 0.001214108, g: 0.001214108, b: 0.02121901, a: 1}
+    - _SpecularColor: {r: 0.056128494, g: 0.019382361, b: 0.049706575, a: 1}
     - _SwayDirection: {r: 0, g: 1, b: 0, a: 0}
     - _SwayMask: {r: 1, g: 0, b: 0, a: 0}
     - _SwirlDirection: {r: 0, g: 1, b: 0, a: 0}
@@ -288,7 +291,7 @@ Material:
     - _WaveInfluenceDirection: {r: 0, g: 1, b: 0, a: 0}
     - _WaveMask: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &8896467865805104708
+--- !u!114 &7957206556390044629
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

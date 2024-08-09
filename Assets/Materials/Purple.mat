@@ -30,6 +30,7 @@ Material:
   - _CLIPTRIPLANAR_ON
   - _MULTIPLYBYLIGHTCOLOR_ON
   - _NORMALSURFACEOUTLINE_ON
+  - _POSTERIZELIGHT_ON
   - _USEOUTLINES_ON
   - _USESHADOWS_ON
   - _USESPECULAR_ON
@@ -179,7 +180,7 @@ Material:
     - _HueVariation: 0
     - _LightRamp: 0.77
     - _LightRampOffset: 0.376
-    - _LightSteps: 5
+    - _LightSteps: 2
     - _LightingMode: 1
     - _Metallic: 0
     - _Mode: 0
@@ -197,7 +198,7 @@ Material:
     - _OutlineWidth: 0.15
     - _Parallax: 0.02
     - _PosterizeColors: 0
-    - _PosterizeLight: 0
+    - _PosterizeLight: 1
     - _PuddleScale: 0.4
     - _QueueControl: -1
     - _QueueOffset: 0
@@ -291,7 +292,7 @@ Material:
     - _ShadowColor: {r: 0.5188679, g: 0.5188679, b: 0.5188679, a: 1}
     - _SnowColor: {r: 1, g: 1, b: 1, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _SpecularColor: {r: 0.028426038, g: 0.015208514, b: 0.051269468, a: 1}
+    - _SpecularColor: {r: 0.028426038, g: 0.015208514, b: 0.051269468, a: 0.41960785}
     - _SwayDirection: {r: 0, g: 1, b: 0, a: 0}
     - _SwayMask: {r: 1, g: 0, b: 0, a: 0}
     - _SwirlDirection: {r: 0, g: 1, b: 0, a: 0}
