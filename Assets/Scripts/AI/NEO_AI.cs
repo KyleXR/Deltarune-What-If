@@ -17,30 +17,43 @@ public class NEO_AI : MonoBehaviour
     {
         StartCoroutine(RotateAtRandomIntervals());
         StartCoroutine(AttackAtRandomIntervals());
+
+        // Subscribe to the OnTakeDamage event
+        FindFirstObjectByType<FirstPersonController>().GetComponent<Health>().OnTakeDamage += OnPlayerDamaged;
     }
 
-    // Update is called once per frame
+    private void OnDestroy()
+    {
+        // Unsubscribe to avoid memory leaks
+        health.OnTakeDamage -= OnPlayerDamaged;
+    }
+
+    private void OnPlayerDamaged(float damage)
+    {
+        Debug.Log("Player hurt!");
+        UrgencyCooldown();
+    }
+
     void Update()
     {
-        //if (urgency <= rotationDelay * 0.75f && generateUrgency) urgency += urgencyRate * Time.deltaTime;
         if (generateUrgency && urgency <= 10) urgency += urgencyRate * Time.deltaTime;
     }
 
     private void ChangeRotation()
     {
-        // Get new target rotation at 45 degree increments
         int newAngle = Random.Range(0, 8) * 45;
         rotator.targetRotation = newAngle;
-        rotator.rotateToTarget = true; // Make sure to rotate to the new target
+        rotator.rotateToTarget = true;
     }
 
     public void PauseRotation(float duration)
     {
         rotator.PauseRotation(duration);
     }
+
     public void PauseAttacks(float duration)
     {
-
+        attackHandler.PauseAttack(duration);
     }
 
     private IEnumerator RotateAtRandomIntervals()
@@ -49,13 +62,12 @@ public class NEO_AI : MonoBehaviour
         {
             float tempUrgency = urgency;
             if (urgency >= rotationDelay * 0.75f) tempUrgency = rotationDelay * 0.75f;
-            // Wait for a random time based on rotationDelay and urgency
+
             float waitTime = rotationDelay - tempUrgency;
-            waitTime = Mathf.Max(waitTime, 0.1f); // Ensure we don't get a negative or zero wait time
+            waitTime = Mathf.Max(waitTime, 0.1f);
 
             yield return new WaitForSeconds(waitTime);
 
-            // Change rotation after the wait
             if (!rotator.isRotating) ChangeRotation();
         }
     }
@@ -72,26 +84,15 @@ public class NEO_AI : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public void UrgencyCooldown()
     {
-        //health -= damage;
-        //if (health <= 0)
-        //{
-        //    health = 0; //initiate death
-        //}
-        //UrgencyCooldown();
+        urgency *= 0.5f;
+        generateUrgency = false;
+        Invoke("EnableUrgencyGeneration", 5);
     }
 
     public void EnableUrgencyGeneration()
     {
         generateUrgency = true;
-    }
-
-    public void UrgencyCooldown()
-    {
-        //Will be called when Spamton NEO damages the player
-        urgency *= 0.5f;
-        generateUrgency = false;
-        Invoke("EnableUrgencyGeneration", 5);
     }
 }

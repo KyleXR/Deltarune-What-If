@@ -19,7 +19,7 @@ TagManager:
   - Spamton
   - Ground
   - CartTrigger
-  - 
+  - vlight
   - 
   - 
   - 
@@ -46,4 +46,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 3320327409
+    locked: 0
+  - name: vlight
+    uniqueID: 813273979
     locked: 0

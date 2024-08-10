@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -10,6 +11,8 @@ public class Health : MonoBehaviour
 
     [SerializeField] private GameObject damageNumberPrefab;
     [SerializeField] private bool spawnDamageNumber = false;
+
+    public event Action<float> OnTakeDamage;
 
     void Start()
     {
@@ -38,6 +41,7 @@ public class Health : MonoBehaviour
             {
                 Die();
             }
+            OnTakeDamage?.Invoke(damage); //Calls the event
         }
     }
 
