@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3367010788850941124}
   - component: {fileID: 3675418122066560121}
   - component: {fileID: 8122455332704843992}
+  - component: {fileID: 1131683239513941267}
   m_Layer: 8
   m_Name: Phone
   m_TagString: Spamton
@@ -105,6 +106,22 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.13905756
   m_Center: {x: 0, y: 0, z: -0.027585763}
+--- !u!114 &1131683239513941267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627194450007778743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aadef20d0ecc0f4428b464dbde61b9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: 
+  attackType: 0
+  damage: 5
+  ignoresDamageCooldown: 0
 --- !u!1 &1678746866236438973
 GameObject:
   m_ObjectHideFlags: 0

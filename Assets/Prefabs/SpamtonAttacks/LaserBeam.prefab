@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8471923300734812337}
   - component: {fileID: 5843909804751016614}
   - component: {fileID: 3198903769150830066}
+  - component: {fileID: 9157759976452602261}
   m_Layer: 8
   m_Name: Beam
   m_TagString: Untagged
@@ -101,12 +102,28 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &9157759976452602261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2200465554570002207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aadef20d0ecc0f4428b464dbde61b9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
+  attackType: 1
+  damage: 5
+  ignoresDamageCooldown: 1
 --- !u!1 &4065013647197400620
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +184,7 @@ MonoBehaviour:
   randomSpawn: 0
   laserCharge: {fileID: 4083361941711088992}
   laserBeam: {fileID: 6242993437101301674}
-  laserLength: 30
+  laserLength: 40
   laserSpeed: 10
   laserDuration: 1
   directionAxis: {x: 0, y: 0, z: 1}

@@ -3219,6 +3219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3103804255004467133}
+  - component: {fileID: 7505015212238735073}
   - component: {fileID: 3336881898736468778}
   - component: {fileID: -4885758842101876952}
   - component: {fileID: 868198910482166499}
@@ -3252,6 +3253,23 @@ Transform:
   - {fileID: 948513577452483813}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7505015212238735073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8621306923391871138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b22c674437365c4da712fcc72faf71b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tensionPoints: 0
+  maxTensionPoints: 100
+  grazeDistance: 2
+  enemyTag: Spamton
+  checkInterval: 0.2
 --- !u!114 &3336881898736468778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3331,6 +3349,9 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
+  tensionCosts:
+  - 16
+  - 100
 --- !u!114 &3810057691667069406
 MonoBehaviour:
   m_ObjectHideFlags: 0

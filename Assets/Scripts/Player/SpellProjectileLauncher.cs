@@ -1,3 +1,5 @@
+using Dreamteck.Splines.Primitives;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpellProjectileSpawner : MonoBehaviour
@@ -7,6 +9,16 @@ public class SpellProjectileSpawner : MonoBehaviour
     public TargetingLogic targetingLogic;
     public float groundCheckDistance = 100f; // Maximum distance to check for ground
     [SerializeField] LayerMask groundLayer;
+
+    [SerializeField] List<float> tensionCosts;
+    private TensionPoints tension;
+
+    [SerializeField] private float Magic = 11;
+
+    private void Start()
+    {
+        tension = GetComponent<TensionPoints>();
+    }
 
     void Update()
     {
@@ -23,8 +35,7 @@ public class SpellProjectileSpawner : MonoBehaviour
         if (target != null)
         {
             GameObject projectile;
-
-            if (targetingLogic.selectedSpell == TargetingLogic.Spell.SnowGrave)
+            if (targetingLogic.selectedSpell == TargetingLogic.Spell.SnowGrave && tension.tensionPoints >= tensionCosts[1])
             {
                 Vector3 spawnPosition = targetingLogic.aimerPos;
                 RaycastHit hit;
@@ -40,10 +51,13 @@ public class SpellProjectileSpawner : MonoBehaviour
                     // If no ground is detected, set the Y position to the end of the raycast
                     spawnPosition.y -= groundCheckDistance;
                 }
-
                 projectile = Instantiate(spellPrefabs[1], spawnPosition, Quaternion.identity);
+                var destroyTimer = projectile.GetComponent<DestroyTimer>();
+                projectile.GetComponent<Attack>().damage = Mathf.Round((40 * Magic + 600 + Random.Range(0, 101))/destroyTimer.timeToDestroy);
+
+                tension.tensionPoints -= tensionCosts[1];
             }
-            else
+            else if (targetingLogic.selectedSpell == TargetingLogic.Spell.IceShock && tension.tensionPoints >= tensionCosts[0])
             {
                 projectile = Instantiate(spellPrefabs[0], launchPoint.position, launchPoint.rotation);
                 HomingProjectile homingProjectile = projectile.GetComponent<HomingProjectile>();
@@ -52,6 +66,12 @@ public class SpellProjectileSpawner : MonoBehaviour
                 {
                     homingProjectile.target = target;
                 }
+                projectile.GetComponent<Attack>().damage = Mathf.Round(30 * (Magic - 10) + 90 + Random.Range(0, 11));
+                tension.tensionPoints -= tensionCosts[0];
+            }
+            else
+            {
+                projectile = Instantiate(spellPrefabs[0], launchPoint.position, launchPoint.rotation);
             }
             projectile.transform.parent = transform.parent;
         }

@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
 
     // TP UI Variables
     [Header("TP Meter Variables")]
+    [SerializeField] TensionPoints tension;
     [SerializeField] Slider TP_Bar;
     [SerializeField] Image SliderImage;
     [SerializeField] Image[] TPNumbers;
@@ -43,6 +44,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        if (tension == null) tension = FindFirstObjectByType<TensionPoints>();
         healthBar.value = health.currentHealth / health.maxHealth;
         spamHealthBar.value = spamHealth.currentHealth / spamHealth.maxHealth;
         SetHealthUI();
@@ -85,6 +87,7 @@ public class UIManager : MonoBehaviour
 
     public void SetTPUI()
     {
+        tpPercent = tension.tensionPoints;
         tpPercent = Mathf.Clamp(tpPercent, 0, 100);
 
 
