@@ -13,6 +13,7 @@ public class Health : MonoBehaviour
     [SerializeField] private bool spawnDamageNumber = false;
 
     public event Action<float> OnTakeDamage;
+    public event Action<bool> OnDeath;
 
     void Start()
     {
@@ -47,6 +48,7 @@ public class Health : MonoBehaviour
 
     void Die()
     {
+        OnDeath?.Invoke(true);
         // Handle death (e.g., play death animation, deactivate the object)
         Debug.Log($"{gameObject.name} has died.");
         gameObject.SetActive(false); // Example action: deactivate the object
