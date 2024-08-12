@@ -1,87 +1,52 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class HomingProjectile : MonoBehaviour
 {
-    public Transform target; // The target the projectile will home in on
-    public float speed = 10f; // Speed of the projectile
-    public float rotationSpeed = 5f; // Rotation speed of the projectile
-    public float lifeTime = 5f; // Lifetime of the projectile before it gets destroyed
-    public string targetTag = "Enemy"; // Tag of the targets to check for
-    public float checkInterval = 0.5f; // Interval between checks for the closest target
+    public LayerMask targetLayer;  // Set this in the Inspector
+    public float speed = 5f;
+    public float rotationSpeed = 200f;
+    public float targetSearchInterval = 0.5f;  // Interval in seconds between target searches
+    public Transform target;
 
-    private Rigidbody rb;
-
-    // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        if (rb == null)
-        {
-            rb = gameObject.AddComponent<Rigidbody>();
-        }
-        rb.useGravity = false; // Disable gravity for the projectile
-        Destroy(gameObject, lifeTime); // Destroy the projectile after its lifetime has elapsed
-
-        StartCoroutine(UpdateTarget());
+        StartCoroutine(FindTargetCoroutine());
     }
 
-    // FixedUpdate is called once per physics update
-    void FixedUpdate()
+    void Update()
     {
         if (target != null)
         {
-            // Calculate direction to the target
             Vector3 direction = (target.position - transform.position).normalized;
-
-            // Calculate rotation step
-            float rotationStep = rotationSpeed * Time.fixedDeltaTime;
-
-            // Rotate the projectile towards the target
             Quaternion targetRotation = Quaternion.LookRotation(direction);
-            rb.rotation = Quaternion.RotateTowards(rb.rotation, targetRotation, rotationStep);
-
-            // Move the projectile forward
-            rb.velocity = transform.forward * speed;
-        }
-        else
-        {
-            // If no target, just move forward
-            rb.velocity = transform.forward * speed;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            transform.position += transform.forward * speed * Time.deltaTime;
         }
     }
 
-    private IEnumerator UpdateTarget()
+    IEnumerator FindTargetCoroutine()
     {
         while (true)
         {
-            FindClosestTarget();
-            yield return new WaitForSeconds(checkInterval);
+            FindTarget();
+            yield return new WaitForSeconds(targetSearchInterval);
         }
     }
 
-    private void FindClosestTarget()
+    void FindTarget()
     {
-        GameObject[] potentialTargets = GameObject.FindGameObjectsWithTag(targetTag);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, Mathf.Infinity, targetLayer);
         float closestDistance = Mathf.Infinity;
-        Transform closestTarget = null;
 
-        foreach (GameObject potentialTarget in potentialTargets)
+        foreach (Collider collider in colliders)
         {
-            Vector3 directionToTarget = potentialTarget.transform.position - transform.position;
-            float distanceToTarget = directionToTarget.magnitude;
-
-            if (distanceToTarget < closestDistance && Vector3.Dot(transform.forward, directionToTarget.normalized) > 0)
+            float distance = Vector3.Distance(transform.position, collider.transform.position);
+            if (distance < closestDistance)
             {
-                closestDistance = distanceToTarget;
-                closestTarget = potentialTarget.transform;
+                closestDistance = distance;
+                target = collider.transform;
             }
-        }
-
-        if (closestTarget != null)
-        {
-            target = closestTarget;
         }
     }
 }

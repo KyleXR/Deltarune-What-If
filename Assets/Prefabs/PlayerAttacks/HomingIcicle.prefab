@@ -4975,12 +4975,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214d50a39befa694a833649ed950713a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 192
   speed: 25
-  rotationSpeed: 150
-  lifeTime: 2
-  targetTag: Spamton
-  checkInterval: 0.25
+  rotationSpeed: 200
+  targetSearchInterval: 0.5
+  target: {fileID: 0}
 --- !u!114 &-7847379250662431113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5058,8 +5059,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aadef20d0ecc0f4428b464dbde61b9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetTag: 
   attackType: 0
   damage: 10
+  ignoresDamageCooldown: 0
 --- !u!114 &-294100242806204605
 MonoBehaviour:
   m_ObjectHideFlags: 0

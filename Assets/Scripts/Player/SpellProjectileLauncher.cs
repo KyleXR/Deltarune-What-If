@@ -53,7 +53,7 @@ public class SpellProjectileSpawner : MonoBehaviour
                 }
                 projectile = Instantiate(spellPrefabs[1], spawnPosition, Quaternion.identity);
                 var destroyTimer = projectile.GetComponent<DestroyTimer>();
-                projectile.GetComponent<Attack>().damage = Mathf.Round((40 * Magic + 600 + Random.Range(0, 101))/destroyTimer.timeToDestroy);
+                projectile.GetComponent<Attack>().damage = Mathf.Round((40 * Magic + 600 + Random.Range(0, 101))/destroyTimer.timeToDestroy*0.1f);
 
                 tension.tensionPoints -= tensionCosts[1];
             }
