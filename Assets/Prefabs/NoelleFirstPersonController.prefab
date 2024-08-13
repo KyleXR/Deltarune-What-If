@@ -3308,6 +3308,7 @@ MonoBehaviour:
   snowgraveAim: {fileID: 9104073714986601884}
   aimerPos: {x: 0, y: 0, z: 0}
   groundCheckDistance: 10
+  playerCamera: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -3356,6 +3357,7 @@ MonoBehaviour:
   - 100
   Magic: 11
   SOULChargeTime: 1
+  SOULFireForce: 40
 --- !u!114 &3810057691667069406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3373,7 +3375,7 @@ MonoBehaviour:
   invertCamera: 0
   cameraCanMove: 1
   mouseSensitivity: 2
-  maxLookAngle: 40
+  maxLookAngle: 60
   lockCursor: 1
   crosshair: 1
   crosshairImage: {fileID: 21300000, guid: be4ce60e2c9768c44b9b10b9c5258045, type: 3}
@@ -3392,7 +3394,7 @@ MonoBehaviour:
   sprintSpeed: 7.5
   sprintDuration: 5
   sprintCooldown: 0.5
-  sprintFOV: 60
+  sprintFOV: 115.6
   sprintFOVStepTime: 10
   useSprintBar: 1
   hideBarWhenFull: 1

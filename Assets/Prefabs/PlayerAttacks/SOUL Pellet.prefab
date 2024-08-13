@@ -216,6 +216,8 @@ MonoBehaviour:
   checkTag: 1
   ignoreTags:
   - CartTrigger
+  - SpamtonBody
+  - SpamtonHead
   tensionGain: 1
 --- !u!114 &2875894882869818568
 MonoBehaviour:
@@ -229,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0de79f0e68b541d4cab3b15ae2e58ce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToDestroy: 5
+  timeToDestroy: 2
 --- !u!1 &7553652687871023693
 GameObject:
   m_ObjectHideFlags: 0

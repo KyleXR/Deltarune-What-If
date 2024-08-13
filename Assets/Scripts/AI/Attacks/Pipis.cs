@@ -35,6 +35,7 @@ public class Pipis : MonoBehaviour
     {
         if (ignoreTags.Contains(other.tag)) return;
         // Destroy the game object when it is triggered
+        if (other.TryGetComponent<Attack>(out var attack)) return;
         ShootRays();
         Destroy(gameObject);
     }
