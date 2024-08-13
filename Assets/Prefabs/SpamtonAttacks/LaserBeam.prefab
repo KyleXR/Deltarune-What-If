@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9157759976452602261}
   m_Layer: 8
   m_Name: Beam
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 5059393810728605500}
   m_Layer: 8
   m_Name: Charge
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -322,7 +322,7 @@ GameObject:
   - component: {fileID: 5283456554194453264}
   m_Layer: 8
   m_Name: BeamAnchor
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

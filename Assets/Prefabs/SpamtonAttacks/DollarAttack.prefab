@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3418187224981676767}
   - component: {fileID: 690618407234726692}
   - component: {fileID: 3977177559498901208}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DollarModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,9 +101,9 @@ GameObject:
   - component: {fileID: 588001910712976417}
   - component: {fileID: -6761111167038250710}
   - component: {fileID: 5306420454265191818}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DollarAttack
-  m_TagString: Untagged
+  m_TagString: Spamton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

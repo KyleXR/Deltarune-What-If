@@ -3343,6 +3343,8 @@ MonoBehaviour:
   spellPrefabs:
   - {fileID: 4006724803596405941, guid: 919e6f122443a444e959836842e2c251, type: 3}
   - {fileID: 2865994087218172643, guid: e020ed7a9c407614f91c1aee9abea314, type: 3}
+  - {fileID: 6805461485148262874, guid: 3eef820585f3cfb449ac721d0a4cb8e3, type: 3}
+  - {fileID: 5637917106232780775, guid: 68b52767f97951641a458b244ccc519b, type: 3}
   launchPoint: {fileID: 4079065392987226190}
   targetingLogic: {fileID: -4885758842101876952}
   groundCheckDistance: 20
@@ -3352,6 +3354,8 @@ MonoBehaviour:
   tensionCosts:
   - 16
   - 100
+  Magic: 11
+  SOULChargeTime: 1
 --- !u!114 &3810057691667069406
 MonoBehaviour:
   m_ObjectHideFlags: 0

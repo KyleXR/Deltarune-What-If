@@ -14,7 +14,7 @@ public class TargetingLogic : MonoBehaviour
 
     public float groundCheckDistance = 20f; // Maximum distance to check for ground
 
-    private Camera playerCamera;
+    [HideInInspector] public Camera playerCamera;
     private Transform currentTarget;
     private GameObject tempTarget;
 
@@ -133,6 +133,17 @@ public class TargetingLogic : MonoBehaviour
             }
         }
         return null;
+    }
+    public Vector3 FindCameraAimPosition()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, maxDistance, targetLayers))
+        {
+            {
+                return hit.point;
+            }
+        }
+        return Vector3.zero;
     }
 
     Transform FindClosestTarget()

@@ -53,7 +53,7 @@ public class TensionPoints : MonoBehaviour
         }
     }
 
-    void AddTensionPoints(float amount)
+    public void AddTensionPoints(float amount)
     {
         // Increase the TP, but clamp it to the maximum value
         tensionPoints = Mathf.Clamp(tensionPoints + amount, 0, maxTensionPoints);
