@@ -81,7 +81,7 @@ public class GameOverUI : MonoBehaviour
 
     public void GiveUp()
     {
-        SceneManager.LoadScene("titleScreen");
+        SceneManager.LoadScene("TitleScreen");
     }
 
 }
