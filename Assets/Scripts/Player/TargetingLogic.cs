@@ -22,6 +22,7 @@ public class TargetingLogic : MonoBehaviour
     [SerializeField] LayerMask groundLayer;
 
     public Spell selectedSpell = 0;
+
     public enum Spell
     {
         IceShock,

@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: -3035951412621067267}
   - component: {fileID: -7086940720425409954}
   - component: {fileID: -8050850712507997182}
+  - component: {fileID: 3732303508710700342}
   m_Layer: 3
   m_Name: SOUL Charged Pellet
   m_TagString: Player
@@ -300,6 +301,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDestroy: 2
+--- !u!114 &3732303508710700342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5637917106232780775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 596a9c31469a8c14c9e0158e2677e910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabToSpawn: {fileID: 3187121950489060036, guid: b45ff674cf0f0f84aad4e1eeb6f1ede4,
+    type: 3}
+  spawnOffset: {x: 0, y: 0, z: 0}
+  spawnOnCollision: 1
+  spawnOnTrigger: 1
+  checkTag: 1
+  ignoreTags:
+  - CartTrigger
 --- !u!1 &5995714557717870337
 GameObject:
   m_ObjectHideFlags: 0

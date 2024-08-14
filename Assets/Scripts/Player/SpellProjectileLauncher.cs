@@ -16,6 +16,9 @@ public class SpellProjectileSpawner : MonoBehaviour
     [SerializeField] private float Magic = 11;
     [SerializeField] private float SOULChargeTime = 1f;
     [SerializeField] private float SOULFireForce = 20f;
+
+    [SerializeField] private List<GameObject> handObjects;
+
     private float chargeStartTime;
 
     private void Start()
@@ -25,6 +28,8 @@ public class SpellProjectileSpawner : MonoBehaviour
 
     void Update()
     {
+        SwapHandObjects(tension.tensionPoints < tensionCosts[(int)targetingLogic.selectedSpell]);
+
         if (Input.GetMouseButtonDown(0))
         {
             chargeStartTime = Time.time;
@@ -107,4 +112,9 @@ public class SpellProjectileSpawner : MonoBehaviour
         projectile.transform.parent = transform.parent;
     }
 
+    public void SwapHandObjects(bool soulMode = false)
+    {
+        handObjects[0].SetActive(soulMode);
+        handObjects[1].SetActive(!soulMode);
+    }
 }
