@@ -25,7 +25,7 @@ public class NEO_AI : MonoBehaviour
     private void OnDestroy()
     {
         // Unsubscribe to avoid memory leaks
-        health.OnTakeDamage -= OnPlayerDamaged;
+        if (health != null) health.OnTakeDamage -= OnPlayerDamaged;
     }
 
     private void OnPlayerDamaged(float damage)

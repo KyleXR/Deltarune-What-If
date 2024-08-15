@@ -12,12 +12,12 @@ public class DestroyOnCollision : MonoBehaviour
         if (ignoreTags.Contains(other.tag)) return;
         if (checkTagOnCollide && !other.gameObject.CompareTag(tag))
         {
-            Debug.Log(other.name);
+            //Debug.Log(other.name);
             Destroy(gameObject);
         }
         else if (!checkTagOnCollide)
         {
-            Debug.Log(other.name);
+            //Debug.Log(other.name);
             Destroy(gameObject);
         }
     }
@@ -26,12 +26,12 @@ public class DestroyOnCollision : MonoBehaviour
         if (ignoreTags.Contains(collision.gameObject.tag)) return;
         if (checkTagOnCollide && !collision.gameObject.CompareTag(tag))
         {
-            Debug.Log(collision.gameObject.name);
+            //Debug.Log(collision.gameObject.name);
             Destroy(gameObject);
         }
         else if (!checkTagOnCollide)
         {
-            Debug.Log(collision.gameObject.name);
+            //Debug.Log(collision.gameObject.name);
             Destroy(gameObject);
         }
     }
