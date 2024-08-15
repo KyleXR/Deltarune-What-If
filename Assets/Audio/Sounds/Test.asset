@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: 02c21afaca550b04ab1d1b5c7e1d76da, type: 3}
+  - {fileID: 8300000, guid: afc20be4004b1394aad8ab9041597394, type: 3}
   volume: 1
   volumeRandom: 0
-  pitch: 0
+  pitch: -6.1
   pitchRandom: 0
-  spacialBlend: 1
-  loop: 0
+  spacialBlend: 0
+  loop: 1
   type: 0
   chance: 1

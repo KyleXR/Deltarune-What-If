@@ -18,7 +18,7 @@ MonoBehaviour:
   volumeRandom: 0
   pitch: 0
   pitchRandom: 0
-  spacialBlend: 0
-  loop: 1
+  spacialBlend: 0.631
+  loop: 0
   type: 0
   chance: 1

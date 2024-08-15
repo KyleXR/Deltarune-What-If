@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 4961902050217216938}
   - component: {fileID: 2875894882869818568}
   - component: {fileID: -1571493046005926112}
+  - component: {fileID: 6910191420821559462}
   m_Layer: 3
   m_Name: SOUL Pellet
   m_TagString: Player
@@ -336,3 +337,17 @@ MonoBehaviour:
   checkTag: 1
   ignoreTags:
   - CartTrigger
+--- !u!114 &6910191420821559462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6805461485148262874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab60357b6c1679440a909ed4199117ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioData: {fileID: 11400000, guid: 3dba611e28e32b64ba50fb2e131cd1e4, type: 2}
+  chance: 1

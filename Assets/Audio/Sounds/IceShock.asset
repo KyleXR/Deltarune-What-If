@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClips:
   - {fileID: 8300000, guid: da3d10ba2895d6b4dae26f5a3eb62af5, type: 3}
-  volume: 1
-  volumeRandom: 0
+  volume: 0.596
+  volumeRandom: 0.015
   pitch: 0
-  pitchRandom: 0
+  pitchRandom: 0.41
   spacialBlend: 0
-  loop: 1
+  loop: 0
   type: 0
   chance: 1
