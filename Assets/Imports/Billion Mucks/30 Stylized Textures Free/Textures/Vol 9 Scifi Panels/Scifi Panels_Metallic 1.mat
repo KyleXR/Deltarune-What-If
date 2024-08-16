@@ -22,9 +22,10 @@ Material:
   - _NORMALMAP
   - _OCCLUSIONMAP
   - _PARALLAXMAP
+  - _USEEMISSION_ON
+  - _USEGRADIENTSHADING_ON
   - _USEOUTLINES_ON
   - _USESHADOWS_ON
-  - _USESPECULAR_ON
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -101,7 +102,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Texture:
         m_Texture: {fileID: 2800000, guid: 920750372c3950a409d1833a037304c1, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 0.5, y: 0.5}
         m_Offset: {x: 0, y: 0}
     - _TriplanarTexture:
         m_Texture: {fileID: 2800000, guid: 1e37d283342e9524ba618ed6beafbc19, type: 3}
@@ -145,7 +146,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
-    - _EmissionEffectScale: 1
+    - _EmissionEffectScale: 0.5
     - _EmissionLightRatio: 1
     - _EmissionShadowRatio: 1
     - _EmissionUVSource: 0
@@ -234,7 +235,7 @@ Material:
     - _UseEmission: 1
     - _UseFlutter: 0
     - _UseGlint: 0
-    - _UseGradientShading: 0
+    - _UseGradientShading: 1
     - _UseHSVVariation: 0
     - _UseHalftone: 0
     - _UseModifiedNormals: 0
@@ -242,7 +243,7 @@ Material:
     - _UseRimLighting: 0
     - _UseScreenNoise: 0
     - _UseShadows: 1
-    - _UseSpecular: 1
+    - _UseSpecular: 0
     - _UseSway: 0
     - _UseSwirl: 0
     - _UseTriplanar: 0
@@ -265,18 +266,18 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _CustomNormalDirection: {r: 0, g: 1, b: 0, a: 0}
     - _CustomNormalEllipseSize: {r: 1, g: 1, b: 1, a: 0}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0.9380698, g: 0, b: 1, a: 1}
     - _EmissionScrolling1: {r: 1, g: 1, b: 0, a: 0}
     - _EmissionScrolling2: {r: 0.1, g: -0.5, b: 0, a: 0}
-    - _FarColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FarColor: {r: 0.016807375, g: 0.010960094, b: 0.018500218, a: 0.19607843}
     - _FlutterDirection: {r: 0, g: 1, b: 0, a: 0}
     - _FlutterMask: {r: 1, g: 0, b: 0, a: 0}
     - _GlintColor: {r: 1, g: 1, b: 1, a: 1}
     - _GradientChannelMask: {r: 0, g: 1, b: 0, a: 0}
     - _GradientPositionalOffset: {r: 0, g: 0, b: 0, a: 0}
     - _LightColor: {r: 1, g: 1, b: 1, a: 1}
-    - _MainColor: {r: 1, g: 1, b: 1, a: 1}
-    - _NearColor: {r: 1, g: 1, b: 1, a: 1}
+    - _MainColor: {r: 0.26666668, g: 0.1764706, b: 0.22352943, a: 1}
+    - _NearColor: {r: 0, g: 0, b: 0, a: 0.19607843}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
     - _PuddleColor: {r: 0.19475657, g: 0.34486926, b: 0.43396226, a: 0}
     - _RimLightColor: {r: 0.3921569, g: 0.3921569, b: 0.3921569, a: 1}
