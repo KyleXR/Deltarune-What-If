@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77e8c256691d7df448df6e41dc896bc5, type: 3}
-  m_Name: Impact
+  m_Name: PhoneRing
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: bf4f30cc882e60540b19f51c8a51e666, type: 3}
-  volume: 0.519
+  - {fileID: 8300000, guid: 7c0832477f265744ba4d79e834cf6065, type: 3}
+  volume: 0.169
   volumeRandom: 0
-  pitch: 0
-  pitchRandom: 0
-  spacialBlend: 0.631
+  pitch: -0.5
+  pitchRandom: 0.1
+  spacialBlend: 0.793
   loop: 0
   type: 0
   chance: 1

@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77e8c256691d7df448df6e41dc896bc5, type: 3}
-  m_Name: Impact
+  m_Name: SpamCharge
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: bf4f30cc882e60540b19f51c8a51e666, type: 3}
-  volume: 0.519
+  - {fileID: 8300000, guid: 00a869343776a6a46ac44caa7cab50b6, type: 3}
+  volume: 1
   volumeRandom: 0
   pitch: 0
   pitchRandom: 0
-  spacialBlend: 0.631
-  loop: 0
+  spacialBlend: 0.754
+  loop: 1
   type: 0
   chance: 1

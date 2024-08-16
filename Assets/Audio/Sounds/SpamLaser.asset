@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77e8c256691d7df448df6e41dc896bc5, type: 3}
-  m_Name: Impact
+  m_Name: SpamLaser
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: bf4f30cc882e60540b19f51c8a51e666, type: 3}
-  volume: 0.519
+  - {fileID: 8300000, guid: eb2f0c20a559a484fab9dbab6d64d35b, type: 3}
+  volume: 1
   volumeRandom: 0
-  pitch: 0
+  pitch: -11.6
   pitchRandom: 0
-  spacialBlend: 0.631
+  spacialBlend: 0.684
   loop: 0
   type: 0
   chance: 1

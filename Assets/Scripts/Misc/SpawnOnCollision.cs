@@ -66,6 +66,6 @@ public class SpawnOnCollision : MonoBehaviour
 
         // Instantiate the prefab at the calculated position
         var prefab = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
-        prefab.transform.parent = parent;
+        prefab.transform.parent = parent.parent;
     }
 }

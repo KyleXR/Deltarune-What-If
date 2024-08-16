@@ -303,6 +303,8 @@ MonoBehaviour:
   - CartTrigger
   - SpamtonBody
   - SpamtonHead
+  - Ground
+  - Untagged
   tensionGain: 1
 --- !u!114 &2875894882869818568
 MonoBehaviour:

@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 9043801578434605930}
   - component: {fileID: -4586206814427631424}
   - component: {fileID: -962762794859735594}
+  - component: {fileID: 1223911179735676773}
   m_Layer: 8
   m_Name: Sound Attack
   m_TagString: Spamton
@@ -213,6 +214,20 @@ MonoBehaviour:
   attackType: 0
   damage: 10
   ignoresDamageCooldown: 0
+--- !u!114 &1223911179735676773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7347428836344236729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab60357b6c1679440a909ed4199117ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioData: {fileID: 11400000, guid: 4dc04601b3a96cc4eac50aee5e7363de, type: 2}
+  chance: 1
 --- !u!1 &8297489536596339791
 GameObject:
   m_ObjectHideFlags: 0

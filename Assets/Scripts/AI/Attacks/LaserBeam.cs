@@ -15,6 +15,7 @@ public class LaserBeam : NEO_Attack
     [SerializeField] private int pulseCount = 3; // Number of pulses
     [SerializeField] private bool isShooting = false;
     [SerializeField] private Transform aimTransform;
+    [SerializeField] List<GameObject> fxPrefabs;
 
     //private Transform spawnTransform;
     private int laserComponents = 2;
@@ -57,6 +58,8 @@ public class LaserBeam : NEO_Attack
     // Coroutine to pulse the laser charge
     IEnumerator GrowLaserCharge()
     {
+        var fx = Instantiate(fxPrefabs[0], laserCharge.transform);
+        fx.transform.position = laserCharge.transform.position;
         Vector3 originalScale = laserCharge.transform.localScale;
         Vector3 prevScale = Vector3.zero;
         Vector3 maxScale = originalScale * 1.5f; // Maximum scale during the pulse
@@ -98,6 +101,7 @@ public class LaserBeam : NEO_Attack
         // Ensure the laser charge returns to its original scale
         laserCharge.transform.localScale = originalScale;
 
+        Destroy(fx);
         // Start pulsing the laser charge
         StartCoroutine(PulseLaserCharge());
     }
@@ -184,6 +188,9 @@ public class LaserBeam : NEO_Attack
         StartCoroutine(PulseLaserCharge());
         handler.UpdateCannonAim(aimTransform.position, false);
 
+        //particeles
+        var fx = Instantiate(fxPrefabs[1], laserCharge.transform);
+        fx.transform.position = laserCharge.transform.position;
         // Part 1: Grow the laser to the target scale
         float elapsedTime = 0f;
         while (elapsedTime < 1f)
@@ -229,6 +236,7 @@ public class LaserBeam : NEO_Attack
         laserBeam.transform.localScale = Vector3.zero;
         laserBeam.transform.localPosition = spawnTransform.localPosition;
         DestroyComponent(1);
+        Destroy(fx);
     }
 
     public void DestroyComponent(int id)
