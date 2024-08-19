@@ -5,6 +5,7 @@ using UnityEngine;
 public class SoundBall : NEO_Attack
 {
     [SerializeField] private GameObject attackPrefab;
+    [SerializeField] private List<GameObject> fxPrefabs;
     public float pulseDuration = 1f;   // Duration of one pulse cycle
     public float maxScale = 2f;        // Maximum scale factor
     public float minScale = 1f;        // Minimum scale factor
@@ -35,9 +36,16 @@ public class SoundBall : NEO_Attack
 
         UpdateTargetPosition();
 
-        if (cannonFire) StartCoroutine(ChargeUp());
+        if (cannonFire)
+        {
+            var fx = Instantiate(fxPrefabs[0], transform.position, Quaternion.identity);
+            fx.transform.SetParent(transform);
+            StartCoroutine(ChargeUp());
+        }
         else
         {
+            var fx = Instantiate(fxPrefabs[1], transform.position, Quaternion.identity);
+            fx.transform.SetParent(transform);
             StartCoroutine(PulseScale());
             ApplyImpulseToTarget(targetPosition);
         }
@@ -77,7 +85,8 @@ public class SoundBall : NEO_Attack
         transform.rotation = Quaternion.identity;
 
         UpdateTargetPosition();
-
+        var fx = Instantiate(fxPrefabs[1], transform.position, Quaternion.identity);
+        fx.transform.SetParent(transform);
         ApplyImpulseToTarget(targetPosition);
         if (cannonFire) Invoke("FinishFiring", 2);
     }
@@ -169,6 +178,8 @@ public class SoundBall : NEO_Attack
             // Increment the angle for the next attack
             angle += angleStep;
         }
+        var fx = Instantiate(fxPrefabs[2], transform.position, Quaternion.identity);
+        fx.transform.SetParent(transform);
         transform.Rotate(Vector3.up, angleStep * 0.5f);
     }
 

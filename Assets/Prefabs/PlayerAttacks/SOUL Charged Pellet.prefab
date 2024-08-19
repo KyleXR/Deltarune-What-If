@@ -352,7 +352,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetTag: Spamton
   attackType: 1
-  damage: 1
+  damage: 10
   ignoresDamageCooldown: 1
 --- !u!114 &-7086940720425409954
 MonoBehaviour:

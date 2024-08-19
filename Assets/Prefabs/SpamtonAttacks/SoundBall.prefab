@@ -132,6 +132,10 @@ MonoBehaviour:
   randomSpawn: 0
   attackPrefab: {fileID: 7347428836344236729, guid: 11c0923e5fa0ed448b3abdc34bc787c6,
     type: 3}
+  fxPrefabs:
+  - {fileID: 569891116603050734, guid: d2a20a112c71c204f8a6b9ea44a1b73c, type: 3}
+  - {fileID: 569891116603050734, guid: 4ce87ffe0da976742827fe099955805c, type: 3}
+  - {fileID: 569891116603050734, guid: 11c76db8f3553804282909d2b0576f07, type: 3}
   pulseDuration: 0.25
   maxScale: 1.5
   minScale: 1

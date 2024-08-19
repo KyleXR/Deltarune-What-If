@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77e8c256691d7df448df6e41dc896bc5, type: 3}
-  m_Name: PhoneDing
+  m_Name: Charge
   m_EditorClassIdentifier: 
   audioClips:
-  - {fileID: 8300000, guid: c9a9e4ed2ee5dd549a4dde23252107e5, type: 3}
-  volume: 0.042
+  - {fileID: 8300000, guid: fa91d2ed122d1dd46acc97e725f5be7d, type: 3}
+  volume: 1
   volumeRandom: 0
-  pitch: -0.5
-  pitchRandom: 0.1
+  pitch: 2.5
+  pitchRandom: 0
   spacialBlend: 0
   loop: 0
   type: 0

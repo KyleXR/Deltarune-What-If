@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -8336800348139728794}
   - component: {fileID: -7164541198569158432}
   - component: {fileID: 8016283164454452065}
+  - component: {fileID: 471268404161572303}
   m_Layer: 8
   m_Name: Pipis
   m_TagString: Spamton
@@ -208,3 +209,24 @@ MonoBehaviour:
   attackType: 0
   damage: 20
   ignoresDamageCooldown: 0
+--- !u!135 &471268404161572303
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901435311970959810}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 4087
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}

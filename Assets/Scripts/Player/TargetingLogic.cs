@@ -32,7 +32,8 @@ public class TargetingLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerCamera = Camera.main; // Assuming the main camera is the player's camera
+        //playerCamera = Camera.main; // Assuming the main camera is the player's camera
+        playerCamera = GetComponentInChildren<Camera>();
     }
 
     // Update is called once per frame
