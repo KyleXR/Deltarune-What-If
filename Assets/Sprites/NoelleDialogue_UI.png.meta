@@ -1,0 +1,1315 @@
+fileFormatVersion: 2
+guid: 779d94e51326d0848bed52ed17eff0fa
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 135.33334
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aeec19dd842cc4143b8527403f02ca08
+      internalID: 144801710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_1
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 135.33334
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abeae89e0477bb34697338a562bc7e23
+      internalID: 669450058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_2
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 135.33334
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cac18d020392c2f45a14c9f129ba431e
+      internalID: 1304333431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_3
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 135.33334
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e71bb0833ea5a70409d70d2c35147340
+      internalID: 1945713742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_4
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 135.33334
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c93eb297770d4c46bbdb110c2f81554
+      internalID: 42153474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_5
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 135.33334
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c17ccd2ebf8e8054ead8a8c8fc595642
+      internalID: 1811227278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_6
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 135.33334
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a8e4fd1e7be794409c1f56ad42bfa22
+      internalID: 276065037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_7
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 135.33334
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff1a3e3316ed97e4aa4c7f46f89e60f3
+      internalID: -1512151601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_8
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 135.33334
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46235749275ffc84c9675e4c2cc77b4b
+      internalID: -1324289848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_9
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 135.33334
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88cad7917088c3f4f9aeab5490b55247
+      internalID: -742644731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_10
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 135.33334
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51c5c92701288e741b9b178f3e5dc11c
+      internalID: -1503057041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_11
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 135.33334
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a8b7837a86e3884f8cfbe58041f9871
+      internalID: 1023790318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64a0750f3d9c5174d9705f771442d36c
+      internalID: 1587133973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_13
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95e77a6a97c8847419e3c11011d71350
+      internalID: -895181400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_14
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01e6a1e510068fc49a5491b9dcb68edb
+      internalID: 25027049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_15
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2916d80cb5972974c8387064ff4d9a6a
+      internalID: 1800562114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_16
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2830175cca94a442b443c6a0614a8a5
+      internalID: 716448509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_17
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a5f1c2d38224904aa9b8bf6862889f2
+      internalID: 1102916398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_18
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95e95f8023c9c314b8c73ee32de1f5d9
+      internalID: -1020670958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_19
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8d24d5f604b6494ab57851503d2ec2d
+      internalID: 1523764850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_20
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b663e1cdec876d74e8153b61fcaebde8
+      internalID: 537004296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_21
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08b9ff65d34617e44be5ea694746749e
+      internalID: -356209603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_22
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31cd47fddc7ad394e9b560fdc166cc7b
+      internalID: 805703904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_23
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67c506d192e0cab4da09694668c9d16b
+      internalID: 130917512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_24
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 897fc3b2a4f045e4eaabf3273969e7e8
+      internalID: -1653614329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_25
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20a734071d08c8b42b89238d11e9a693
+      internalID: 1296074440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_26
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec36dd53d83748f4ba3c553e01e09ad9
+      internalID: 1537595540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_27
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e078515a98599af459a6595cd161dd1b
+      internalID: 1438520563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_28
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c20336d1838c2304a9aa7ba458eabb31
+      internalID: -58061997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_29
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d426ad961f264e41ad922a2fb8f6d9d
+      internalID: 242789322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_30
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64f386a5e8a17f143baa56151d20711a
+      internalID: -400619962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_31
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8ab02508318dc14abf79b9e3d624d12
+      internalID: 694918638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_32
+      rect:
+        serializedVersion: 2
+        x: 1180
+        y: 68.333336
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2faac17876045cb4f84411ba046d4fdc
+      internalID: 2045899982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97a99fee5912260479ecb673d3eef384
+      internalID: 1393451014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_34
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f91abf37f9f12404098f96aab8ee1e39
+      internalID: -775115241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_35
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d78253cc8c02cbd47a42494e19ea9f4d
+      internalID: 1423997987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_36
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f7fa94df2155354d8c45e280f192252
+      internalID: -1132671499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_37
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53b88e52614b5074497e4ef2cdb00157
+      internalID: -496607361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_38
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 524296c6552b892449282037f434c2be
+      internalID: 1856803903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_39
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 154417d5ed0a5044e9b3351af2a4069a
+      internalID: -203414390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_40
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c452fa2693c75aa40ae39c2eba6bfdc7
+      internalID: 1099493798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_41
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca954e1623664aa46b570e6ecc00bd38
+      internalID: 726776396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_42
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57721b7c2d9b0344ebad0315f5756cbe
+      internalID: 1921170938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_43
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1534a6dc8a3529e48a5177ee9e168ea7
+      internalID: -726813524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_44
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3cc0ed5d3993f84c98901c4638db139
+      internalID: -1016606811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_45
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 132d0636120ddbb499cc8dc3692d2377
+      internalID: -976054233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_46
+      rect:
+        serializedVersion: 2
+        x: 767
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cfebf603923b564dbf96c4633b5361e
+      internalID: 2092731830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_47
+      rect:
+        serializedVersion: 2
+        x: 826
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a0128a1fdff2814ca9d4aef97fe26a7
+      internalID: 1698788266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_48
+      rect:
+        serializedVersion: 2
+        x: 885
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9c8c3ff35cece6418303146ee7d7d4e
+      internalID: 331913470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_49
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 299fd47197c7f0d4cb2022686050eb57
+      internalID: 1646953929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_50
+      rect:
+        serializedVersion: 2
+        x: 1003
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39a845fb5921bc844a53c55d3b660e4f
+      internalID: -464856459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_51
+      rect:
+        serializedVersion: 2
+        x: 1062
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 223b004a1deb2034a981552324736215
+      internalID: 1369201715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_52
+      rect:
+        serializedVersion: 2
+        x: 1121
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78c820c9de413c34ca293bcc35b1914a
+      internalID: -1756090311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NoelleDialogue_UI_53
+      rect:
+        serializedVersion: 2
+        x: 1180
+        y: 1.3333359
+        width: 59.238094
+        height: 67.666664
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e648cdf4e190184d97ef18104216daa
+      internalID: 1601869599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 6c52f653d5288964197042373d19536e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      NoelleDialogue_UI_0: 144801710
+      NoelleDialogue_UI_1: 669450058
+      NoelleDialogue_UI_10: -1503057041
+      NoelleDialogue_UI_11: 1023790318
+      NoelleDialogue_UI_12: 1587133973
+      NoelleDialogue_UI_13: -895181400
+      NoelleDialogue_UI_14: 25027049
+      NoelleDialogue_UI_15: 1800562114
+      NoelleDialogue_UI_16: 716448509
+      NoelleDialogue_UI_17: 1102916398
+      NoelleDialogue_UI_18: -1020670958
+      NoelleDialogue_UI_19: 1523764850
+      NoelleDialogue_UI_2: 1304333431
+      NoelleDialogue_UI_20: 537004296
+      NoelleDialogue_UI_21: -356209603
+      NoelleDialogue_UI_22: 805703904
+      NoelleDialogue_UI_23: 130917512
+      NoelleDialogue_UI_24: -1653614329
+      NoelleDialogue_UI_25: 1296074440
+      NoelleDialogue_UI_26: 1537595540
+      NoelleDialogue_UI_27: 1438520563
+      NoelleDialogue_UI_28: -58061997
+      NoelleDialogue_UI_29: 242789322
+      NoelleDialogue_UI_3: 1945713742
+      NoelleDialogue_UI_30: -400619962
+      NoelleDialogue_UI_31: 694918638
+      NoelleDialogue_UI_32: 2045899982
+      NoelleDialogue_UI_33: 1393451014
+      NoelleDialogue_UI_34: -775115241
+      NoelleDialogue_UI_35: 1423997987
+      NoelleDialogue_UI_36: -1132671499
+      NoelleDialogue_UI_37: -496607361
+      NoelleDialogue_UI_38: 1856803903
+      NoelleDialogue_UI_39: -203414390
+      NoelleDialogue_UI_4: 42153474
+      NoelleDialogue_UI_40: 1099493798
+      NoelleDialogue_UI_41: 726776396
+      NoelleDialogue_UI_42: 1921170938
+      NoelleDialogue_UI_43: -726813524
+      NoelleDialogue_UI_44: -1016606811
+      NoelleDialogue_UI_45: -976054233
+      NoelleDialogue_UI_46: 2092731830
+      NoelleDialogue_UI_47: 1698788266
+      NoelleDialogue_UI_48: 331913470
+      NoelleDialogue_UI_49: 1646953929
+      NoelleDialogue_UI_5: 1811227278
+      NoelleDialogue_UI_50: -464856459
+      NoelleDialogue_UI_51: 1369201715
+      NoelleDialogue_UI_52: -1756090311
+      NoelleDialogue_UI_53: 1601869599
+      NoelleDialogue_UI_6: 276065037
+      NoelleDialogue_UI_7: -1512151601
+      NoelleDialogue_UI_8: -1324289848
+      NoelleDialogue_UI_9: -742644731
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

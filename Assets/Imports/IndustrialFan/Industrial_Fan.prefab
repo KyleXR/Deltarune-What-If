@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1971866146386462512}
   - component: {fileID: 1068060819508718638}
   - component: {fileID: 7041101136700673388}
+  - component: {fileID: 1539518944157048035}
   m_Layer: 0
   m_Name: Industrial_Fan_2
   m_TagString: Untagged
@@ -83,6 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1539518944157048035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2613422087387496379}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d937d09049d2cfd4394b5fde4f9544b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 40
+  rotationAxis: {x: 0, y: 0, z: 1}
 --- !u!1 &6317778474252104588
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,7 +109,6 @@ GameObject:
   - component: {fileID: 3164638704283513876}
   - component: {fileID: 5676195049723823253}
   - component: {fileID: 2123198162470059796}
-  - component: {fileID: 3625390880185173819}
   m_Layer: 0
   m_Name: Industrial_Fan
   m_TagString: Untagged
@@ -168,24 +182,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!95 &3625390880185173819
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6317778474252104588}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bacf912d130f925498948cad644a3a4e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0

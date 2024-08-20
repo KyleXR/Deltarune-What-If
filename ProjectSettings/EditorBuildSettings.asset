@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/TitleScreen.unity
+    path: Assets/Scenes/titleScreen.unity
     guid: 1f6e5c2842d11ba4887ad10cab43241d
   - enabled: 1
     path: Assets/Scenes/KyleSceneBackup.unity
     guid: bd4041d2aea4abd44a02d538f7645677
+  - enabled: 1
+    path: Assets/Scenes/SampleMapScene.unity
+    guid: 62a5f965098ee3d41a6f3372eb2c8a82
   m_configObjects: {}

@@ -7,7 +7,7 @@ public class TitleScreenManager : MonoBehaviour
 {
     public void OnPlay()
     {
-        SceneManager.LoadScene("KyleSceneBackup");
+        SceneManager.LoadScene("SampleMapScene");
         Time.timeScale = 1.0f; //just in case
     }
     public void OnQuit()
