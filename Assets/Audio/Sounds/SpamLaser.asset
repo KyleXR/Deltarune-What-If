@@ -16,9 +16,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: eb2f0c20a559a484fab9dbab6d64d35b, type: 3}
   volume: 1
   volumeRandom: 0
-  pitch: -11.6
+  pitch: -5.8
   pitchRandom: 0
-  spacialBlend: 0.684
+  spacialBlend: 0.249
   loop: 0
   type: 0
   chance: 1

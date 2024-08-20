@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6237629669754582107}
   - component: {fileID: 936601968835328454}
   - component: {fileID: 1860334340745663374}
+  - component: {fileID: -4329304125045395785}
   m_Layer: 0
   m_Name: LaserFX
   m_TagString: Untagged
@@ -4926,4 +4927,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioData: {fileID: 11400000, guid: 489c6a3137a98124c9c9b12110b21943, type: 2}
+  chance: 1
+--- !u!114 &-4329304125045395785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2679044435401533258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab60357b6c1679440a909ed4199117ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioData: {fileID: 11400000, guid: 37a6139f1bc74b947a57cb9e98a41707, type: 2}
   chance: 1

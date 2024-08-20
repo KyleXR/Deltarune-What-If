@@ -20,7 +20,6 @@ Material:
   - _NORMALSURFACEOUTLINE_ON
   - _POSTERIZELIGHT_ON
   - _USEEMISSION_ON
-  - _USEOUTLINES_ON
   - _USERIMLIGHTING_ON
   - _USESHADOWS_ON
   - _USESPECULAR_ON
@@ -232,7 +231,7 @@ Material:
     - _UVSec: 0
     - _UseCOZYPrecipitation: 0
     - _UseColorAdjustments: 0
-    - _UseDissolve: 1
+    - _UseDissolve: 0
     - _UseEmission: 1
     - _UseFlutter: 0
     - _UseGlint: 0

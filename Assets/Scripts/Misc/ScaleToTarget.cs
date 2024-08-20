@@ -9,10 +9,12 @@ public class ScaleToTarget : MonoBehaviour
     public float destroyScale = 0.1f;
     public bool destroyIfLesser = true;
     private Vector3 initialScale;
+    private GameObject destroyFX;
 
     void Start()
     {
         initialScale = transform.localScale; // Store the initial scale of the object
+        if (TryGetComponent<SpawnOnCollision>(out var spawn)) destroyFX = spawn.prefabToSpawn;
     }
 
     void Update()
@@ -36,7 +38,11 @@ public class ScaleToTarget : MonoBehaviour
             else if (destroyScale < newScale && !destroyIfLesser) destroyObject = true;
             if (destroyScale < 0) destroyObject = false;
 
-            if (destroyObject) Destroy(gameObject);
+            if (destroyObject)
+            {
+                Instantiate(destroyFX, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
         }
     }
 }

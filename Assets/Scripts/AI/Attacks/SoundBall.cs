@@ -24,7 +24,7 @@ public class SoundBall : NEO_Attack
     private Vector3 originalLocalPosition = Vector3.zero;
     private float originalDistance = 0;
     private Rigidbody rb; // Reference to the Rigidbody component
-
+    private GameObject chargeFX;
     void Start()
     {
         originalScale = transform.localScale;
@@ -38,8 +38,8 @@ public class SoundBall : NEO_Attack
 
         if (cannonFire)
         {
-            var fx = Instantiate(fxPrefabs[0], transform.position, Quaternion.identity);
-            fx.transform.SetParent(transform);
+            chargeFX = Instantiate(fxPrefabs[0], transform.position, Quaternion.identity);
+            chargeFX.transform.SetParent(transform);
             StartCoroutine(ChargeUp());
         }
         else
@@ -88,6 +88,7 @@ public class SoundBall : NEO_Attack
         var fx = Instantiate(fxPrefabs[1], transform.position, Quaternion.identity);
         fx.transform.SetParent(transform);
         ApplyImpulseToTarget(targetPosition);
+        if (chargeFX != null) Destroy(chargeFX);
         if (cannonFire) Invoke("FinishFiring", 2);
     }
 
