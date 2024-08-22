@@ -11,15 +11,20 @@ public class SpamTrigger : MonoBehaviour
     [SerializeField] DialogueTrigger dialogueTrigger;
     [SerializeField] LevelTrigger levelTrigger;
     public IntroCarts carts;
+    [SerializeField] Animator anim;
 
     public AsyncOperation asyncLoad;
 
     private void Start()
     {
         spamtonNeo.SetActive(false);
-        dialogueTrigger = GetComponent<DialogueTrigger>();
+        //dialogueTrigger = GetComponent<DialogueTrigger>();
         FindFirstObjectByType<DialogueVisualController>().dialogueEnd += StartCarts;
+        FindFirstObjectByType<DialogueVisualController>().YoinkSpamton += YoinkSpamton;
     }
+
+   
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,6 +33,7 @@ public class SpamTrigger : MonoBehaviour
             trigger.enabled = false;
             spamtonNeo.SetActive(true);
             dialogueTrigger.TriggerDialogue();
+            FindFirstObjectByType<LookAtHandler>().LookAtNextTarget();
             StartCoroutine(LoadNextScene());
         }
     }
@@ -52,8 +58,22 @@ public class SpamTrigger : MonoBehaviour
         }
     }
 
+    private void YoinkSpamton(bool yoink)
+    {
+        anim.enabled = true;
+        anim.SetTrigger("Yoink");
+    }
+
     private void StartCarts(bool start)
     {
+        var player = FindAnyObjectByType<FirstPersonController>();
+        if (player != null)
+        {
+            player.enabled = false;
+        }
+        FindFirstObjectByType<LookAtHandler>().LookAtNextTarget();
+       
         carts.StartIntro();
+        //spamtonNeo.SetActive(false);
     }
 }

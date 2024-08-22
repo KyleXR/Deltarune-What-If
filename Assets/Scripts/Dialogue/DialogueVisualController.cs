@@ -45,6 +45,9 @@ public class DialogueVisualController : MonoBehaviour
     private List<int> wavingIndexes = new List<int>();
 
     public event Action<bool> dialogueEnd;
+    public event Action<bool> YoinkSpamton;
+
+    [SerializeField] GameObject spamtonNeo;
 
     void Start()
     {
@@ -90,8 +93,16 @@ public class DialogueVisualController : MonoBehaviour
         originalVertexPositions.Clear();
         //isShaking = false;
         //isWaving = false;
+        if (sentences.Count == 1)
+        {
+            if(spamtonNeo.active == true)
+            {
+                YoinkSpamton.Invoke(true);
+            }
+        }
         if (sentences.Count <= 0)
         {
+            
             Invoke("EndDialogue", 0.1f);
             return;
         }
@@ -486,7 +497,10 @@ public class DialogueVisualController : MonoBehaviour
         animator.SetBool("IsOpen", false);
         var player = FindAnyObjectByType<FirstPersonController>();
         if (player != null) { player.enabled = true; }
-        dialogueEnd.Invoke(true);
+        if (spamtonNeo.active == true)
+        {
+            dialogueEnd.Invoke(true);
+        }
         detectInput = false;
         gameObject.SetActive(false);
 

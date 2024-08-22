@@ -9,5 +9,6 @@ public class AddForceTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         other.GetComponent<Rigidbody>().AddForce(force * direction, ForceMode.Impulse);
+        FindFirstObjectByType<LookAtHandler>().LookAtNextTarget();
     }
 }
