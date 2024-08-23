@@ -6,6 +6,7 @@ public class AudioPlayOnAwake : MonoBehaviour
 {
 	public AudioData audioData;
 	[Range(0f, 1f)] public float chance = 1;
+	[SerializeField] private bool setControlelerParent = false;
 
 	private AudioSourceController controller;
 	void Awake()
@@ -18,6 +19,7 @@ public class AudioPlayOnAwake : MonoBehaviour
 			if (audioData != null && rand <= chance)
 			{
 				controller = audioData.Play(transform);
+				if (controller != null ) { controller.transform.parent = gameObject.transform; }
 			}
 		}
 	}

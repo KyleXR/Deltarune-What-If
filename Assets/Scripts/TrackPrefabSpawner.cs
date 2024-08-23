@@ -130,7 +130,7 @@ public class TrackPrefabSpawner : MonoBehaviour
         if (trackList.Count > 2) middleNodes = trackList[2].GetTrackNodes(2);
         var triggerNode = trackSplines[1].Project(middleNodes[middleNodes.Length / 2].position).percent;
         trackSplines[1].triggerGroups[0].triggers[0].position = triggerNode;
-        Debug.Log(triggerNode.ToString());
+        //Debug.Log(triggerNode.ToString());
 
         // Update the positions of the carts on the spline
         UpdateCartPositions();

@@ -25,7 +25,7 @@ public class MusicManager : Singleton<MusicManager>
         currentSongController = currentSong.Play(transform, currentClipIndex);
         currentSongController.OnClipFinished += HandleClipFinished;
 
-        DontDestroyOnLoad(currentSongController);
+        //DontDestroyOnLoad(currentSongController);
     }
 
     private void HandleClipFinished()

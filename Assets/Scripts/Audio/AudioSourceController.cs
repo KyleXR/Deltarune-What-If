@@ -23,6 +23,7 @@ public class AudioSourceController : MonoBehaviour
     public event Action OnClipFinished;
     private int clipIndex = 0;
     private float playStartTime = 0;
+
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -30,22 +31,13 @@ public class AudioSourceController : MonoBehaviour
         destroyTimer.enabled = false;
         playStartTime = Time.time;
     }
-    //private void Update()
-    //{
-    //    if (!audioSource.isPlaying && OnClipFinished != null)
-    //    {
-    //        OnClipFinished.Invoke();
-    //    }
-    //}
+
     void Update()
     {
         if (active && !audioSource.isPlaying)
         {
             Stop();
-            if (OnClipFinished != null)
-            {
-                OnClipFinished.Invoke();
-            }
+            OnClipFinished?.Invoke();
         }
 
         if (parent != null)
@@ -58,12 +50,12 @@ public class AudioSourceController : MonoBehaviour
     {
         audioSource.clip = clip;
         audioSource.volume = volume;
-        audioSource.pitch = usePitchLerp ? 0f : pitch; // Start pitch at 0 if using pitch lerp
+        audioSource.pitch = pitch; // Start pitch at 0.5 for audible sound
         audioSource.loop = loop;
         audioSource.spatialBlend = spacialBlend;
         playDelay = startDelay;
         pitchLerp = usePitchLerp;
-        this.pitchLerpDuration =  pitchLerpDuration;
+        this.pitchLerpDuration = pitchLerpDuration;
 
         if (type == AudioData.Type.SFX && !loop)
         {
@@ -87,7 +79,7 @@ public class AudioSourceController : MonoBehaviour
     private IEnumerator PlayWithDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        PlayInternal(); // This will now only call PlayInternal after the delay
+        PlayInternal();
     }
 
     private void PlayInternal()
@@ -95,8 +87,9 @@ public class AudioSourceController : MonoBehaviour
         if (audioSource != null && !active)
         {
             active = true;
-            audioSource.pitch = pitchLerp ? 0.01f : audioSource.pitch; // Set to small pitch if lerping
+            //audioSource.pitch = pitchLerp ? 0.01f : audioSource.pitch; // Use an audible starting pitch
 
+            audioSource.Play(); // Start playback
             if (pitchLerp)
             {
                 if (pitchLerpCoroutine != null)
@@ -105,10 +98,8 @@ public class AudioSourceController : MonoBehaviour
                 }
                 pitchLerpCoroutine = StartCoroutine(LerpPitch(audioSource.pitch, pitchLerpDuration));
             }
-            audioSource.Play(); // Start playback
         }
     }
-
 
     public void SetParent(Transform parent)
     {
@@ -122,9 +113,15 @@ public class AudioSourceController : MonoBehaviour
 
     public void Stop()
     {
-        if (audioSource != null) audioSource.Stop();
+        if (audioSource != null)
+        {
+            audioSource.Stop();
+        }
         Reset();
-        if (!isQuitting) AudioManager.Instance.ReturnController(this);
+        if (!isQuitting)
+        {
+            AudioManager.Instance.ReturnController(this);
+        }
     }
 
     private void Reset()
@@ -162,25 +159,22 @@ public class AudioSourceController : MonoBehaviour
 
     private IEnumerator LerpPitch(float targetPitch, float duration)
     {
-        Debug.Log("Starting pitch lerp...");
-        float startPitch = 0.01f;
+        float startPitch = 0f;
         float elapsedTime = 0f;
 
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
             audioSource.pitch = Mathf.Lerp(startPitch, targetPitch, elapsedTime / duration);
-            Debug.Log($"Pitch: {audioSource.pitch}");
             yield return null;
         }
-
+        Debug.Log(audioSource.pitch);
         audioSource.pitch = targetPitch;
-        Debug.Log("Pitch lerp complete.");
     }
 
     void OnApplicationFocus(bool hasFocus)
     {
-        if (audioSource != null && active) // Only resume if it was already playing
+        if (audioSource != null && active)
         {
             if (hasFocus)
             {
@@ -197,7 +191,7 @@ public class AudioSourceController : MonoBehaviour
 
     void OnApplicationPause(bool isPaused)
     {
-        if (audioSource != null && active) // Only resume if it was already playing
+        if (audioSource != null && active)
         {
             if (isPaused)
             {
@@ -211,7 +205,6 @@ public class AudioSourceController : MonoBehaviour
             }
         }
     }
-
 
     private void OnApplicationQuit()
     {
