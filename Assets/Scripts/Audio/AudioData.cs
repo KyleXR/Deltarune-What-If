@@ -12,7 +12,7 @@ public class AudioData : ScriptableObject
     }
 
     public AudioClip[] audioClips;
-
+    public bool useRandomClip = false;
     [SerializeField, Range(0, 1)] private float volume = 1;
     [SerializeField, Range(0, 0.2f)] private float volumeRandom = 0;
     [SerializeField, Range(-24, 24)] private float pitch = 0;
@@ -28,6 +28,8 @@ public class AudioData : ScriptableObject
 
     [Header("Start Delay Settings")]
     [SerializeField, Range(0f, 10f)] private float startDelay = 0f;
+
+    private int currentIndex = -1;
 
     public AudioSourceController Play(Transform parent)
     {
@@ -55,8 +57,16 @@ public class AudioData : ScriptableObject
     private AudioClip GetAudioClip()
     {
         if (audioClips.Length == 0) return null;
-
-        int index = (audioClips.Length == 1) ? 0 : Random.Range(0, audioClips.Length);
+        int index = 0;
+        if (useRandomClip) index = (audioClips.Length == 1) ? 0 : Random.Range(0, audioClips.Length);
+        else index = currentIndex + 1;
+        if (index >= audioClips.Length) index = audioClips.Length - 1;
+        currentIndex = index;
         return audioClips[index];
+    }
+
+    IEnumerator PlayNextClip()
+    {
+        yield return null;
     }
 }

@@ -13,7 +13,7 @@ public class SpamTrigger : MonoBehaviour
     public IntroCarts carts;
     [SerializeField] Animator anim;
 
-    [SerializeField] GameObject[] musicPlayers;
+    [SerializeField] GameObject musicPlayer;
     private GameObject currentMusicPlayer;
     public AsyncOperation asyncLoad;
 
@@ -38,7 +38,7 @@ public class SpamTrigger : MonoBehaviour
             FindFirstObjectByType<LookAtHandler>().LookAtNextTarget();
             StartCoroutine(LoadNextScene());
 
-            currentMusicPlayer = Instantiate(musicPlayers[0]);
+            currentMusicPlayer = Instantiate(musicPlayer);
         }
     }
 
@@ -60,6 +60,7 @@ public class SpamTrigger : MonoBehaviour
             }
             yield return null;
         }
+        Destroy(MusicManager.Instance.gameObject);
     }
 
     private void YoinkSpamton(bool yoink)
@@ -81,6 +82,6 @@ public class SpamTrigger : MonoBehaviour
         //spamtonNeo.SetActive(false);
         MusicManager.Instance.Stop();
         Destroy(currentMusicPlayer.gameObject);
-        currentMusicPlayer = Instantiate(musicPlayers[1]);
+        //currentMusicPlayer = Instantiate(musicPlayers[1]);
     }
 }
