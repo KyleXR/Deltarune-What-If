@@ -51,7 +51,7 @@ MonoBehaviour:
   damage: 10
   ignoresInvulability: 0
   isUnique: 0
-  duration: 10
+  duration: 7.5
   attackType: 2
   spawnBounds: {x: 0, y: 0, z: 0}
   randomSpawn: 0
@@ -62,7 +62,7 @@ MonoBehaviour:
   minSpawnRadius: 30
   spawnRadius: 35
   spawnAngle: 25
-  spawnInterval: 0.25
+  spawnInterval: 0.1
 --- !u!114 &8609943282130262552
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -70,7 +70,7 @@ public class GameOverUI : MonoBehaviour
     public void Continue()
     {
         
-        SceneManager.LoadScene("KyleSceneBackup");
+        SceneManager.LoadScene("BattleScene");
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f; 

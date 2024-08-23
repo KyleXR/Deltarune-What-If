@@ -84,7 +84,7 @@ public class AudioSourceController : MonoBehaviour
 
     private void PlayInternal()
     {
-        if (audioSource != null && !active)
+        if (audioSource != null && !active && audioSource.gameObject.activeInHierarchy)
         {
             active = true;
             //audioSource.pitch = pitchLerp ? 0.01f : audioSource.pitch; // Use an audible starting pitch
