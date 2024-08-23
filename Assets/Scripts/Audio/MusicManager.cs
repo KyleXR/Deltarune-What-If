@@ -6,10 +6,11 @@ public class MusicManager : Singleton<MusicManager>
 {
     [SerializeField] AudioData currentSong;
     AudioSourceController currentSongController;
+    [SerializeField] bool playOnAwake = true;
     // Start is called before the first frame update
     private void Start()
     {
-        if (currentSong != null)
+        if (currentSong != null && playOnAwake)
         {
             currentSongController = currentSong.Play(transform);
         }
@@ -18,8 +19,10 @@ public class MusicManager : Singleton<MusicManager>
     {
         //Debug.Log(song.name);
         if (currentSongController != null) currentSongController.Stop();
+        //Destroy(currentSongController.gameObject);
         currentSong = song;
         currentSongController = currentSong.Play(transform);
+        DontDestroyOnLoad(currentSongController);
     }
     public void Stop() 
     { 

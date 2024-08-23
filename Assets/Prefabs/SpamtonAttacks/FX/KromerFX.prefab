@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioData: {fileID: 11400000, guid: aed3586e4296f13428a128f95a0fa1dd, type: 2}
-  chance: 0.5
+  chance: 1

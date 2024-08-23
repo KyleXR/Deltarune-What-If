@@ -17,8 +17,11 @@ MonoBehaviour:
   volume: 0.51
   volumeRandom: 0
   pitch: 0
-  pitchRandom: 0.48
+  pitchRandom: 0
   spacialBlend: 0
   loop: 0
   type: 0
   chance: 1
+  usePitchLerp: 0
+  pitchLerpDuration: 1
+  startDelay: 0

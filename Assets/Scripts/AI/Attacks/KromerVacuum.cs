@@ -4,7 +4,7 @@ using UnityEngine;
 public class KromerVacuum : NEO_Attack
 {
     public GameObject objectToSpawn;
-
+    public GameObject finishedFX;
     public float minSpawnRadius = 1f; // Minimum distance from the origin
     public float spawnRadius = 5f; // Maximum distance from the origin
     public float spawnAngle = 45f; // Cone angle in degrees
@@ -56,5 +56,7 @@ public class KromerVacuum : NEO_Attack
             // Update elapsed time
             elapsedTime += spawnInterval;
         }
+        var fx = Instantiate(finishedFX, transform.position, Quaternion.identity);
+        fx.transform.parent = transform.parent;
     }
 }

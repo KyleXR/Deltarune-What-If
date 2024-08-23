@@ -13,6 +13,8 @@ public class SpamTrigger : MonoBehaviour
     public IntroCarts carts;
     [SerializeField] Animator anim;
 
+    [SerializeField] GameObject[] musicPlayers;
+    private GameObject currentMusicPlayer;
     public AsyncOperation asyncLoad;
 
     private void Start()
@@ -35,12 +37,14 @@ public class SpamTrigger : MonoBehaviour
             dialogueTrigger.TriggerDialogue();
             FindFirstObjectByType<LookAtHandler>().LookAtNextTarget();
             StartCoroutine(LoadNextScene());
+
+            currentMusicPlayer = Instantiate(musicPlayers[0]);
         }
     }
 
     IEnumerator LoadNextScene()
     {
-        asyncLoad = SceneManager.LoadSceneAsync("KyleSceneBackup", LoadSceneMode.Additive);
+        asyncLoad = SceneManager.LoadSceneAsync("BattleScene", LoadSceneMode.Additive);
         asyncLoad.allowSceneActivation = false;
 
         // Wait until the scene is fully loaded
@@ -75,5 +79,8 @@ public class SpamTrigger : MonoBehaviour
        
         carts.StartIntro();
         //spamtonNeo.SetActive(false);
+        MusicManager.Instance.Stop();
+        Destroy(currentMusicPlayer.gameObject);
+        currentMusicPlayer = Instantiate(musicPlayers[1]);
     }
 }

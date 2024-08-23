@@ -1,136 +1,183 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(DestroyTimer))]
 public class AudioSourceController : MonoBehaviour
 {
-	public AudioData.Type type;
+    public AudioData.Type type;
 
-	private AudioSource audioSource;
-	private Transform parent;
-	private bool active = false;
-	private float playTime = 0;
-	private DestroyTimer destroyTimer;
+    private AudioSource audioSource;
+    private Transform parent;
+    private bool active = false;
+    private float playTime = 0;
+    private DestroyTimer destroyTimer;
+    private bool isQuitting = false;
+    private Coroutine pitchLerpCoroutine;
 
-	private bool isQuitting = false;
-		
-	void Awake()
-	{
-		audioSource = GetComponent<AudioSource>();
-		destroyTimer = GetComponent<DestroyTimer>();
-		destroyTimer.enabled = false;
-	}
+    private float playDelay = 0f;
+    private bool pitchLerp = false;
+    private float pitchLerpDuration = 0f;
+    void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        destroyTimer = GetComponent<DestroyTimer>();
+        destroyTimer.enabled = false;
+    }
 
-		
-	void LateUpdate()
-	{
-		if (active && !audioSource.isPlaying)
-		{
-			Stop();
-		}
+    void LateUpdate()
+    {
+        if (active && !audioSource.isPlaying)
+        {
+            Stop();
+        }
 
-		if (parent != null) 
-		{
-			transform.position = parent.position;
-		}
+        if (parent != null)
+        {
+            transform.position = parent.position;
+        }
+    }
 
-	}
+    public void SetSourceProperties(AudioClip clip, float volume, float pitch, bool loop, float spacialBlend, bool usePitchLerp, float pitchLerpDuration, float startDelay)
+    {
+        audioSource.clip = clip;
+        audioSource.volume = volume;
+        audioSource.pitch = usePitchLerp ? 0f : pitch; // Start pitch at 0 if using pitch lerp
+        audioSource.loop = loop;
+        audioSource.spatialBlend = spacialBlend;
+        playDelay = startDelay;
+        pitchLerp = usePitchLerp;
+        this.pitchLerpDuration =  pitchLerpDuration;
 
-	public void SetSourceProperties(AudioClip clip, float volume, float picth, bool loop, float spacialBlend)
-	{
-		audioSource.clip = clip;
-		audioSource.volume = volume;
-		audioSource.pitch = picth;
-		audioSource.loop = loop;
-		audioSource.spatialBlend = spacialBlend;
-
-		if(type == AudioData.Type.SFX && !loop) 
-		{
+        if (type == AudioData.Type.SFX && !loop)
+        {
             destroyTimer.timeToDestroy = audioSource.clip.length;
             destroyTimer.enabled = true;
         }
     }
 
-	public void SetParent(Transform parent)
-	{
-		this.parent = parent;
-	}
+    private IEnumerator PlayWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        PlayInternal();
+    }
 
-	public void SetPosition(Vector3 position)
-	{
-		transform.position = position;
-	}
+    private void PlayInternal()
+    {
+        if (audioSource != null && !active)
+        {
+            active = true;
+            audioSource.pitch = pitchLerp ? 0.01f : audioSource.pitch; // Set to small pitch if lerping
 
-	public void Play()
-	{
-        active = true;
-		if (audioSource != null)
-		{
-			audioSource.Play();
+            if (pitchLerp)
+            {
+                if (pitchLerpCoroutine != null)
+                {
+                    StopCoroutine(pitchLerpCoroutine);
+                }
+                pitchLerpCoroutine = StartCoroutine(LerpPitch(audioSource.pitch, pitchLerpDuration));
+            }
+            audioSource.Play(); // Start playback immediately
         }
-	}
+    }
 
-	public void Stop()
-	{
-		if (audioSource != null) audioSource.Stop();
-		Reset();
-		if (!isQuitting) AudioManager.Instance.ReturnController(this);
-	}
+    public void Play()
+    {
+        if (playDelay > 0)
+        {
+            StartCoroutine(PlayWithDelay(playDelay));
+        }
+        else
+        {
+            PlayInternal();
+        }
+    }
 
-	private void Reset()
-	{
-		active = false;
-		parent = null;
-	}
+    public void SetParent(Transform parent)
+    {
+        this.parent = parent;
+    }
 
-	public void FadeVolume(float duration = 3)
-	{
-		StartCoroutine(FadeOut(duration));
-	}
+    public void SetPosition(Vector3 position)
+    {
+        transform.position = position;
+    }
 
-	private IEnumerator FadeOut(float duration)
-	{
-		if (audioSource != null)
-		{
-			float startVolume = audioSource.volume;
+    public void Stop()
+    {
+        if (audioSource != null) audioSource.Stop();
+        Reset();
+        if (!isQuitting) AudioManager.Instance.ReturnController(this);
+    }
 
-			// Calculate the step size for volume reduction over time
-			float step = startVolume / duration;
+    private void Reset()
+    {
+        active = false;
+        parent = null;
+        if (pitchLerpCoroutine != null)
+        {
+            StopCoroutine(pitchLerpCoroutine);
+            pitchLerpCoroutine = null;
+        }
+    }
 
-			while (audioSource.volume > 0)
-			{
-				audioSource.volume -= step * Time.deltaTime;
-				yield return null;
-			}
+    public void FadeVolume(float duration = 3)
+    {
+        StartCoroutine(FadeOut(duration));
+    }
 
-			// Ensure the volume is set to zero
-			audioSource.volume = 0f;
-		}
+    private IEnumerator FadeOut(float duration)
+    {
+        if (audioSource != null)
+        {
+            float startVolume = audioSource.volume;
+            float step = startVolume / duration;
+
+            while (audioSource.volume > 0)
+            {
+                audioSource.volume -= step * Time.deltaTime;
+                yield return null;
+            }
+
+            audioSource.volume = 0f;
+        }
+    }
+
+    private IEnumerator LerpPitch(float targetPitch, float duration)
+    {
+        Debug.Log("Starting pitch lerp...");
+        float startPitch = 0.01f;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            audioSource.pitch = Mathf.Lerp(startPitch, targetPitch, elapsedTime / duration);
+            Debug.Log($"Pitch: {audioSource.pitch}");
+            yield return null;
+        }
+
+        audioSource.pitch = targetPitch;
+        Debug.Log("Pitch lerp complete.");
     }
 
     void OnApplicationFocus(bool hasFocus)
     {
-		
         if (audioSource != null)
         {
             if (hasFocus)
             {
-                //Debug.Log("UnPause");
-				audioSource.time = playTime;
+                audioSource.time = playTime;
                 audioSource.Play();
-                //audioSource.UnPause();
             }
             else
             {
-                //Debug.Log("Pause");
-				playTime = audioSource.time;
+                playTime = audioSource.time;
                 audioSource.Pause();
             }
         }
     }
+
     void OnApplicationPause(bool isPaused)
     {
         if (audioSource != null)
@@ -142,12 +189,12 @@ public class AudioSourceController : MonoBehaviour
             }
             else
             {
-                //audioSource.UnPause();
                 audioSource.time = playTime;
                 audioSource.Play();
             }
         }
     }
+
     private void OnApplicationQuit()
     {
         isQuitting = true;
