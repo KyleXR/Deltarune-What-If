@@ -35,7 +35,6 @@ public class LookAtHandler : MonoBehaviour
     {
         while (lookAt)
         {
-            Debug.Log("lookingAt: " + lookAtId);
 
             // Smoothly rotate the camera to look at the target
             Vector3 direction = currentTarget.position - mainCamera.transform.position;

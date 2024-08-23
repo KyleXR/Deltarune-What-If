@@ -1,6 +1,8 @@
 using Dreamteck.Splines;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TrackPrefabSpawner : MonoBehaviour
 {
@@ -20,10 +22,24 @@ public class TrackPrefabSpawner : MonoBehaviour
     private float currentPadding = 0;
     public float time;
     public int maxPrefabs = 5;
+    public int timesCalled = 0;
+    public Scene newScene = new Scene();
+
     void Start()
     {
+        newScene = SceneManager.GetSceneByName("SampleMapScene");
         lastNodeTransform = transform;
-        for(int i = 0; i < maxPrefabs; i++)
+        StartCoroutine(InitializeTrack());
+    }
+
+    IEnumerator InitializeTrack()
+    {
+        while(newScene.IsValid())
+        {
+            yield return null;
+        }
+
+        for (int i = 0; i < maxPrefabs; i++)
         {
             SpawnTrackPrefab();
         }
@@ -37,13 +53,11 @@ public class TrackPrefabSpawner : MonoBehaviour
         followCartPositions = new Vector3[followManager.Length, followerAmount];
     }
 
-    void Update()
-    {
-        
-    }
-
     public void SpawnTrackPrefab()
     {
+        timesCalled++;
+        //Debug.Log("I've been called, " + timesCalled + " times");
+
 
         
         // Save the world positions of the carts before updating the spline
@@ -60,9 +74,11 @@ public class TrackPrefabSpawner : MonoBehaviour
         {
             // Step 1: Randomly select a track prefab from the array
             int rand = Random.Range(0, tracks.Length);
+            Debug.Log("I am being called");
 
             // Step 2: Instantiate the selected track prefab at the last node's position and rotation
             newTrack = Instantiate(tracks[rand], lastNodeTransform.position, lastNodeTransform.rotation);
+            trackSplines[1].ResetTriggers();
         }
 
        
@@ -114,6 +130,7 @@ public class TrackPrefabSpawner : MonoBehaviour
         if (trackList.Count > 2) middleNodes = trackList[2].GetTrackNodes(2);
         var triggerNode = trackSplines[1].Project(middleNodes[middleNodes.Length / 2].position).percent;
         trackSplines[1].triggerGroups[0].triggers[0].position = triggerNode;
+        Debug.Log(triggerNode.ToString());
 
         // Update the positions of the carts on the spline
         UpdateCartPositions();
