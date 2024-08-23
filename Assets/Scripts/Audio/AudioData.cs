@@ -31,22 +31,22 @@ public class AudioData : ScriptableObject
 
     private int currentIndex = -1;
 
-    public AudioSourceController Play(Transform parent)
+    public AudioSourceController Play(Transform parent, int id = 0)
     {
-        AudioSourceController controller = Play(parent.position);
+        AudioSourceController controller = Play(parent.position, id);
         controller.SetParent(parent);
 
         return controller;
     }
 
-    public AudioSourceController Play(Vector3 position)
+    public AudioSourceController Play(Vector3 position, int id = 0)
     {
         float rand = Random.Range(0, 100) * 0.01f;
         AudioSourceController controller = AudioManager.Instance.GetController(type);
         float volume = this.volume + Random.Range(-volumeRandom, volumeRandom);
         float pitch = AudioUtilities.SemitoneToPitch(this.pitch + Random.Range(-pitchRandom, pitchRandom));
-
-        controller.SetSourceProperties(GetAudioClip(), volume, pitch, loop, spacialBlend, usePitchLerp, pitchLerpDuration, startDelay);
+        if (!useRandomClip && audioClips.Length > 0 && id != audioClips.Length - 1) controller.SetSourceProperties(GetAudioClip(id), volume, pitch, false, spacialBlend, usePitchLerp, pitchLerpDuration, startDelay);
+        else controller.SetSourceProperties(GetAudioClip(id), volume, pitch, loop, spacialBlend, usePitchLerp, pitchLerpDuration, startDelay);
         controller.SetPosition(position);
 
         if (rand <= chance) controller.Play();
@@ -54,19 +54,20 @@ public class AudioData : ScriptableObject
         return controller;
     }
 
-    private AudioClip GetAudioClip()
+    private AudioClip GetAudioClip(int id = 0)
     {
         if (audioClips.Length == 0) return null;
         int index = 0;
         if (useRandomClip) index = (audioClips.Length == 1) ? 0 : Random.Range(0, audioClips.Length);
-        else index = currentIndex + 1;
+        else index = id;
         if (index >= audioClips.Length) index = audioClips.Length - 1;
         currentIndex = index;
+        //Debug.Log(id + " " + audioClips.Length);
         return audioClips[index];
     }
 
-    IEnumerator PlayNextClip()
+    public bool GetLoop()
     {
-        yield return null;
+        return loop;
     }
 }

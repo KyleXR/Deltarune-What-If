@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -18,18 +19,31 @@ public class AudioSourceController : MonoBehaviour
     private float playDelay = 0f;
     private bool pitchLerp = false;
     private float pitchLerpDuration = 0f;
+
+    public event Action OnClipFinished;
+    private int clipIndex = 0;
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         destroyTimer = GetComponent<DestroyTimer>();
         destroyTimer.enabled = false;
     }
-
-    void LateUpdate()
+    //private void Update()
+    //{
+    //    if (!audioSource.isPlaying && OnClipFinished != null)
+    //    {
+    //        OnClipFinished.Invoke();
+    //    }
+    //}
+    void Update()
     {
         if (active && !audioSource.isPlaying)
         {
             Stop();
+            if (OnClipFinished != null)
+            {
+                OnClipFinished.Invoke();
+            }
         }
 
         if (parent != null)
