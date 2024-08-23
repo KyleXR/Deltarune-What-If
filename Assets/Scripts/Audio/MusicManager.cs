@@ -21,7 +21,7 @@ public class MusicManager : Singleton<MusicManager>
     private void PlayCurrentClip()
     {
         if (currentSongController != null) currentSongController.Stop();
-        Debug.Log(currentClipIndex);
+        //.Log(currentClipIndex);
         currentSongController = currentSong.Play(transform, currentClipIndex);
         currentSongController.OnClipFinished += HandleClipFinished;
 
