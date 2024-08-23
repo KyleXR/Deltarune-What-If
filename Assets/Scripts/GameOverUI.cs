@@ -79,6 +79,8 @@ public class GameOverUI : MonoBehaviour
         //GOCam.gameObject.SetActive(false);
     }
 
+
+
     public void GiveUp()
     {
         SceneManager.LoadScene("TitleScreen");

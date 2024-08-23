@@ -37,7 +37,6 @@ public class SpamTrigger : MonoBehaviour
             dialogueTrigger.TriggerDialogue();
             FindFirstObjectByType<LookAtHandler>().LookAtNextTarget();
             StartCoroutine(LoadNextScene());
-
             currentMusicPlayer = Instantiate(musicPlayer);
         }
     }
@@ -61,7 +60,26 @@ public class SpamTrigger : MonoBehaviour
             yield return null;
         }
         Destroy(MusicManager.Instance.gameObject);
+        yield return StartCoroutine(UnloadAndSetActiveScene());
     }
+    IEnumerator UnloadAndSetActiveScene()
+    {
+        // After the original scene is unloaded, set the new scene as active
+        Scene newScene = SceneManager.GetSceneByName("BattleScene");
+        if (newScene.IsValid())
+        {
+            SceneManager.SetActiveScene(newScene);
+        }
+
+        // Wait until the original scene is unloaded
+        AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("SampleMapScene");
+        while (!unloadOperation.isDone)
+        {
+            yield return null;
+        }
+
+    }
+
 
     private void YoinkSpamton(bool yoink)
     {

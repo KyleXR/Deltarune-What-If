@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] Image blindCover;
+    public float fadeDuration = 1.0f;
+
     // Spell UI Variables
     [Header("Spell Variables")]
     [SerializeField] TargetingLogic spell;
@@ -44,6 +47,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(FadeOutImage());
         if (tension == null) tension = FindFirstObjectByType<TensionPoints>();
         healthBar.value = health.currentHealth / health.maxHealth;
         spamHealthBar.value = spamHealth.currentHealth / spamHealth.maxHealth;
@@ -146,6 +150,24 @@ public class UIManager : MonoBehaviour
         maxColor.a = maxAlpha;
         maxSign.color = maxColor;
     }
+
+    public IEnumerator FadeOutImage()
+    {
+        Color startColor = blindCover.color;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < fadeDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Lerp(startColor.a, 0, elapsedTime / fadeDuration);
+            blindCover.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
+            yield return null;
+        }
+
+        // Ensure the alpha is set to 0 after fading
+        blindCover.color = new Color(startColor.r, startColor.g, startColor.b, 0);
+    }
+
 
     public void SetCurrentSpell()
     {
