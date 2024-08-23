@@ -6,6 +6,7 @@ public class MusicPlayer : MonoBehaviour
 {
     public AudioData song;
     public bool playOnAwake = true;
+
     void Start()
     {
         if (playOnAwake) PlaySong();

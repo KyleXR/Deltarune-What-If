@@ -18,6 +18,8 @@ public class SpellProjectileSpawner : MonoBehaviour
     [SerializeField] private float SOULFireForce = 20f;
 
     [SerializeField] private List<GameObject> handObjects;
+    [SerializeField] private GameObject SOULchargeFX;
+    private GameObject currentChargeFX;
 
     private float chargeStartTime;
 
@@ -34,10 +36,21 @@ public class SpellProjectileSpawner : MonoBehaviour
         {
             chargeStartTime = Time.time;
         }
-
+        if (Input.GetMouseButton(0))
+        {
+            Debug.Log("Charging...");
+            float chargeTime = Time.time - chargeStartTime;
+            if (chargeTime > 0.1f && currentChargeFX == null && handObjects[0].activeInHierarchy)
+            {
+                Debug.Log("Charged");
+                currentChargeFX = Instantiate(SOULchargeFX, handObjects[0].transform.position, Quaternion.identity);
+                currentChargeFX.transform.parent = handObjects[0].transform;
+            }
+        }
         if (Input.GetMouseButtonUp(0))
         {
             LaunchProjectile();
+            if (currentChargeFX != null) { Destroy(currentChargeFX); }
         }
     }
 

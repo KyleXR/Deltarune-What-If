@@ -22,3 +22,5 @@ MonoBehaviour:
   loop: 0
   type: 0
   chance: 1
+  usePitchLerp: 0
+  pitchLerpDuration: 1

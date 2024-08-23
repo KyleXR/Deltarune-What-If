@@ -5,52 +5,69 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AudioData", menuName = "Audio/AudioData")]
 public class AudioData : ScriptableObject
 {
-	public enum Type
-	{
-		SFX,
-		MUSIC
-	}
+    public enum Type
+    {
+        SFX,
+        MUSIC
+    }
 
+    public AudioClip[] audioClips;
+    public bool useRandomClip = false;
+    [SerializeField, Range(0, 1)] private float volume = 1;
+    [SerializeField, Range(0, 0.2f)] private float volumeRandom = 0;
+    [SerializeField, Range(-24, 24)] private float pitch = 0;
+    [SerializeField, Range(0, 12)] private float pitchRandom = 0;
+    [SerializeField, Range(0, 1)] private float spacialBlend = 1;
+    [SerializeField] private bool loop = false;
+    [SerializeField] private Type type = Type.SFX;
+    [SerializeField, Range(0f, 1f)] private float chance = 1;
 
-	public AudioClip[] audioClips;
+    [Header("Pitch Lerp Settings")]
+    [SerializeField] private bool usePitchLerp = false;
+    [SerializeField, Range(0.1f, 10f)] private float pitchLerpDuration = 1f;
 
-	[SerializeField, Range(0, 1)] private float volume = 1;
-	[SerializeField, Range(0, 0.2f)] private float volumeRandom = 0;
-	[SerializeField, Range(-24, 24)] private float pitch = 0;
-	[SerializeField, Range(0, 12)] private float pitchRandom = 0;
-	[SerializeField, Range(0, 1)] private float spacialBlend = 1;
-	[SerializeField] private bool loop = false;
-	[SerializeField] private Type type = Type.SFX;
-	[SerializeField, Range(0f, 1f)] private float chance = 1;
+    [Header("Start Delay Settings")]
+    [SerializeField, Range(0f, 10f)] private float startDelay = 0f;
 
-	
-	public AudioSourceController Play(Transform parent)
-	{
-		AudioSourceController controller = Play(parent.position);
-		controller.SetParent(parent);
+    private int currentIndex = -1;
 
-		return controller;
-	}
+    public AudioSourceController Play(Transform parent, int id = 0)
+    {
+        AudioSourceController controller = Play(parent.position, id);
+        controller.SetParent(parent);
 
-	public AudioSourceController Play(Vector3 position)
-	{
+        return controller;
+    }
+
+    public AudioSourceController Play(Vector3 position, int id = 0)
+    {
         float rand = Random.Range(0, 100) * 0.01f;
         AudioSourceController controller = AudioManager.Instance.GetController(type);
-		float volume = this.volume + Random.Range(-volumeRandom, volumeRandom);
-		float pitch = AudioUtilities.SemitoneToPitch(this.pitch + Random.Range(-pitchRandom, pitchRandom));
-		controller.SetSourceProperties(GetAudioClip(), volume, pitch, loop, spacialBlend);
-		controller.SetPosition(position);
+        float volume = this.volume + Random.Range(-volumeRandom, volumeRandom);
+        float pitch = AudioUtilities.SemitoneToPitch(this.pitch + Random.Range(-pitchRandom, pitchRandom));
+        if (!useRandomClip && audioClips.Length > 0 && id != audioClips.Length - 1) controller.SetSourceProperties(GetAudioClip(id), volume, pitch, false, spacialBlend, usePitchLerp, pitchLerpDuration, startDelay);
+        else controller.SetSourceProperties(GetAudioClip(id), volume, pitch, loop, spacialBlend, usePitchLerp, pitchLerpDuration, startDelay);
+        controller.SetPosition(position);
+
         if (rand <= chance) controller.Play();
 
-		return controller;
-	}
+        return controller;
+    }
 
+    private AudioClip GetAudioClip(int id = 0)
+    {
+        if (audioClips.Length == 0) return null;
+        int index = 0;
+        if (useRandomClip) index = (audioClips.Length == 1) ? 0 : Random.Range(0, audioClips.Length);
+        else index = id;
+        if (index >= audioClips.Length) index = audioClips.Length - 1;
+        currentIndex = index;
+        //Debug.Log(id + " " + audioClips.Length);
+        return audioClips[index];
+    }
 
-	private AudioClip GetAudioClip()
-	{
-		if (audioClips.Length == 0) return null;
-
-		int index = (audioClips.Length == 1) ? 0 : Random.Range(0, audioClips.Length);
-		return audioClips[index];
-	}
+    public bool GetLoop()
+    {
+        return loop;
+    }
 }

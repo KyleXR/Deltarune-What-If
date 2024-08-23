@@ -13,5 +13,6 @@ public class LevelTrigger : MonoBehaviour
     {
         SceneManager.UnloadSceneAsync("SampleMapScene");
         isTriggered = true;
+        MusicManager.Instance.Stop();
     }
 }

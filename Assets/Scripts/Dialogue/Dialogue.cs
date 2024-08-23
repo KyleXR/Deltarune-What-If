@@ -9,4 +9,5 @@ public class Dialogue
     [TextArea(3,10)]
     public string[] sentences;
     public Sprite[] portraitSprite;
+    public GameObject[] txtSounds;
 }

@@ -49,6 +49,9 @@ public class DialogueVisualController : MonoBehaviour
 
     [SerializeField] GameObject spamtonNeo;
 
+    private GameObject[] typingSounds;
+    private int sentenceID = 0;
+
     void Start()
     {
         sentences = new Queue<string>();
@@ -83,11 +86,19 @@ public class DialogueVisualController : MonoBehaviour
         {
             portraits.Enqueue(portrait);
         }
+        typingSounds = dialogue.txtSounds;
+        sentenceID = -1;
+        if (typingSounds == null || typingSounds.Length < sentences.Count)
+        {
+            typingSounds = new GameObject[sentences.Count];
+            for (int i = 0; i < typingSounds.Length; i++) typingSounds[i] = typingSound;
+        }
         DisplayNextSentence();
         detectInput = true;
     }
     public void DisplayNextSentence()
     {
+        sentenceID++;
         dialogueText.ClearMesh();
 
         originalVertexPositions.Clear();
@@ -234,7 +245,10 @@ public class DialogueVisualController : MonoBehaviour
         var charArray = sentenceWithOutMarkers.ToCharArray();
         StringBuilder typedSentence = new StringBuilder();
 
-        var currentSound = Instantiate(typingSound);
+        //var currentSound = Instantiate(typingSound);
+        
+        var currentSound = Instantiate(typingSounds[sentenceID]);
+
 
         typing = true;
         // Iterate over each character
@@ -262,7 +276,7 @@ public class DialogueVisualController : MonoBehaviour
             if (i % soundPerCharacter == 0 && !pauseCharacters.Contains(sentenceWithOutMarkers[i]) && typingSound != null)
             {
                 Destroy(currentSound);
-                currentSound = Instantiate(typingSound);
+                currentSound = Instantiate(typingSounds[sentenceID]);
             }
             //if (pauseCharacters.Contains(sentenceWithOutMarkers[i])) Debug.Log(sentenceWithOutMarkers[i]);
             float tempSpeed = pauseCharacters.Contains(sentenceWithOutMarkers[i]) ? speed * 10 : speed;
