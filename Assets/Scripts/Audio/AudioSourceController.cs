@@ -22,11 +22,13 @@ public class AudioSourceController : MonoBehaviour
 
     public event Action OnClipFinished;
     private int clipIndex = 0;
+    private float playStartTime = 0;
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         destroyTimer = GetComponent<DestroyTimer>();
         destroyTimer.enabled = false;
+        playStartTime = Time.time;
     }
     //private void Update()
     //{
@@ -70,10 +72,22 @@ public class AudioSourceController : MonoBehaviour
         }
     }
 
+    public void Play()
+    {
+        if (playDelay > 0)
+        {
+            StartCoroutine(PlayWithDelay(playDelay));
+        }
+        else
+        {
+            PlayInternal();
+        }
+    }
+
     private IEnumerator PlayWithDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        PlayInternal();
+        PlayInternal(); // This will now only call PlayInternal after the delay
     }
 
     private void PlayInternal()
@@ -91,21 +105,10 @@ public class AudioSourceController : MonoBehaviour
                 }
                 pitchLerpCoroutine = StartCoroutine(LerpPitch(audioSource.pitch, pitchLerpDuration));
             }
-            audioSource.Play(); // Start playback immediately
+            audioSource.Play(); // Start playback
         }
     }
 
-    public void Play()
-    {
-        if (playDelay > 0)
-        {
-            StartCoroutine(PlayWithDelay(playDelay));
-        }
-        else
-        {
-            PlayInternal();
-        }
-    }
 
     public void SetParent(Transform parent)
     {
@@ -177,7 +180,7 @@ public class AudioSourceController : MonoBehaviour
 
     void OnApplicationFocus(bool hasFocus)
     {
-        if (audioSource != null)
+        if (audioSource != null && active) // Only resume if it was already playing
         {
             if (hasFocus)
             {
@@ -194,7 +197,7 @@ public class AudioSourceController : MonoBehaviour
 
     void OnApplicationPause(bool isPaused)
     {
-        if (audioSource != null)
+        if (audioSource != null && active) // Only resume if it was already playing
         {
             if (isPaused)
             {
@@ -208,6 +211,7 @@ public class AudioSourceController : MonoBehaviour
             }
         }
     }
+
 
     private void OnApplicationQuit()
     {
