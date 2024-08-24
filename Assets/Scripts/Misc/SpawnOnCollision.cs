@@ -59,7 +59,7 @@ public class SpawnOnCollision : MonoBehaviour
             }
         }
     }
-    private void SpawnPrefab(Transform parent)
+    public void SpawnPrefab(Transform parent)
     {
         // Calculate the spawn position
         Vector3 spawnPosition = transform.position + spawnOffset;

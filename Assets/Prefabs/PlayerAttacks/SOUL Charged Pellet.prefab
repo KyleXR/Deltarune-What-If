@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3532542017051244431}
   m_Layer: 3
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 1185205070786131927}
   m_Layer: 3
   m_Name: SOUL Charged Pellet
-  m_TagString: Player
+  m_TagString: PlayerAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -350,7 +350,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aadef20d0ecc0f4428b464dbde61b9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: Spamton
+  targetTags:
+  - Spamton
+  - SpamtonAttack
   attackType: 1
   damage: 10
   ignoresDamageCooldown: 1
@@ -407,6 +409,7 @@ MonoBehaviour:
   checkTag: 1
   ignoreTags:
   - CartTrigger
+  - Player
 --- !u!114 &1185205070786131927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,3 +424,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioData: {fileID: 11400000, guid: 9e8ab45c33212c94e9937e6d7e982952, type: 2}
   chance: 1
+  setControlerParent: 0

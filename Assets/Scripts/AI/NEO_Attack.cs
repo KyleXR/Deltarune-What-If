@@ -27,7 +27,11 @@ public abstract class NEO_Attack : MonoBehaviour
     {
         attack = GetComponent<Attack>();
         attack.damage = damage;
-        attack.targetTag = "Player";
+        if (attack.targetTags.Length == 0 || attack.targetTags == null)
+        {
+            attack.targetTags = new string[1];
+            attack.targetTags[0] = "Player";
+        }
         attack.ignoresDamageCooldown = ignoresInvulability;
     }
 

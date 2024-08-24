@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    public string targetTag;
+    public string[] targetTags;
     public enum AttackType
     {
         Once,
@@ -22,7 +23,7 @@ public class Attack : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == targetTag || targetTag == string.Empty)
+        if (targetTags.Contains(other.tag) || targetTags.Length <= 0)
         {
             if (attackType == AttackType.Continuous)
             {
@@ -33,7 +34,7 @@ public class Attack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == targetTag || targetTag == string.Empty)
+        if (targetTags.Contains(other.tag) || targetTags.Length <= 0)
         {
             ApplyDamage(other);
         }

@@ -5060,7 +5060,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aadef20d0ecc0f4428b464dbde61b9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: Spamton
+  targetTags:
+  - Spamton
+  - SpamtonAttack
   attackType: 0
   damage: 10
   ignoresDamageCooldown: 0
@@ -5098,6 +5100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioData: {fileID: 11400000, guid: 6d619c684362d394899b2f487ba9e2c6, type: 2}
   chance: 1
+  setControlerParent: 0
 --- !u!1 &4300650847579287282
 GameObject:
   m_ObjectHideFlags: 0

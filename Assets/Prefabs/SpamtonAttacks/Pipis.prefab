@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aadef20d0ecc0f4428b464dbde61b9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: Player
+  targetTags: []
   attackType: 0
   damage: 20
   ignoresDamageCooldown: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioData: {fileID: 11400000, guid: 3c8d75abdd39cfe499677ae0636d17c0, type: 2}
   chance: 1
-  setControlelerParent: 0
+  setControlerParent: 0
 --- !u!1 &4921180085364663553
 GameObject:
   m_ObjectHideFlags: 0

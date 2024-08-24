@@ -6,7 +6,7 @@ public class AudioPlayOnAwake : MonoBehaviour
 {
 	public AudioData audioData;
 	[Range(0f, 1f)] public float chance = 1;
-	[SerializeField] private bool setControlelerParent = false;
+	[SerializeField] private bool setControlerParent = false;
 
 	private AudioSourceController controller;
 	void Awake()

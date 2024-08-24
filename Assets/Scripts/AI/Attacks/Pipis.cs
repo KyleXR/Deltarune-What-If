@@ -34,10 +34,19 @@ public class Pipis : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (ignoreTags.Contains(other.tag)) return;
+        Debug.Log(other.tag);
         // Destroy the game object when it is triggered
-        if (other.TryGetComponent<Attack>(out var attack)) return;
-        ShootRays();
-        Destroy(gameObject);
+        if (other.CompareTag("PlayerAttack"))
+        {
+            GetComponent<SpawnOnCollision>().SpawnPrefab(other.transform);
+            Destroy(gameObject);
+            return;
+        }
+        else
+        {
+            ShootRays();
+            Destroy(gameObject);
+        }
     }
 
     void ShootRays()
