@@ -26,7 +26,8 @@ public class TargetingLogic : MonoBehaviour
     public enum Spell
     {
         IceShock,
-        SnowGrave
+        SnowGrave,
+        HealPrayer
     }
 
     // Start is called before the first frame update
@@ -67,6 +68,11 @@ public class TargetingLogic : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             selectedSpell = Spell.SnowGrave;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            selectedSpell = Spell.HealPrayer;
         }
 
         if (selectedSpell == Spell.SnowGrave && Input.GetMouseButton(1))

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 137639463810609445}
   - component: {fileID: 1199840480211590657}
+  - component: {fileID: 1375275955229066505}
   m_Layer: 0
   m_Name: KromerFX
   m_TagString: Untagged
@@ -46,3 +47,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioData: {fileID: 11400000, guid: aed3586e4296f13428a128f95a0fa1dd, type: 2}
   chance: 1
+  setControlerParent: 0
+--- !u!114 &1375275955229066505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 569891116603050734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0de79f0e68b541d4cab3b15ae2e58ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeToDestroy: 2

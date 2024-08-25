@@ -2531,6 +2531,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2100121079515714786}
+  - component: {fileID: 6303619398241845413}
   - component: {fileID: 4162466841490184534}
   - component: {fileID: 5785920403298178588}
   - component: {fileID: 4103957905700374105}
@@ -2559,6 +2560,18 @@ Transform:
   - {fileID: 4079065392987226190}
   m_Father: {fileID: 6802780990120367838}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6303619398241845413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6812472663030339568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 999f866f71b380847b54319ce8ca9285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!20 &4162466841490184534
 Camera:
   m_ObjectHideFlags: 0
@@ -3237,15 +3250,16 @@ GameObject:
   - component: {fileID: 3103804255004467133}
   - component: {fileID: 7171589540731564700}
   - component: {fileID: 7505015212238735073}
-  - component: {fileID: 3336881898736468778}
   - component: {fileID: -4885758842101876952}
   - component: {fileID: 868198910482166499}
   - component: {fileID: -965583597084364172}
+  - component: {fileID: 2692701365382282139}
   - component: {fileID: 3810057691667069406}
   - component: {fileID: 2908827766642139296}
   - component: {fileID: 1422510850761833769}
   - component: {fileID: 2706685859955870208}
   - component: {fileID: 922955714487828112}
+  - component: {fileID: 9073482342416880582}
   m_Layer: 3
   m_Name: NoelleFirstPersonController
   m_TagString: Player
@@ -3304,23 +3318,6 @@ MonoBehaviour:
   grazeDistance: 2
   enemyTag: Spamton
   checkInterval: 0.2
---- !u!114 &3336881898736468778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8621306923391871138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8712ac606fa5f23418db1e462a86b625, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 90
-  damageCooldown: 0.5
-  currentHealth: 90
-  damageNumberPrefab: {fileID: 0}
-  spawnDamageNumber: 0
 --- !u!114 &-4885758842101876952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3380,6 +3377,7 @@ MonoBehaviour:
   - {fileID: 2865994087218172643, guid: e020ed7a9c407614f91c1aee9abea314, type: 3}
   - {fileID: 6805461485148262874, guid: 3eef820585f3cfb449ac721d0a4cb8e3, type: 3}
   - {fileID: 5637917106232780775, guid: 68b52767f97951641a458b244ccc519b, type: 3}
+  - {fileID: 2468564262125021355, guid: fd87814d5ca760f40a0e5d259efb7320, type: 3}
   launchPoint: {fileID: 4079065392987226190}
   targetingLogic: {fileID: -4885758842101876952}
   groundCheckDistance: 20
@@ -3387,14 +3385,32 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   tensionCosts:
-  - 16
+  - 8
   - 100
+  - 16
   Magic: 11
-  SOULChargeTime: 1
+  SOULChargeTime: 0.75
   SOULFireForce: 30
   handObjects:
   - {fileID: 17131351835524023}
   - {fileID: 7893136702127447530}
+  SOULchargeFX: {fileID: 3187121950489060036, guid: b339e7cc28cd53348b56ddb6d27b7731,
+    type: 3}
+  IceShockCastFX: {fileID: 4547578978517154043, guid: 1d8cf33f20dcaba4384b223fa4654310,
+    type: 3}
+  spellCooldownTime: 0.25
+--- !u!114 &2692701365382282139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8621306923391871138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6839c6e3b55ff64b86c043091496612, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3810057691667069406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3551,6 +3567,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &9073482342416880582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8621306923391871138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34877058a27d19e4da28984dc348ba84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPrefab: {fileID: 3947565764929282792, guid: a0cd7bdb09d8df14e89f3df7b8fa32b5,
+    type: 3}
+  minDamage: 5
 --- !u!1 &8626505921744999531
 GameObject:
   m_ObjectHideFlags: 0

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioClips:
   - {fileID: 8300000, guid: adeefac783afb7e40864a2e9ef8a8158, type: 3}
-  volume: 0
+  useRandomClip: 0
+  volume: 1
   volumeRandom: 0
   pitch: 0
   pitchRandom: 0
@@ -22,3 +23,6 @@ MonoBehaviour:
   loop: 1
   type: 1
   chance: 1
+  usePitchLerp: 0
+  pitchLerpDuration: 1
+  startDelay: 0

@@ -18,7 +18,8 @@ public class ResetTransform : MonoBehaviour
             if (other.gameObject == target)
             {
                 target.transform.position = resetPoint.position;
-                target.transform.rotation = resetPoint.rotation;
+                //target.transform.rotation = resetPoint.rotation;
+                target.GetComponent<Health>().TakeDamageInstant(5);
             }
         }
     }

@@ -19,13 +19,19 @@ public class SpellProjectileSpawner : MonoBehaviour
 
     [SerializeField] private List<GameObject> handObjects;
     [SerializeField] private GameObject SOULchargeFX;
+    [SerializeField] private GameObject IceShockCastFX;
     private GameObject currentChargeFX;
+
+    // Cooldown-related variables
+    [SerializeField] private float spellCooldownTime = 0.25f; // Cooldown duration in seconds
+    private float lastSpellCastTime;
 
     private float chargeStartTime;
 
     private void Start()
     {
         tension = GetComponent<TensionPoints>();
+        lastSpellCastTime = -spellCooldownTime; // Initialize to allow immediate casting
     }
 
     void Update()
@@ -49,14 +55,22 @@ public class SpellProjectileSpawner : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
-            LaunchProjectile();
-            if (currentChargeFX != null) { Destroy(currentChargeFX); }
+            // Check if the cooldown has expired
+            if (Time.time >= lastSpellCastTime + spellCooldownTime)
+            {
+                LaunchProjectile();
+                if (currentChargeFX != null) { Destroy(currentChargeFX); }
+                lastSpellCastTime = Time.time; // Update the last spell cast time
+            }
+            else
+            {
+                Debug.Log("Spell is on cooldown. Please wait.");
+            }
         }
     }
 
     void LaunchProjectile()
     {
-        //Transform target = targetingLogic.FindCameraAim();
         Vector3 target = targetingLogic.FindCameraAimPosition();
         Vector3 direction;
 
@@ -66,7 +80,6 @@ public class SpellProjectileSpawner : MonoBehaviour
         }
         else
         {
-            // Fallback to a set distance in front of the camera
             direction = (targetingLogic.playerCamera.transform.forward * 10f).normalized; // 10f is an example distance
         }
 
@@ -80,35 +93,62 @@ public class SpellProjectileSpawner : MonoBehaviour
             // Cast a ray downwards from the target position
             if (Physics.Raycast(spawnPosition + (Vector3.up * 0.1f), Vector3.down, out hit, groundCheckDistance, groundLayer))
             {
-                // If ground is detected, set the Y position to the hit point
                 spawnPosition.y = hit.point.y;
             }
             else
             {
-                // If no ground is detected, set the Y position to the end of the raycast
                 spawnPosition.y -= groundCheckDistance;
             }
             projectile = Instantiate(spellPrefabs[1], spawnPosition, Quaternion.identity);
             var destroyTimer = projectile.GetComponent<DestroyTimer>();
-            projectile.GetComponent<Attack>().damage = Mathf.Round((40 * Magic + 600 + Random.Range(0, 101)) / destroyTimer.timeToDestroy * 0.1f);
+            projectile.GetComponent<Attack>().damage = Mathf.Round((40 * Magic + 600 + Random.Range(0, 101)) / destroyTimer.timeToDestroy);
 
             tension.tensionPoints -= tensionCosts[1];
+            projectile.transform.parent = transform.parent;
         }
         else if (targetingLogic.selectedSpell == TargetingLogic.Spell.IceShock && tension.tensionPoints >= tensionCosts[0])
         {
-            projectile = Instantiate(spellPrefabs[0], launchPoint.position, launchPoint.rotation);
-            HomingProjectile homingProjectile = projectile.GetComponent<HomingProjectile>();
+            // Adjustments for 3 projectiles within 5 degrees
+            float angleOffset = 30f;
 
-            if (homingProjectile != null)
+            // Create the base rotation (straight ahead)
+            Quaternion baseRotation = Quaternion.LookRotation(direction);
+
+            // Instantiate three projectiles with slight offsets
+            for (int i = 0; i < 3; i++)
             {
-                homingProjectile.target = targetingLogic.GetCurrentTarget();
+                // Random vertical offset within -5 to 5 degrees
+                float randomVerticalOffset = Random.Range(-angleOffset, angleOffset);
+
+                // Calculate horizontal offset
+                float horizontalOffset = (i - 1) * angleOffset; // -5, 0, 5 degrees for left, center, right
+
+                // Combine the offsets into a final rotation
+                Quaternion rotation = baseRotation * Quaternion.Euler(randomVerticalOffset, horizontalOffset, 0);
+                projectile = Instantiate(spellPrefabs[0], launchPoint.position, rotation);
+
+                HomingProjectile homingProjectile = projectile.GetComponent<HomingProjectile>();
+                if (homingProjectile != null)
+                {
+                    homingProjectile.target = targetingLogic.GetCurrentTarget();
+                }
+
+                projectile.GetComponent<Attack>().damage = Mathf.Round(30 * (Magic - 10) + 90 + Random.Range(0, 11)) * 0.33f;
+                projectile.transform.parent = transform.parent;
             }
-            projectile.GetComponent<Attack>().damage = Mathf.Round(30 * (Magic - 10) + 90 + Random.Range(0, 11));
+            var fx = Instantiate(IceShockCastFX, launchPoint.position, Quaternion.identity);
+            fx.transform.parent = launchPoint;
             tension.tensionPoints -= tensionCosts[0];
+        }
+        else if(targetingLogic.selectedSpell == TargetingLogic.Spell.HealPrayer && tension.tensionPoints >= tensionCosts[2])
+        {
+            projectile = Instantiate(spellPrefabs[4], transform.position - (Vector3.up * 0.5f), Quaternion.identity);
+            projectile.GetComponent<HealPrayer>().healAmount = (int)Magic * 5;
+            projectile.transform.parent = transform;
+            tension.tensionPoints -= tensionCosts[2];
         }
         else
         {
-            // Use third or fourth spell depending on the charge time
             float chargeTime = Time.time - chargeStartTime;
 
             if (chargeTime >= SOULChargeTime)
@@ -119,15 +159,18 @@ public class SpellProjectileSpawner : MonoBehaviour
             {
                 projectile = Instantiate(spellPrefabs[2], launchPoint.position, Quaternion.LookRotation(direction));
             }
-            projectile.GetComponent<Rigidbody>().AddForce(direction * SOULFireForce, ForceMode.Impulse); // 10f is an example force magnitude
+            projectile.GetComponent<Rigidbody>().AddForce(direction * SOULFireForce, ForceMode.Impulse);
+            projectile.transform.parent = transform.parent;
         }
 
-        projectile.transform.parent = transform.parent;
+        
     }
+
 
     public void SwapHandObjects(bool soulMode = false)
     {
         handObjects[0].SetActive(soulMode);
-        handObjects[1].SetActive(!soulMode);
+        handObjects[1].SetActive(!soulMode && (int)targetingLogic.selectedSpell < 2);
+        handObjects[2].SetActive(!soulMode && (int)targetingLogic.selectedSpell == 2);
     }
 }

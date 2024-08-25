@@ -28,22 +28,36 @@ public class Health : MonoBehaviour
         // Check if enough time has passed since the last damage was taken
         if (Time.time - lastDamageTime >= ((cooldownOverride < 0) ? damageCooldown : cooldownOverride))
         {
-            if (spawnDamageNumber && damageNumberPrefab != null)
-            {
-                if (damagePosition == Vector3.zero) damagePosition = transform.position;
-                var damageNumber = Instantiate(damageNumberPrefab, damagePosition, Quaternion.identity).GetComponent<DamageNumber>();
-                damageNumber.Initialize((int)damage);
-            }
-            currentHealth -= damage;
-            lastDamageTime = Time.time; // Update the last damage time
-
-            // Ensure health doesn't drop below zero
-            if (currentHealth <= 0)
-            {
-                Die();
-            }
-            OnTakeDamage?.Invoke(damage); //Calls the event
+            TakeDamageInstant(damage, damagePosition, cooldownOverride);
         }
+    }
+    public void TakeDamageInstant(float damage, float cooldownOverride = -1)
+    {
+        TakeDamageInstant(damage, Vector3.zero, cooldownOverride); //If the position doesn't matter.
+    }
+    public void TakeDamageInstant(float damage, Vector3 damagePosition, float cooldownOverride = -1)
+    {
+        if (spawnDamageNumber && damageNumberPrefab != null)
+        {
+            if (damagePosition == Vector3.zero) damagePosition = transform.position;
+            var damageNumber = Instantiate(damageNumberPrefab, damagePosition, Quaternion.identity).GetComponent<DamageNumber>();
+            damageNumber.Initialize((int)damage);
+        }
+        currentHealth -= damage;
+        lastDamageTime = Time.time; // Update the last damage time
+
+        // Ensure health doesn't drop below zero
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+        OnTakeDamage?.Invoke(damage); //Calls the event
+    }
+
+    public void Heal(int health)
+    {
+        currentHealth += health;
+        if (currentHealth > maxHealth) currentHealth = maxHealth;
     }
 
     void Die()

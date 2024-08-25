@@ -17,6 +17,8 @@ public class GameOverUI : MonoBehaviour
     [SerializeField] ButtonHighlighter giveUpBtn;
     [SerializeField] Camera GOCam;
 
+    [SerializeField] GameObject GOMusic;
+
 
     void Start()
     {
@@ -43,6 +45,8 @@ public class GameOverUI : MonoBehaviour
         heartMid.enabled = true;
         heartRight.enabled = false;
         cover.enabled = false;
+
+        Instantiate(GOMusic);
     }
 
     public void EnableHeart()

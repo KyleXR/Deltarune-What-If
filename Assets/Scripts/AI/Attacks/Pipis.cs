@@ -38,7 +38,7 @@ public class Pipis : MonoBehaviour
         // Destroy the game object when it is triggered
         if (other.CompareTag("PlayerAttack"))
         {
-            GetComponent<SpawnOnCollision>().SpawnPrefab(other.transform);
+            GetComponent<SpawnOnCollision>().SpawnPrefab(transform.parent);
             Destroy(gameObject);
             return;
         }

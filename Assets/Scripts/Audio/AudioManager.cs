@@ -9,6 +9,11 @@ public class AudioManager : Singleton<AudioManager>
 
     private List<AudioSourceController> audioSourceControllers = new List<AudioSourceController>();
 
+    private void Start()
+    {
+        FindFirstObjectByType<FirstPersonController>().GetComponent<Health>().OnDeath += StopAllSounds;
+    }
+
     public AudioSourceController GetController(AudioData.Type type)
     {
         AudioSourceController output = null;
@@ -44,6 +49,11 @@ public class AudioManager : Singleton<AudioManager>
 
     private void OnApplicationQuit()
     {
+        StopAllSounds(true);
+    }
+
+    private void StopAllSounds(bool yes)
+    {
         foreach (var controller in audioSourceControllers)
         {
             if (controller != null)
@@ -54,4 +64,5 @@ public class AudioManager : Singleton<AudioManager>
         }
         audioSourceControllers.Clear();
     }
+
 }

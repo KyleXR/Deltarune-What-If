@@ -6,12 +6,15 @@ public class NEO_AI : MonoBehaviour
     [SerializeField] RotationHandler rotator;
     [SerializeField] NEO_AttackHandler attackHandler;
     [SerializeField] Health health;
+    [SerializeField] Animator animator;
 
     [SerializeField] float rotationDelay = 10;
     [SerializeField] float attackDelay = 5;
     [SerializeField] float urgency = 0;
     [SerializeField] float urgencyRate = .1f;
     [SerializeField] bool generateUrgency = true;
+
+    [SerializeField] private float urgencyMultiplier = 0;
 
     void Start()
     {
@@ -20,6 +23,15 @@ public class NEO_AI : MonoBehaviour
 
         // Subscribe to the OnTakeDamage event
         FindFirstObjectByType<FirstPersonController>().GetComponent<Health>().OnTakeDamage += OnPlayerDamaged;
+
+        PauseAttacks(13);
+        PauseRotation(13);
+        PauseAnimator(13);
+        UrgencyCooldown(13);
+
+        health.OnTakeDamage += ApplyUrgencyMultiplier;
+
+        BIGSHOTENHANCEMENTS();
     }
 
     private void OnDestroy()
@@ -36,9 +48,12 @@ public class NEO_AI : MonoBehaviour
 
     void Update()
     {
-        if (generateUrgency && urgency <= 10) urgency += urgencyRate * Time.deltaTime;
+        if (generateUrgency && urgency <= 10)
+        {
+            float generatedUrgency = urgencyRate * Time.deltaTime;
+            urgency += generatedUrgency + (generatedUrgency * urgencyMultiplier);
+        }
     }
-
     private void ChangeRotation()
     {
         int newAngle = Random.Range(0, 8) * 45;
@@ -54,6 +69,17 @@ public class NEO_AI : MonoBehaviour
     public void PauseAttacks(float duration)
     {
         attackHandler.PauseAttack(duration);
+    }
+
+    public void PauseAnimator(float duration)
+    {
+        animator.speed = 0;
+        Invoke("UnpauseAnimator", duration);
+    }
+
+    private void UnpauseAnimator()
+    {
+        animator.speed = 1;
     }
 
     private IEnumerator RotateAtRandomIntervals()
@@ -84,15 +110,27 @@ public class NEO_AI : MonoBehaviour
         }
     }
 
-    public void UrgencyCooldown()
+    public void UrgencyCooldown(float duration = 5)
     {
-        urgency *= 0.5f;
+        urgency *= 0.25f;
         generateUrgency = false;
-        Invoke("EnableUrgencyGeneration", 5);
+        Invoke("EnableUrgencyGeneration", duration);
     }
+    public void ApplyUrgencyMultiplier(float damage)
+    {
+        float maxHealth = health.maxHealth;
+        urgencyMultiplier += (damage / maxHealth);
+    }
+
 
     public void EnableUrgencyGeneration()
     {
         generateUrgency = true;
+    }
+
+    private void BIGSHOTENHANCEMENTS()
+    {
+        health.maxHealth *= 1.977f * 4.99f;
+        health.currentHealth = health.maxHealth;
     }
 }

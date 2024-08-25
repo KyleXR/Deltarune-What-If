@@ -3030,6 +3030,7 @@ MonoBehaviour:
   rotator: {fileID: 782533856527886600}
   attackHandler: {fileID: 813557990901121466}
   health: {fileID: 0}
+  animator: {fileID: 5316961106321824662}
   rotationDelay: 10
   attackDelay: 5
   urgency: 0

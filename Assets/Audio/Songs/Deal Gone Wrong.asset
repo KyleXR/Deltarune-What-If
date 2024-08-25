@@ -15,7 +15,7 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: cc322dee7346d994bb7a8b4b56dd305e, type: 3}
   useRandomClip: 0
-  volume: 0.5
+  volume: 1
   volumeRandom: 0
   pitch: 0
   pitchRandom: 0

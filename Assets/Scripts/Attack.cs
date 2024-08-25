@@ -15,6 +15,7 @@ public class Attack : MonoBehaviour
     public AttackType attackType;
     public float damage = 10f;
     public bool ignoresDamageCooldown = false;
+    public bool instant = false;
     //public float burstInterval = 0.2f; // Interval between burst attacks
     //public float continuousDuration = 2f; // Duration of continuous attack
     //public float attackRange = 10f; // Range of the attack (used for initialization)
@@ -84,7 +85,8 @@ public class Attack : MonoBehaviour
         if (health == null) { health = collider.GetComponentInParent<Health>(); }
         if (health != null)
         {
-            health.TakeDamage(damage, collider.ClosestPoint(transform.position), (ignoresDamageCooldown ? 0.25f : -1));
+            if (!instant) health.TakeDamage(damage, collider.ClosestPoint(transform.position), (ignoresDamageCooldown ? 0.25f : -1));
+            else health.TakeDamageInstant(damage, collider.ClosestPoint(transform.position));
         }
     }
 

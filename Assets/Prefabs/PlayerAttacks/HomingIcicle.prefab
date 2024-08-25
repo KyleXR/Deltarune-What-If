@@ -4939,7 +4939,6 @@ GameObject:
   - component: {fileID: 4226324266493553987}
   - component: {fileID: -1306477121193622820}
   - component: {fileID: -294100242806204605}
-  - component: {fileID: -5605119157735785356}
   m_Layer: 3
   m_Name: HomingIcicle
   m_TagString: Player
@@ -5066,6 +5065,7 @@ MonoBehaviour:
   attackType: 0
   damage: 10
   ignoresDamageCooldown: 0
+  instant: 1
 --- !u!114 &-294100242806204605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5086,21 +5086,6 @@ MonoBehaviour:
   checkTag: 1
   ignoreTags:
   - CartTrigger
---- !u!114 &-5605119157735785356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4006724803596405941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab60357b6c1679440a909ed4199117ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioData: {fileID: 11400000, guid: 6d619c684362d394899b2f487ba9e2c6, type: 2}
-  chance: 1
-  setControlerParent: 0
 --- !u!1 &4300650847579287282
 GameObject:
   m_ObjectHideFlags: 0

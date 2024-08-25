@@ -11,6 +11,7 @@ public class AudioSourceController : MonoBehaviour
     private AudioSource audioSource;
     private Transform parent;
     private bool active = false;
+    private bool paused = false;
     private float playTime = 0;
     private DestroyTimer destroyTimer;
     private bool isQuitting = false;
@@ -34,8 +35,9 @@ public class AudioSourceController : MonoBehaviour
 
     void Update()
     {
-        if (active && !audioSource.isPlaying)
+        if (active && !audioSource.isPlaying && !paused && !isQuitting)
         {
+            Debug.Log("Stopped");
             Stop();
             OnClipFinished?.Invoke();
         }
@@ -45,6 +47,7 @@ public class AudioSourceController : MonoBehaviour
             transform.position = parent.position;
         }
     }
+
 
     public void SetSourceProperties(AudioClip clip, float volume, float pitch, bool loop, float spacialBlend, bool usePitchLerp, float pitchLerpDuration, float startDelay)
     {
@@ -84,7 +87,7 @@ public class AudioSourceController : MonoBehaviour
 
     private void PlayInternal()
     {
-        if (audioSource != null && !active && audioSource.gameObject.activeInHierarchy)
+        if (audioSource != null && !active && audioSource.gameObject.activeInHierarchy && !isQuitting)
         {
             active = true;
             //audioSource.pitch = pitchLerp ? 0.01f : audioSource.pitch; // Use an audible starting pitch
@@ -180,11 +183,13 @@ public class AudioSourceController : MonoBehaviour
             {
                 audioSource.time = playTime;
                 audioSource.Play();
+                paused = false;
             }
             else
             {
                 playTime = audioSource.time;
                 audioSource.Pause();
+                paused = true;
             }
         }
     }
@@ -197,11 +202,13 @@ public class AudioSourceController : MonoBehaviour
             {
                 playTime = audioSource.time;
                 audioSource.Pause();
+                paused = true;
             }
             else
             {
                 audioSource.time = playTime;
                 audioSource.Play();
+                paused = false;
             }
         }
     }
@@ -209,5 +216,6 @@ public class AudioSourceController : MonoBehaviour
     private void OnApplicationQuit()
     {
         isQuitting = true;
+        active = false;
     }
 }
