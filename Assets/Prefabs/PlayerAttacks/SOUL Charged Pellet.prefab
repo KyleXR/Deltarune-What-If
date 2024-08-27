@@ -287,6 +287,7 @@ GameObject:
   - component: {fileID: -8050850712507997182}
   - component: {fileID: 3732303508710700342}
   - component: {fileID: 1185205070786131927}
+  - component: {fileID: 5422725402117859709}
   m_Layer: 3
   m_Name: SOUL Charged Pellet
   m_TagString: PlayerAttack
@@ -426,3 +427,26 @@ MonoBehaviour:
   audioData: {fileID: 11400000, guid: 9e8ab45c33212c94e9937e6d7e982952, type: 2}
   chance: 1
   setControlerParent: 0
+--- !u!114 &5422725402117859709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5637917106232780775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d303f149f7cba343b3b10210d9ce3df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceMagnitude: 1
+  forceRange: {x: -0.5, y: 0.5}
+  forceMode: 1
+  randomDirection: 0
+  forceOnCollision: 1
+  forceOnTrigger: 1
+  checkTag: 1
+  ignoreTags:
+  - CartTrigger
+  - Player
+  - PlayerAttack

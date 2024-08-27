@@ -22,7 +22,7 @@ public class AudioSourceController : MonoBehaviour
     private float pitchLerpDuration = 0f;
 
     public event Action OnClipFinished;
-    private int clipIndex = 0;
+    //private int clipIndex = 0;
     private float playStartTime = 0;
 
     void Awake()

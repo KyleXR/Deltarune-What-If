@@ -2071,10 +2071,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aadef20d0ecc0f4428b464dbde61b9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: Player
+  targetTags:
+  - Player
   attackType: 0
-  damage: 5
-  ignoresDamageCooldown: 1
+  damage: 2
+  ignoresDamageCooldown: 0
+  instant: 1
 --- !u!1 &8236431286557081779
 GameObject:
   m_ObjectHideFlags: 0

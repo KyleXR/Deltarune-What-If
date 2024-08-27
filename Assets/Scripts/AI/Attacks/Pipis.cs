@@ -34,7 +34,7 @@ public class Pipis : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (ignoreTags.Contains(other.tag)) return;
-        Debug.Log(other.tag);
+        //Debug.Log(other.tag);
         // Destroy the game object when it is triggered
         if (other.CompareTag("PlayerAttack"))
         {

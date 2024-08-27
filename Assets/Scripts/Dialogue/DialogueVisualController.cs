@@ -106,7 +106,7 @@ public class DialogueVisualController : MonoBehaviour
         //isWaving = false;
         if (sentences.Count == 1)
         {
-            if(spamtonNeo.active == true)
+            if(spamtonNeo.activeInHierarchy == true)
             {
                 YoinkSpamton.Invoke(true);
             }
@@ -511,7 +511,7 @@ public class DialogueVisualController : MonoBehaviour
         animator.SetBool("IsOpen", false);
         var player = FindAnyObjectByType<FirstPersonController>();
         if (player != null) { player.enabled = true; }
-        if (spamtonNeo.active == true)
+        if (spamtonNeo.activeInHierarchy == true)
         {
             dialogueEnd.Invoke(true);
         }

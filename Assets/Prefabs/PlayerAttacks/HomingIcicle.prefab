@@ -4939,6 +4939,7 @@ GameObject:
   - component: {fileID: 4226324266493553987}
   - component: {fileID: -1306477121193622820}
   - component: {fileID: -294100242806204605}
+  - component: {fileID: 4306762349568529479}
   m_Layer: 3
   m_Name: HomingIcicle
   m_TagString: Player
@@ -5086,6 +5087,29 @@ MonoBehaviour:
   checkTag: 1
   ignoreTags:
   - CartTrigger
+--- !u!114 &4306762349568529479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006724803596405941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d303f149f7cba343b3b10210d9ce3df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forceMagnitude: 10
+  forceRange: {x: -1, y: 1}
+  forceMode: 1
+  randomDirection: 0
+  forceOnCollision: 0
+  forceOnTrigger: 1
+  checkTag: 1
+  ignoreTags:
+  - CartTrigger
+  - Player
+  - PlayerAttack
 --- !u!1 &4300650847579287282
 GameObject:
   m_ObjectHideFlags: 0

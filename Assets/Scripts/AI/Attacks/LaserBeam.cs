@@ -17,6 +17,7 @@ public class LaserBeam : NEO_Attack
     [SerializeField] private Transform aimTransform;
     [SerializeField] List<GameObject> fxPrefabs;
 
+    [SerializeField] private bool checkForGround = true;
     //private Transform spawnTransform;
     private int laserComponents = 2;
 
@@ -46,7 +47,7 @@ public class LaserBeam : NEO_Attack
         if (Physics.Raycast(spawnTransform.position, targetTransform.position - spawnTransform.position, out hit, laserLength, layerMask))
         {
             Debug.Log("Hit");
-            laserLength = hit.distance;
+            if (checkForGround) laserLength = hit.distance;
             aimTransform.position = hit.transform.position;
             //handler.UpdateCannonAim(hit.transform.position, false);
         }
@@ -255,7 +256,7 @@ public class LaserBeam : NEO_Attack
         }
         if (laserComponents <= 0)
         {
-            Debug.Log("Finished");
+            //Debug.Log("Finished");
             handler.StopAiming();
             StopAllCoroutines();
             Destroy(aimTransform.gameObject);

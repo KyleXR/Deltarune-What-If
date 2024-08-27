@@ -64,7 +64,7 @@ public class Health : MonoBehaviour
     {
         OnDeath?.Invoke(true);
         // Handle death (e.g., play death animation, deactivate the object)
-        Debug.Log($"{gameObject.name} has died.");
+        //Debug.Log($"{gameObject.name} has died.");
         gameObject.SetActive(false); // Example action: deactivate the object
     }
 }

@@ -9,7 +9,7 @@ public class IntroCarts : MonoBehaviour
     [SerializeField] Camera mainCamera;
     [SerializeField] Transform targetCart;
     [SerializeField] GameObject introSound;
-    private bool rotateToCart = true;
+    //private bool rotateToCart = true;
     public float rotationSpeed = 5.0f;
     
     // Start is called before the first frame update

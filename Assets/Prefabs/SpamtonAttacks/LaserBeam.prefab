@@ -120,10 +120,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aadef20d0ecc0f4428b464dbde61b9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: Player
+  targetTags: []
   attackType: 1
   damage: 5
   ignoresDamageCooldown: 1
+  instant: 0
 --- !u!1 &4065013647197400620
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +196,7 @@ MonoBehaviour:
   fxPrefabs:
   - {fileID: 569891116603050734, guid: e790fe3da195a9c40bd44969f4c3fe6c, type: 3}
   - {fileID: 2679044435401533258, guid: 2485e184ce61d2c4885020a754d3eed4, type: 3}
+  checkForGround: 0
 --- !u!114 &8984761939017380003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,10 +209,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aadef20d0ecc0f4428b464dbde61b9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: Player
+  targetTags: []
   attackType: 0
   damage: 10
   ignoresDamageCooldown: 0
+  instant: 0
 --- !u!1 &4083361941711088992
 GameObject:
   m_ObjectHideFlags: 0

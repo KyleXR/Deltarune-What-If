@@ -18,7 +18,7 @@ public class MusicPlayer : MonoBehaviour
     }
     public void PlaySong()
     {
-        Debug.Log(song.name);
+        //Debug.Log(song.name);
         MusicManager.Instance.PlaySong(song);
     }
 }

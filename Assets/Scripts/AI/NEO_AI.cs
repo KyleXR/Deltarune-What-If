@@ -42,7 +42,7 @@ public class NEO_AI : MonoBehaviour
 
     private void OnPlayerDamaged(float damage)
     {
-        Debug.Log("Player hurt!");
+        //Debug.Log("Player hurt!");
         UrgencyCooldown();
     }
 

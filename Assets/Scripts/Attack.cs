@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,8 @@ public class Attack : MonoBehaviour
 
     //private float attackEndTime = 0f;
 
+    //public event Action<Rigidbody, float, bool> OnApplyDamage;
+
     private void OnTriggerStay(Collider other)
     {
         if (targetTags.Contains(other.tag) || targetTags.Length <= 0)
@@ -29,6 +32,8 @@ public class Attack : MonoBehaviour
             if (attackType == AttackType.Continuous)
             {
                 ApplyDamage(other);
+                //var rb = other.GetComponent<Rigidbody>();
+                //if (rb != null) OnApplyDamage.Invoke(rb, damage, true);
             }
         }
     }
@@ -38,6 +43,8 @@ public class Attack : MonoBehaviour
         if (targetTags.Contains(other.tag) || targetTags.Length <= 0)
         {
             ApplyDamage(other);
+            //var rb = other.GetComponent<Rigidbody>();
+            //if (rb != null) OnApplyDamage.Invoke(rb, damage, false);
         }
     }
 
