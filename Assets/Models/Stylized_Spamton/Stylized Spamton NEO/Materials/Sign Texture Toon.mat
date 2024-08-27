@@ -75,7 +75,7 @@ Material:
     - _GlintTexture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0.56565034, y: 0}
+        m_Offset: {x: 0.16068101, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 31a20c24018e73c4fb88277fbc8d29e8, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -271,7 +271,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _CustomNormalDirection: {r: 0, g: 1, b: 0, a: 0}
     - _CustomNormalEllipseSize: {r: 1, g: 1, b: 1, a: 0}
-    - _EmissionColor: {r: 8, g: 8, b: 8, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissionScrolling1: {r: -1, g: 0, b: 0, a: 0}
     - _EmissionScrolling2: {r: 0, g: 10, b: 0, a: 0}
     - _FarColor: {r: 0, g: 0, b: 0, a: 1}

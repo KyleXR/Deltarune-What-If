@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   song: {fileID: 11400000, guid: 2718c4f5813509c49bbdc75b6e4bdd5e, type: 2}
   playOnAwake: 1
+  playOnStart: 0

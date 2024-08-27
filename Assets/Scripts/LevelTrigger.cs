@@ -11,8 +11,8 @@ public class LevelTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.UnloadSceneAsync("SampleMapScene");
+        //SceneManager.UnloadSceneAsync("SampleMapScene");
         isTriggered = true;
-        MusicManager.Instance.Stop();
+        //MusicManager.Instance.Stop();
     }
 }

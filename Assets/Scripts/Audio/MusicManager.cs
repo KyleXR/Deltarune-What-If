@@ -24,7 +24,7 @@ public class MusicManager : Singleton<MusicManager>
         //.Log(currentClipIndex);
         currentSongController = currentSong.Play(transform, currentClipIndex);
         currentSongController.OnClipFinished += HandleClipFinished;
-
+        currentSongController.transform.parent = transform;
         //DontDestroyOnLoad(currentSongController);
     }
 
@@ -62,5 +62,10 @@ public class MusicManager : Singleton<MusicManager>
     public void FadeSong(float duration = 3)
     {
         currentSongController.FadeVolume(duration);
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(currentSongController.gameObject);
     }
 }

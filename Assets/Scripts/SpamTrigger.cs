@@ -20,13 +20,9 @@ public class SpamTrigger : MonoBehaviour
     private void Start()
     {
         spamtonNeo.SetActive(false);
-        //dialogueTrigger = GetComponent<DialogueTrigger>();
         FindFirstObjectByType<DialogueVisualController>().dialogueEnd += StartCarts;
         FindFirstObjectByType<DialogueVisualController>().YoinkSpamton += YoinkSpamton;
     }
-
-   
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -52,34 +48,37 @@ public class SpamTrigger : MonoBehaviour
             // Check if the load is complete
             if (asyncLoad.progress >= 0.9f)
             {
-                if(levelTrigger.isTriggered)
+                if (levelTrigger.isTriggered)
                 {
                     asyncLoad.allowSceneActivation = true;
                 }
             }
             yield return null;
         }
-        Destroy(MusicManager.Instance.gameObject);
-        yield return StartCoroutine(UnloadAndSetActiveScene());
+
+        // Once the new scene is activated, unload the old scene
+        StartCoroutine(UnloadAndSetActiveScene());
     }
+
     IEnumerator UnloadAndSetActiveScene()
     {
-        // After the original scene is unloaded, set the new scene as active
+        // Set the new scene as active
         Scene newScene = SceneManager.GetSceneByName("BattleScene");
-        if (newScene.IsValid())
+        while (!newScene.isLoaded)
         {
-            SceneManager.SetActiveScene(newScene);
+            yield return null;
         }
+        SceneManager.SetActiveScene(newScene);
 
-        // Wait until the original scene is unloaded
+        // Unload the original scene
         AsyncOperation unloadOperation = SceneManager.UnloadSceneAsync("SampleMapScene");
         while (!unloadOperation.isDone)
         {
             yield return null;
         }
 
+        Debug.Log("Finished");
     }
-
 
     private void YoinkSpamton(bool yoink)
     {
@@ -89,17 +88,17 @@ public class SpamTrigger : MonoBehaviour
 
     private void StartCarts(bool start)
     {
+        MusicManager.Instance.Stop();
+        Destroy(currentMusicPlayer.gameObject);
+        Destroy(MusicManager.Instance.gameObject);
+
         var player = FindAnyObjectByType<FirstPersonController>();
         if (player != null)
         {
             player.enabled = false;
         }
         FindFirstObjectByType<LookAtHandler>().LookAtNextTarget();
-       
+
         carts.StartIntro();
-        //spamtonNeo.SetActive(false);
-        MusicManager.Instance.Stop();
-        Destroy(currentMusicPlayer.gameObject);
-        //currentMusicPlayer = Instantiate(musicPlayers[1]);
     }
 }

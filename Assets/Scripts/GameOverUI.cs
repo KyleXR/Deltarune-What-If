@@ -45,7 +45,7 @@ public class GameOverUI : MonoBehaviour
         heartMid.enabled = true;
         heartRight.enabled = false;
         cover.enabled = false;
-
+        MusicManager.Instance.Stop();
         Instantiate(GOMusic);
     }
 
