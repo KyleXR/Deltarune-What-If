@@ -66,6 +66,6 @@ public class MusicManager : Singleton<MusicManager>
 
     private void OnDestroy()
     {
-        Destroy(currentSongController.gameObject);
+        if (currentSongController != null) Destroy(currentSongController.gameObject);
     }
 }

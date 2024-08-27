@@ -15,7 +15,13 @@ public class TensionPoints : MonoBehaviour
         // Start the coroutine to check for grazing
         StartCoroutine(CheckForGrazesCoroutine());
     }
-
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            tensionPoints = 100;
+        }
+    }
     IEnumerator CheckForGrazesCoroutine()
     {
         while (true)

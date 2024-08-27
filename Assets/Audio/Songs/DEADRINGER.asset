@@ -16,7 +16,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: dc1c3209eb8c71643bcbf186dec2fc50, type: 3}
   - {fileID: 8300000, guid: 12b5363a5bf12474d9b19e36b0b735c9, type: 3}
   useRandomClip: 0
-  volume: 1
+  volume: 0.788
   volumeRandom: 0
   pitch: 0
   pitchRandom: 0

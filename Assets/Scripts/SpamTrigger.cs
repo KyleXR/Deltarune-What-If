@@ -39,7 +39,7 @@ public class SpamTrigger : MonoBehaviour
 
     IEnumerator LoadNextScene()
     {
-        asyncLoad = SceneManager.LoadSceneAsync("BattleScene", LoadSceneMode.Additive);
+        asyncLoad = SceneManager.LoadSceneAsync("MainBattleScene", LoadSceneMode.Additive);
         asyncLoad.allowSceneActivation = false;
 
         // Wait until the scene is fully loaded
@@ -63,7 +63,7 @@ public class SpamTrigger : MonoBehaviour
     IEnumerator UnloadAndSetActiveScene()
     {
         // Set the new scene as active
-        Scene newScene = SceneManager.GetSceneByName("BattleScene");
+        Scene newScene = SceneManager.GetSceneByName("MainBattleScene");
         while (!newScene.isLoaded)
         {
             yield return null;
