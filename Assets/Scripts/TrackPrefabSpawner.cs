@@ -74,7 +74,7 @@ public class TrackPrefabSpawner : MonoBehaviour
         {
             // Step 1: Randomly select a track prefab from the array
             int rand = Random.Range(0, tracks.Length);
-            Debug.Log("I am being called");
+            //Debug.Log("I am being called");
 
             // Step 2: Instantiate the selected track prefab at the last node's position and rotation
             newTrack = Instantiate(tracks[rand], lastNodeTransform.position, lastNodeTransform.rotation);

@@ -74,7 +74,7 @@ public class GameOverUI : MonoBehaviour
     public void Continue()
     {
         
-        SceneManager.LoadScene("BattleScene");
+        SceneManager.LoadScene("MainBattleScene");
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f; 
@@ -87,7 +87,7 @@ public class GameOverUI : MonoBehaviour
 
     public void GiveUp()
     {
-        SceneManager.LoadScene("TitleScreen");
+        SceneManager.LoadScene("titleScreen");
     }
 
 }
