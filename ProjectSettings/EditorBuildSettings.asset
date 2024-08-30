@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleMapScene.unity
     guid: 62a5f965098ee3d41a6f3372eb2c8a82
+  - enabled: 1
+    path: Assets/Scenes/MainBattleScene.unity
+    guid: 4f7aab9dbd573a941a0237f1f8a55a6d
   m_configObjects: {}
